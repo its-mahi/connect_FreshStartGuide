@@ -11,7 +11,17 @@
   },
   "dependencies": {
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "@emotion/react": "^11.11.1",
+    "@emotion/styled": "^11.11.0",
+    "@mui/material": "^5.14.10",
+    "@testing-library/jest-dom": "^5.17.0",
+    "@testing-library/react": "^13.4.0",
+    "@testing-library/user-event": "^13.5.0",
+    "react-scripts": "5.0.1",
+    "react-tsparticles": "^2.12.2",
+    "tsparticles": "^2.12.0",
+    "web-vitals": "^2.1.4"
   },
   "devDependencies": {
     "@types/react": "^18.2.15",
@@ -21,6 +31,7 @@
     "eslint-plugin-react": "^7.32.2",
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-react-refresh": "^0.4.3",
+    "tailwindcss": "^3.3.3",
     "vite": "^4.4.5"
   }
 }
