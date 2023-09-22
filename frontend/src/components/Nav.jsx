@@ -35,14 +35,14 @@ const Nav = () => {
           <div>
             <div className="hidden md:flex flex-wrap gap-6">
               <div className="nav-titles nav-titles-ltr">
-                <a href="#body">About</a>
+                <a href="#body">QueryRoom</a>
               </div>
               <div className="nav-titles nav-titles-ltr">
-                <a href="#cards">Schedule</a>
+                <a href="#cards">Blogs</a>
               </div>
-              <div className="nav-titles nav-titles-ltr">Prizes</div>
-              <div className="nav-titles nav-titles-ltr">Sponsors</div>
-              <div className="nav-titles nav-titles-ltr">FAQs</div>
+              <div className="nav-titles nav-titles-ltr">Notes</div>
+              {/* <div className="nav-titles nav-titles-ltr">Sponsors</div> */}
+              {/* <div className="nav-titles nav-titles-ltr">FAQs</div> */}
             </div>
 
             <div className="relative">
