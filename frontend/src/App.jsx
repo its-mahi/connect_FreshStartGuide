@@ -1,4 +1,4 @@
-import "./App.css";
+import "../styles/App.css";
 import PaticlesBackground from "./components/PaticlesBackground";
 import Login from "./components/Login";
 import Nav from "./components/Nav";
@@ -8,9 +8,9 @@ function App() {
   return (
     <>
       <PaticlesBackground />
-      {/* <Nav /> */}
-      {/* <Footer /> */}
-      <Login />
+      <Nav />
+      <Footer />
+      {/* <Login /> */}
     </>
   );
 }
