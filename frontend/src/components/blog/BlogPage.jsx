@@ -5,7 +5,7 @@ import axios from "axios";
 import { Ripple, initTE } from "tw-elements";
 import { tabScrollButtonClasses } from "@mui/material";
 import { Navigate } from "react-router-dom";
-
+import { useDispatch, useSelector } from "react-redux";
 initTE({ Ripple });
 
 const BlogPage = (props) => {
@@ -20,7 +20,6 @@ const BlogPage = (props) => {
   const toggleModal = () => {
     setMyModal(!myModal);
   };
-
   const updateData = (newData) => {
     const { name, value } = newData;
     if (name === "tags") {

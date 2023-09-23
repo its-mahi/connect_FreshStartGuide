@@ -10,6 +10,7 @@ import NotesPage from "./components/notes/NotesPage";
 import Profile from "./components/profile/Profile";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 
+
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const toggleLogin = () => {

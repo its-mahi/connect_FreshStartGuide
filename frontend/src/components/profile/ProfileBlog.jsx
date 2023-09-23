@@ -8,9 +8,8 @@ import { Modal } from "react-responsive-modal";
 
 export default function ProfileBlog(props) {
   const [modal, setModal] = useState(false);
-  const [name, setName] = useState(props.user);
   const [blogdata, setBlogdata] = useState(props.description);
-  const formattedString = blogdata.replace(/ /g, "\u00A0");
+  // const formattedString = blogdata.replace(/ /g, "\u00A0");
   const [bloddate, setBlogdate] = useState(props.createdAt);
   const [blogtitle, setBlogtitle] = useState(props.title);
 
@@ -25,13 +24,11 @@ export default function ProfileBlog(props) {
 
   return (
     <div>
-      <button onClick={toggleModal} className="btn-modal">
+      <button onClick={toggleModal} className="btn-modal w-full">
         <div className="bg-white border border-gray-200 rounded-lg dark:bg-gray-800 dark:border-gray-700 p-5 shadow-[0_5px_40px_rgba(8,_112,_184,_0.7)]">
           <div>
-          <h2 className="text-white text-3xl mb-3">{blogtitle}</h2>
-
+            <h2 className="text-white text-3xl mb-3">{blogtitle}</h2>
           </div>
-          
           <div className="mb-1"></div> {/* One-line blank space */}
           <div className="text-gray-300">
             {blogdata.slice(0, 150)} . . .{" "}

@@ -2,15 +2,29 @@
 import React, { useState, useEffect } from "react";
 import "../../styles/nav.css";
 import { Link } from "react-router-dom";
+import axios from "axios";
+import { useDispatch } from "react-redux";
 
 const Nav = (props) => {
   const [isOpen, setIsOpen] = useState(false);
+  const dispatch = useDispatch();
 
   function toggleDropdown() {
     setIsOpen(!isOpen);
   }
 
   const logout = () => {
+    axios
+      .post("http://localhost:8000/api/v1/logout", {
+        headers: {
+          "Content-Type": "application/json",
+        },
+        withCredentials: true,
+      })
+      .then((response) => {
+        console.log(response.data.success);
+        dispatch({ type: "CLEAR_USER" });
+      });
     props.toggleLogin();
   };
 
