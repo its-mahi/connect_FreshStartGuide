@@ -7,11 +7,11 @@ export default function Register() {
         <h1 className="font-semibold leading-7 text-white text-4xl ">
           Register
         </h1>
-        <p class="mt-5 text-center text-sm text-gray-300">
+        <p className="mt-5 text-center text-sm text-gray-300">
           Already Registered?
           <a
             href="/"
-            class="ml-1 font-semibold leading-6 text-indigo-600 hover:text-indigo-500"
+            className="ml-1 font-semibold leading-6 text-indigo-600 hover:text-indigo-500"
           >
             Click here to login
           </a>

@@ -26,14 +26,14 @@ export default function BlogCard() {
   return (
     <div>
       <button onClick={toggleModal} className="btn-modal">
-        <div class="bg-white border border-gray-200 rounded-lg dark:bg-gray-800 dark:border-gray-700 p-5 shadow-[0_5px_40px_rgba(8,_112,_184,_0.7)]">
-          <div class="flex items-start">
+        <div className="bg-white border border-gray-200 rounded-lg dark:bg-gray-800 dark:border-gray-700 p-5 shadow-[0_5px_40px_rgba(8,_112,_184,_0.7)]">
+          <div className="flex items-start">
             <img
-              class="w-8 h-8 mr-4 mb-3 rounded-full shadow-lg"
+              className="w-8 h-8 mr-4 mb-3 rounded-full shadow-lg"
               src="/public/vite.svg"
               alt="Bonnie image"
             />
-            <h5 class="text-xl font-medium text-gray-900 dark:text-white">
+            <h5 className="text-xl font-medium text-gray-900 dark:text-white">
               Kris Patel
             </h5>
           </div>

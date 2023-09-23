@@ -2,28 +2,28 @@ import React from "react";
 
 export default function Login() {
   return (
-    <div class="flex min-h-full flex-col justify-center px-6 py-12 lg:px-8">
-      <div class="sm:mx-auto sm:w-full sm:max-w-sm">
+    <div className="flex min-h-full flex-col justify-center px-6 py-12 lg:px-8">
+      <div className="sm:mx-auto sm:w-full sm:max-w-sm">
         <img
-          class="mx-auto h-10 w-auto"
+          className="mx-auto h-10 w-auto"
           src="https://i.pinimg.com/736x/86/10/60/86106086e9594672ad7408913b5a3a24.jpg"
           alt="Your Company"
         />
-        <h2 class="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-white">
+        <h2 className="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-white">
           Sign in to your account
         </h2>
       </div>
 
-      <div class="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
-        <form class="space-y-6" action="#" method="POST">
+      <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
+        <form className="space-y-6" action="#" method="POST">
           <div>
             <label
               for="email"
-              class=" text-sm font-medium leading-6 text-white flex "
+              className=" text-sm font-medium leading-6 text-white flex "
             >
               Email address
             </label>
-            <div class="mt-2">
+            <div className="mt-2">
               <input
                 id="email"
                 name="email"
@@ -31,29 +31,29 @@ export default function Login() {
                 autocomplete="email"
                 required
                 style={{paddingLeft:"6px"}}
-                class="block w-full rounded-md border-0 py-1.5 text-black shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                className="block w-full rounded-md border-0 py-1.5 text-black shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
               />
             </div>
           </div>
 
           <div>
-            <div class="flex items-center justify-between">
+            <div className="flex items-center justify-between">
               <label
                 for="password"
-                class="block text-sm font-medium leading-6 text-white"
+                className="block text-sm font-medium leading-6 text-white"
               >
                 Password
               </label>
-              <div class="text-sm">
+              <div className="text-sm">
                 <a
                   href="#"
-                  class="font-semibold text-indigo-600 hover:text-indigo-500"
+                  className="font-semibold text-indigo-600 hover:text-indigo-500"
                 >
                   Forgot password?
                 </a>
               </div>
             </div>
-            <div class="mt-2">
+            <div className="mt-2">
               <input
                 id="password"
                 name="password"
@@ -61,7 +61,7 @@ export default function Login() {
                 autocomplete="current-password"
                 required
                 style={{paddingLeft:"6px"}}
-                class="block w-full rounded-md border-0 py-1.5 text-black shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                className="block w-full rounded-md border-0 py-1.5 text-black shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
               />
             </div>
           </div>
@@ -69,18 +69,18 @@ export default function Login() {
           <div>
             <button
               type="submit"
-              class="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+              className="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
             >
               Sign in
             </button>
           </div>
         </form>
 
-        <p class="mt-10 text-center text-sm text-gray-500">
+        <p className="mt-10 text-center text-sm text-gray-500">
           Not a member?
           <a
             href="#"
-            class="font-semibold leading-6 text-indigo-600 hover:text-indigo-500"
+            className="font-semibold leading-6 text-indigo-600 hover:text-indigo-500"
           >
             Start a  free trial
           </a>

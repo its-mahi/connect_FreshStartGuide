@@ -80,7 +80,7 @@ const BlogPage = () => {
         </div>
       </div>
 
-      <hr class="h-px bg-gray-200 border-1 dark:bg-gray-500" />
+      <hr className="h-px bg-gray-200 border-1 dark:bg-gray-500" />
 
       <BlogCard />
       <BlogCard />
