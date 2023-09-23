@@ -7,6 +7,18 @@ const BlogAdd = (props) => {
     props.toggleModal(!props.modal);
   };
 
+  const updateData = (e) => {
+    const myData = { name: e.target.name, value: e.target.value };
+    props.updateData(myData);
+  };
+
+  const createBlog = (e) => {
+    e.preventDefault();
+    props.toggleSetIsSubmitted();
+    props.createBlog();
+    toggleModal();
+  };
+
   return (
     <Modal
       open={props.modal}
@@ -27,7 +39,7 @@ const BlogAdd = (props) => {
         },
       }}
     >
-      <form className="space-y-6" method="POST">
+      <form className="space-y-6" onSubmit={createBlog}>
         <div>
           <label
             for="title"
@@ -42,6 +54,7 @@ const BlogAdd = (props) => {
               type="text"
               placeholder="Enter title here"
               required
+              onChange={updateData}
               style={{ paddingLeft: "6px" }}
               className="block w-full rounded-md border-0 py-1.5 text-black shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
             />
@@ -63,12 +76,32 @@ const BlogAdd = (props) => {
               name="blog"
               type="textarea"
               required
+              onChange={updateData}
               style={{ paddingLeft: "6px" }}
               className="block w-full rounded-md border-0 py-1.5 text-black shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
             />
           </div>
         </div>
-
+        <div>
+          <label
+            htmlFor="tags"
+            className="block text-sm font-medium leading-6 text-white"
+          >
+            Tags
+          </label>
+          <div className="mt-2">
+            <input
+              id="tags"
+              name="tags"
+              type="text"
+              placeholder="Enter tags separated by commas"
+              required
+              onChange={updateData}
+              style={{ paddingLeft: "6px" }}
+              className="block w-full rounded-md border-0 py-1.5 text-black shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+            />
+          </div>
+        </div>
         <div>
           <button
             type="submit"

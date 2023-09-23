@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import BlogCard from "./BlogCard";
 import BlogAdd from "./BlogAdd";
 import axios from "axios";
@@ -8,17 +8,37 @@ import { tabScrollButtonClasses } from "@mui/material";
 initTE({ Ripple });
 
 const BlogPage = () => {
+  const [blogs, setBlogs] = useState([]);
+  const [data, setData] = useState({
+    title: "",
+    blog: "",
+    tags: [],
+  });
+  const [isSubmitted, setIsSubmitted] = useState(false);
   const [myModal, setMyModal] = useState(false);
   const toggleModal = () => {
     setMyModal(!myModal);
   };
 
+  const updateData = (newData) => {
+    const { name, value } = newData;
+    if (name === "tags") {
+      const tagsArray = value.split(",").map((tag) => tag.trim());
+      setData((prevData) => ({
+        ...prevData,
+        [name]: tagsArray,
+      }));
+    } else {
+      setData((prevData) => ({
+        ...prevData,
+        [name]: value,
+      }));
+    }
+  };
+
   const createBlog = () => {
-    const reqData = {
-      title: "Hitarth Patel",
-      description: "Hey there I am hitarth Patel guys!!!",
-      tags: ["name", "hp"],
-    };
+    console.log(data);
+    const reqData = data;
     axios
       .post("http://localhost:8000/api/v1/createblog", reqData, {
         headers: {
@@ -27,10 +47,34 @@ const BlogPage = () => {
         withCredentials: true,
       })
       .then((response) => {
-        console.log(response.data.succes);
+        console.log(response.data.success);
       });
   };
-  createBlog();
+
+  useEffect(() => {
+    const fetchBlog = () => {
+      axios
+        .get("http://localhost:8000/api/v1/blogs", {
+          headers: {
+            "Content-Type": "application/json",
+          },
+          withCredentials: true,
+        })
+        .then((response) => {
+          setBlogs(response.data.blogs);
+        });
+    };
+    fetchBlog();
+  }, [isSubmitted]);
+
+  const toggleSetIsSubmitted = () => {
+    console.log("isSubmitted");
+    console.log(isSubmitted);
+    let myBool = isSubmitted;
+    setIsSubmitted(!myBool);
+    console.log("isSubmitted");
+    console.log(isSubmitted);
+  };
 
   return (
     <div className="mt-24">
@@ -94,10 +138,30 @@ const BlogPage = () => {
       </div>
 
       <hr className="h-px bg-gray-200 border-1 dark:bg-gray-500" />
-      <BlogAdd modal={myModal} toggleModal={toggleModal} />
-      <BlogCard />
-      <BlogCard />
-      <BlogCard />
+      <BlogAdd
+        modal={myModal}
+        updateData={updateData}
+        createBlog={createBlog}
+        toggleModal={toggleModal}
+        isSubmitted={isSubmitted}
+        toggleSetIsSubmitted={toggleSetIsSubmitted}
+      />
+      <div>
+        {blogs.map((blog) => {
+          return (
+            <BlogCard
+              key={blog._id}
+              title={blog.title}
+              description={blog.description}
+              tags={blog.tags}
+              user={blog.author.name}
+              createdAt={blog.createdAt}
+            />
+          );
+        })}
+      </div>
+      {/* <BlogCard /> */}
+      {/* <BlogCard /> */}
 
       {/* <div className="grid grid-cols-1 gap-10 mt-10">
         <div className="h-48 w-full bg-white"></div>

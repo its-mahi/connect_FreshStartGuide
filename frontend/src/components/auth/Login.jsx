@@ -1,12 +1,18 @@
-import React from "react";
+import React, { useState } from "react";
+// import { useDispatch } from "react-redux";
 import axios from "axios";
 
 export default function Login() {
-  const loginUser = () => {
-    const reqData = {
-      email: "patelhitarth07@gmail.com",
-      password: "itsmahi",
-    };
+  // const dispatch = useDispatch();
+
+  const [data, setData] = useState({
+    email: "",
+    password: "",
+  });
+  const loginUser = (e) => {
+    e.preventDefault();
+    console.log(data);
+    const reqData = data;
     axios
       .post("http://localhost:8000/api/v1/login", reqData, {
         headers: {
@@ -15,11 +21,35 @@ export default function Login() {
         withCredentials: true,
       })
       .then((response) => {
+        // if (response.data.user) {
+        //   dispatch({
+        //     type: "SET_USER",
+        //     payload: response.data.user,
+        //   });
+        // }
         console.log(response.data.success);
         console.log(response);
+      })
+      .catch((err) => {
+        console.log("Error Aayvi bhai");
       });
   };
-  loginUser();
+
+  const updateEmail = (e) => {
+    const { name, value } = e.target;
+    setData((prevData) => ({
+      ...prevData,
+      [name]: value,
+    }));
+  };
+
+  const updatePassword = (e) => {
+    const { name, value } = e.target;
+    setData((prevData) => ({
+      ...prevData,
+      [name]: value,
+    }));
+  };
 
   return (
     <div className="flex min-h-full flex-col justify-center px-6 py-12 lg:px-8">
@@ -35,7 +65,7 @@ export default function Login() {
       </div>
 
       <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
-        <form className="space-y-6" action="#" method="POST">
+        <form className="space-y-6" onSubmit={loginUser}>
           <div>
             <label
               // for="email"
@@ -50,6 +80,7 @@ export default function Login() {
                 type="email"
                 required
                 style={{ paddingLeft: "6px" }}
+                onChange={updateEmail}
                 className="block w-full rounded-md border-0 py-1.5 text-black shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
               />
             </div>
@@ -77,6 +108,7 @@ export default function Login() {
                 id="password"
                 name="password"
                 type="password"
+                onChange={updatePassword}
                 required
                 style={{ paddingLeft: "6px" }}
                 className="block w-full rounded-md border-0 py-1.5 text-black shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"

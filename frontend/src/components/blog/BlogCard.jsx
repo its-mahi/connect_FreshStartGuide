@@ -4,15 +4,13 @@ import { render } from "react-dom";
 import "react-responsive-modal/styles.css";
 import { Modal } from "react-responsive-modal";
 
-export default function BlogCard() {
+export default function BlogCard(props) {
   const [modal, setModal] = useState(false);
-  const [name, setName] = useState("Kris Patel");
-  const [blogdata, setBlogdata] = useState(
-    "      WWWWLorem ipsum dolor sit amet consectetur adipisicing elit. Providentperferendis suscipit officia recusandae, eveniet quaerat assumenda id fugit, dignissimos maxime non natus placeat illo iusto! Sapiente dolorum id maiores dolores? Illum pariatur possimus quaerat ipsum quos molestiae rem aspernatur dicta tenetur. Sunt placeat tempora vitae enim incidunt porro fuga ea. Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident perferendis suscipit officia recusandae, eveniet quaerat assumenda id fugit, dignissimos maxime non natus placeat illo iusto! Sapiente dolorum id maiores dolores? Illum pariatur possimus quaerat ipsum quos molestiae rem aspernatur dicta tenetur. Sunt placeat tempora vitae enim incidunt porro fuga ea. recusandae, eveniet quaerat assumenda id fugit, dignissimos maxime non natus placeat illo iusto! Sapiente dolorum id maiores dolores? Illum pariatur possimus quaerat ipsum quos molestiae rem aspernatur dicta tenetur. Sunt placeat tempora vitae enim incidunt porro fuga ea. "
-  );
-
-  const [bloddate, setBlogdate] = useState("69-69-69");
-  const [blogtitle, setBlogtitle] = useState("This is my title");
+  const [name, setName] = useState(props.user);
+  const [blogdata, setBlogdata] = useState(props.description);
+  const formattedString = blogdata.replace(/ /g, "\u00A0");
+  const [bloddate, setBlogdate] = useState(props.createdAt);
+  const [blogtitle, setBlogtitle] = useState(props.title);
 
   const toggleModal = () => {
     setModal(!modal);
@@ -24,8 +22,8 @@ export default function BlogCard() {
   }
 
   return (
-    <div>
-      <button onClick={toggleModal} className="btn-modal">
+    <div key={props.key}>
+      <button onClick={toggleModal} className="btn-modal w-full">
         <div className="bg-white border border-gray-200 rounded-lg dark:bg-gray-800 dark:border-gray-700 p-5 shadow-[0_5px_40px_rgba(8,_112,_184,_0.7)]">
           <div className="flex items-start">
             <img
@@ -34,7 +32,7 @@ export default function BlogCard() {
               alt="Bonnie image"
             />
             <h5 className="text-xl font-medium text-gray-900 dark:text-white">
-              Kris Patel
+              {name}
             </h5>
           </div>
           <h2 className="text-white text-3xl mb-3">{blogtitle}</h2>
@@ -72,11 +70,11 @@ export default function BlogCard() {
           <h2 className="text-white text-3xl mb-3 font-bold">{blogtitle}</h2>
           <hr class="h-px m-2 bg-gray-200 border-1 dark:bg-gray-500" />
 
-          <p className="text-white text-lg leading-relaxed tracking-wide">
+          <div className="text-white font-googlers text-lg leading-relaxed tracking-wide">
             {/* Your long content here */}
-            {blogdata}
-            {blogdata}
-          </p>
+            {/* {blogdata} */}
+            {formattedString}
+          </div>
 
           {/* Add more content here */}
         </div>
