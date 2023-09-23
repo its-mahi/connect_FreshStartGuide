@@ -13,8 +13,10 @@ app.use(express.urlencoded({ extended: true }))
 
 //routes
 const user = require('./routes/User')
+const blog = require('./routes/Blog')
 
 //using routes
 app.use('/api/v1',user);
+app.use('/api/v1',blog);
 
 module.exports = app;

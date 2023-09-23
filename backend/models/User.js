@@ -22,7 +22,19 @@ const userSchema = new mongoose.Schema({
     avtar:{
         public_id:String,
         url:String
-    }
+    },
+    likedBlogs:[
+        {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: "Blog"
+        }
+    ],
+    blogs:[
+            {
+                type: mongoose.Schema.Types.ObjectId,
+                ref: "Blog"
+            }
+    ]
 
 })
 
