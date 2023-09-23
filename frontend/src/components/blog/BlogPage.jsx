@@ -18,7 +18,7 @@ const BlogPage = () => {
         {/* <h1 className="text-3xl text-black bg-white">Search Blog</h1> */}
       </div>
 
-      <hr class="h-px bg-gray-200 border-1 dark:bg-gray-500" />
+      <hr className="h-px bg-gray-200 border-1 dark:bg-gray-500" />
 
       <BlogCard/>
       <BlogCard/>

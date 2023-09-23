@@ -27,21 +27,21 @@ export default function BlogCard() {
   return (
     <>
       <button onClick={toggleModal} className="btn-modal">
-        <div class="bg-white border border-gray-200 rounded-lg dark:bg-gray-800 dark:border-gray-700 p-5 shadow-[0_5px_40px_rgba(8,_112,_184,_0.7)]">
-          <div class="flex items-start">
+        <div className="bg-white border border-gray-200 rounded-lg dark:bg-gray-800 dark:border-gray-700 p-5 shadow-[0_5px_40px_rgba(8,_112,_184,_0.7)]">
+          <div className="flex items-start">
             <img
-              class="w-8 h-8 mr-4 mb-3 rounded-full shadow-lg"
+              className="w-8 h-8 mr-4 mb-3 rounded-full shadow-lg"
               src="/public/vite.svg"
               alt="Bonnie image"
             />
-            <h5 class="text-xl font-medium text-gray-900 dark:text-white">
+            <h5 className="text-xl font-medium text-gray-900 dark:text-white">
               Kris Patel
             </h5>
           </div>
           <h2 className="text-white text-3xl mb-3">{blogtitle}</h2>
-          <div class="mb-1"></div> {/* One-line blank space */}
-          <div class="text-gray-300">{blogdata.slice(0, 600)} . . .</div>
-          <span class="text-sm text-gray-500 dark:text-gray-400">
+          <div className="mb-1"></div> {/* One-line blank space */}
+          <div className="text-gray-300">{blogdata.slice(0, 600)} . . .</div>
+          <span className="text-sm text-gray-500 dark:text-gray-400">
             {bloddate}
           </span>
         </div>
