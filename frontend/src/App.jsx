@@ -15,11 +15,11 @@ function App() {
       <PaticlesBackground />
       {/* <Login /> */}
       {/* <Register /> */}
-      {/* <Nav />
+      <Nav />
       <main className="flex-grow">
         <BlogPage />
       </main>
-      <Footer /> */}
+      <Footer />
     </div>
   );
 }
