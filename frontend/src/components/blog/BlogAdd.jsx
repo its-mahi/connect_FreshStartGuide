@@ -7,6 +7,18 @@ const BlogAdd = (props) => {
     props.toggleModal(!props.modal);
   };
 
+  const updateData = (e) => {
+    const myData = { name: e.target.name, value: e.target.value };
+    props.updateData(myData);
+  };
+
+  const createBlog = (e) => {
+    e.preventDefault();
+    props.toggleSetIsSubmitted();
+    props.createBlog();
+    toggleModal();
+  };
+
   return (
     <Modal
       open={props.modal}
@@ -27,7 +39,7 @@ const BlogAdd = (props) => {
         },
       }}
     >
-      <form className="space-y-6" method="POST">
+      <form className="space-y-6" onSubmit={createBlog}>
         <div>
           <label
             for="title"
@@ -42,6 +54,7 @@ const BlogAdd = (props) => {
               type="text"
               placeholder="Enter title here"
               required
+              onChange={updateData}
               style={{ paddingLeft: "6px" }}
               className="block w-full rounded-md border-0 py-1.5 text-black shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-md sm:leading-6 dark:bg-gray-800"
             />
@@ -58,10 +71,16 @@ const BlogAdd = (props) => {
             </label>
           </div>
           <div className="mt-2">
-            <textarea id="blog" name="blog" rows="10" style={{ paddingLeft: "6px" }} class="block p-2.5 w-full text-md text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-800 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Write your thoughts here..."></textarea>
+            <textarea
+              id="blog"
+              name="blog"
+              type="textarea"
+              required
+              style={{ paddingLeft: "6px" }}
+              className="block w-full rounded-md border-0 py-1.5 text-black shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+            />
           </div>
         </div>
-
         <div>
           <button
             type="submit"

@@ -14,14 +14,12 @@ function App() {
   return (
     <div className="flex flex-col min-h-screen">
       <PaticlesBackground />
-      {/* <Login /> */}
-      <Nav />
-      <main className="flex-grow">
+      <Login />
+      {/* <Nav /> */}
+      {/* <main className="flex-grow"> */}
       {/* <BlogPage /> */}
-      {/* <NotesPage/> */}
-
-      </main>
-      <Footer />
+      {/* </main> */}
+      {/* <Footer /> */}
     </div>
   );
 }

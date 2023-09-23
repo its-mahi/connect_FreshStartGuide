@@ -1,92 +1,96 @@
-const User = require('../models/User');
-const bcrypt = require('bcrypt');
+const User = require("../models/User");
+const bcrypt = require("bcrypt");
 
-exports.registerUser = async (req,res) => {
-    try{
+exports.registerUser = async (req, res) => {
+  try {
+    const { name, email, password } = req.body;
 
-        const {name,email,password} = req.body;
+    const isEmail = await User.findOne({ email: email });
 
-        const isEmail = await User.findOne({ email: email})
-
-        if(isEmail)
-        {
-            return res.status(400).json({
-                success:true,
-                message:"email already registered"
-            })
-        }
-
-        const user = await User.create({name,email,password})
-
-        const token = user.generateToken();
-
-        res.status(201).cookie("token",token,{expires: new Date(Date.now() + 1 * 24 * 60 * 60 * 1000), httpOnly: true }).json({
-            success:true,
-            message:"user created",
-            user
-        })
-
-
-    }catch(e)
-    {
-        res.status(500).json({
-            success:false,
-            error:e.message
-        })
+    if (isEmail) {
+      return res.status(400).json({
+        success: true,
+        message: "email already registered",
+      });
     }
-}
 
-exports.loginUser = async (req,res) => {
-    try{
-        const {email,password} = req.body;
+    const user = await User.create({ name, email, password });
 
-        const user = await User.findOne({ email: email})
+    const token = user.generateToken();
 
-        if(!user)
-        {
-            return res.status(400).json({
-                success:false,
-                message:"Invalid Credentials"
-            })
-        }
+    res
+      .status(201)
+      .cookie("token", token, {
+        expires: new Date(Date.now() + 1 * 24 * 60 * 60 * 1000),
+        httpOnly: true,
+      })
+      .json({
+        success: true,
+        message: "user created",
+        user,
+      });
+  } catch (e) {
+    res.status(500).json({
+      success: false,
+      error: e.message,
+    });
+  }
+};
 
-        const isMatch = await bcrypt.compare(password,user.password)
+exports.loginUser = async (req, res) => {
+  try {
+    const { email, password } = req.body;
 
-        if(!isMatch)
-        {
-            return res.status(401).json({
-                success:false,
-                message:"Invalid Credentials"
-            })
-        }
-        const token =  user.generateToken();
-        console.log(token)
-        res.status(200).cookie("token",token,{expires: new Date(Date.now() + 1 * 24 * 60 * 60 * 1000), httpOnly: true }).json({
-            success:true,
-            user
-        })
+    const user = await User.findOne({ email: email });
 
-    }catch(e)
-    {
-        res.status(500).json({
-            success:false,
-            error:e.message
-        })
+    if (!user) {
+      return res.status(400).json({
+        success: false,
+        message: "Invalid Credentials",
+      });
     }
-}
+    console.log("Hey");
+    const isMatch = await bcrypt.compare(password, user.password);
 
-exports.logout = async (req, res) =>{
-    try{
-        res.clearCookie("token");
-        res.status(200).json({
-            success:true,
-            message:"logged out"
-        })
-    }catch(e)
-    {
-        res.status(500).json({
-            success:false,
-            error:e.message
-        })
+    if (!isMatch) {
+      return res.status(401).json({
+        success: false,
+        message: "Invalid Credentials",
+      });
     }
-}
+    const token = user.generateToken();
+    // console.log(token);
+    res
+      .status(200)
+      .cookie("token", token, {
+        expires: new Date(Date.now() + 1 * 24 * 60 * 60 * 1000),
+        httpOnly: true,
+        sameSite: "none",
+        secure: true,
+      })
+      .json({
+        success: true,
+        user,
+      });
+  } catch (e) {
+    res.status(500).json({
+      success: false,
+      error: e.message,
+    });
+  }
+};
+
+exports.logout = async (req, res) => {
+  try {
+    res.clearCookie("token");
+    res.status(200).json({
+      success: true,
+      message: "logged out",
+    });
+  } catch (e) {
+    res.status(500).json({
+      success: false,
+      error: e.message,
+    });
+  }
+};
