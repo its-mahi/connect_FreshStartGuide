@@ -8,6 +8,7 @@ export default function Register() {
     password: "",
     avtar: "",
   });
+  const [photoURL, setPhotoURL] = useState("/public/profile.png");
   const registerUser = (e) => {
     e.preventDefault();
     console.log(data);
@@ -36,6 +37,8 @@ export default function Register() {
         ...prevData,
         [name]: imageFile,
       }));
+      const url = URL.createObjectURL(imageFile);
+      setPhotoURL(url);
     } else {
       setData((prevData) => ({
         ...prevData,
@@ -48,12 +51,16 @@ export default function Register() {
     <div className="flex min-h-full flex-col justify-center px-6 py-12 lg:px-8">
       <div className="sm:mx-auto sm:w-full sm:max-w-sm">
         <img
-          className="mx-auto h-10 w-auto"
-          src="https://i.pinimg.com/736x/86/10/60/86106086e9594672ad7408913b5a3a24.jpg"
+          className="mx-auto pl-5 h-16 w-auto"
+          src="/public/connect.png"
           alt="Your Company"
         />
+        <div className="mt-5">
+          <hr className="h-px bg-gray-200 border-1 dark:bg-gray-500" />
+        </div>
+
         <h2 className="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-white">
-          Register
+          Are you a newbie?
         </h2>
       </div>
 
@@ -116,7 +123,7 @@ export default function Register() {
                 Avatar
               </label>
             </div>
-            <div className="mt-2">
+            <div className="mt-2 flex">
               <input
                 id="avtar"
                 name="avtar"
@@ -126,6 +133,11 @@ export default function Register() {
                 required
                 style={{ paddingLeft: "6px" }}
                 className="block w-full rounded-md border-0 py-1.5 text-white shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+              />
+              <img
+                className="mx-auto pl-5 h-10 w-auto"
+                src={photoURL}
+                alt="Your Company"
               />
             </div>
           </div>
