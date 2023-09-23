@@ -4,20 +4,18 @@ const bodyParser = require("body-parser");
 const cookieparser = require("cookie-parser");
 require("dotenv").config({ path: "config/config.env" });
 const cors = require("cors");
+const fileUpload = require('express-fileupload')
 
 //middlewares
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieparser());
-<<<<<<< HEAD
 app.use(express.urlencoded({ extended: true }))
 app.use(cors({
     origin:'http://localhost:9000',
     credentials:true
 }))
-//new comments
-=======
 const corsOptions = {
   origin: "http://localhost:5173", // Replace with the actual origin of your frontend application
   credentials: true, // Allow cookies and other credentials to be sent
@@ -26,7 +24,9 @@ const corsOptions = {
 
 app.use(cors(corsOptions));
 app.use(bodyParser.json());
->>>>>>> 71eabb1682e0bc2be1c12cbfe21629f281456a16
+app.use(fileUpload({
+  useTempFiles:true,
+}))
 
 //routes
 const user = require("./routes/User");
