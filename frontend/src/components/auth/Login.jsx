@@ -68,7 +68,7 @@ export default function Login() {
         <form className="space-y-6" onSubmit={loginUser}>
           <div>
             <label
-              // for="email"
+              // htmlFor="email"
               className=" text-sm font-medium leading-6 text-white flex "
             >
               Email address
@@ -89,7 +89,7 @@ export default function Login() {
           <div>
             <div className="flex items-center justify-between">
               <label
-                // for="password"
+                // htmlFor="password"
                 className="block text-sm font-medium leading-6 text-white"
               >
                 Password
@@ -127,12 +127,13 @@ export default function Login() {
         </form>
 
         <p className="mt-10 text-center text-sm text-gray-500">
-          Not a member?
+          Not registered yet?
           <a
             href="#"
             className="font-semibold leading-6 text-indigo-600 hover:text-indigo-500"
           >
-            Start a free trial
+            {" "}
+            Register here
           </a>
         </p>
       </div>
