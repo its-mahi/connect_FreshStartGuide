@@ -9,6 +9,10 @@ const cors = require('cors');
 app.use(express.json());
 app.use(cookieparser());
 app.use(express.urlencoded({ extended: true }))
+app.use(cors({
+    origin:'http://localhost:9000',
+    credentials:true
+}))
 //new comments
 
 //routes
