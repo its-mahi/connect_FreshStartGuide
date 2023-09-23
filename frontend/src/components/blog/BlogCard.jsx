@@ -9,7 +9,7 @@ export default function BlogCard(props) {
   const [name, setName] = useState(props.user);
   const [blogdata, setBlogdata] = useState(props.description);
   const formattedString = blogdata.replace(/ /g, "\u00A0");
-  const [bloddate, setBlogdate] = useState(props.createdAt);
+  const [blogdate, setBlogdate] = useState(props.createdAt);
   const [blogtitle, setBlogtitle] = useState(props.title);
 
   const toggleModal = () => {
@@ -23,12 +23,12 @@ export default function BlogCard(props) {
 
   return (
     <div>
-      <button onClick={toggleModal} className="btn-modal">
+      <button onClick={toggleModal} className="btn-modal w-full">
         <div className="bg-white border border-gray-200 rounded-lg dark:bg-gray-800 dark:border-gray-700 p-5 shadow-[0_5px_40px_rgba(8,_112,_184,_0.7)]">
           <div className="flex items-start">
             <img
-              className="w-8 h-8 mr-4 mb-3 rounded-full shadow-lg"
-              src="/public/vite.svg"
+              className="w-8 mr-4 mb-3 rounded-full shadow-lg"
+              src="/public/profile.png"
               alt="Bonnie image"
             />
             <h5 className="text-xl font-medium text-gray-900 dark:text-white">
@@ -42,7 +42,7 @@ export default function BlogCard(props) {
             <span className="underline">Read More</span>
           </div>
           <span class="text-sm text-gray-500 dark:text-gray-400">
-            {bloddate}
+            {blogdate}
           </span>
         </div>
       </button>
