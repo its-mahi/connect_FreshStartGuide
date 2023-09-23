@@ -25,8 +25,8 @@ export default function ProfileBlog(props) {
 
   return (
     <div>
-      <button onClick={toggleModal} className="btn-modal">
-        <div className="bg-white border border-gray-200 rounded-lg dark:bg-gray-800 dark:border-gray-700 p-5 shadow-[0_5px_40px_rgba(8,_112,_184,_0.7)]">
+      <button onClick={toggleModal} className="btn-modal">  
+        <div className="dark:bg-gray-900 bg-gray-800 rounded-md bg-clip-padding backdrop-filter backdrop-blur-sm bg-opacity-80 border border-gray-100  dark:border-gray-700 p-5 shadow-[0_0px_10px_rgba(8,_112,_184,_0.7)]">
           <div>
           <h2 className="text-white text-3xl mb-3">{blogtitle}</h2>
 
@@ -63,7 +63,7 @@ export default function ProfileBlog(props) {
         }}
       >
         <div className="h-[600px]  overflow-y-auto text-3xl scrollbar-thin scrollbar-thumb-blue-500 scrollbar-track-gray-200 pr-10">
-          <h2 className="text-white text-3xl mb-3 font-bold">{blogtitle}</h2>
+          <h2 className=" bg-gray-800 rounded-md bg-clip-padding backdrop-filter backdrop-blur-sm bg-opacity-80 border border-gray-100  dark:border-gray-700 text-white text-3xl mb-3 font-bold">{blogtitle}</h2>
           <hr className="h-px m-2 bg-gray-200 border-1 dark:bg-gray-500" />
 
           <div className="text-white font-googlers text-lg leading-relaxed tracking-wide">
