@@ -22,8 +22,8 @@ export default function BlogCard(props) {
   }
 
   return (
-    <div key={props.key}>
-      <button onClick={toggleModal} className="btn-modal w-full">
+    <div>
+      <button onClick={toggleModal} className="btn-modal">
         <div className="bg-white border border-gray-200 rounded-lg dark:bg-gray-800 dark:border-gray-700 p-5 shadow-[0_5px_40px_rgba(8,_112,_184,_0.7)]">
           <div className="flex items-start">
             <img
