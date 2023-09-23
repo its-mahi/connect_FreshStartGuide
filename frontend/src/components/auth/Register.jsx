@@ -35,7 +35,7 @@ export default function Register() {
             <div className="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
               <div className="sm:col-span-4">
                 <label
-                  htmlFor="username"
+                  htmlhtmlFor="username"
                   className="block text-sm font-medium leading-6 text-white"
                 >
                   Username
@@ -59,7 +59,7 @@ export default function Register() {
 
               <div className="col-span-full">
                 <label
-                  htmlFor="about"
+                  htmlhtmlFor="about"
                   className="block text-sm font-medium leading-6 text-white"
                 >
                   About
@@ -79,7 +79,7 @@ export default function Register() {
               </div>
 
               {/* <div className="col-span-full">
-              <label htmlFor="photo" className="block text-sm font-medium leading-6 text-white">
+              <label htmlhtmlFor="photo" className="block text-sm font-medium leading-6 text-white">
                 Photo
               </label>
               <div className="mt-2 flex items-center gap-x-3">
@@ -94,7 +94,7 @@ export default function Register() {
             </div> */}
 
               <div className="col-span-full">
-              <label htmlFor="cover-photo" className="block text-sm font-medium leading-6 text-white">
+              <label htmlhtmlFor="cover-photo" className="block text-sm font-medium leading-6 text-white">
                 Cover photo
               </label>
               <div className="mt-2 flex justify-center rounded-lg border border-dashed border-gray-900/25 px-6 py-10">
@@ -102,7 +102,7 @@ export default function Register() {
                   {/* <PhotoIcon className="mx-auto h-12 w-12 text-gray-300" aria-hidden="true" /> */}
                   <div className="mt-4 flex text-sm leading-6 text-gray-300">
                     <label
-                      htmlFor="file-upload"
+                      htmlhtmlFor="file-upload"
                       className="relative cursor-pointer rounded-md bg-white font-semibold text-indigo-600 focus-within:outline-none focus-within:ring-2 focus-within:ring-indigo-600 focus-within:ring-offset-2 hover:text-indigo-500"
                     >
                       <span>Upload a file</span>
@@ -128,7 +128,7 @@ export default function Register() {
             <div className="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
               <div className="sm:col-span-3">
                 <label
-                  htmlFor="first-name"
+                  htmlhtmlFor="first-name"
                   className="block text-sm font-medium leading-6 text-white"
                 >
                   First name
@@ -146,7 +146,7 @@ export default function Register() {
 
               <div className="sm:col-span-3">
                 <label
-                  htmlFor="last-name"
+                  htmlhtmlFor="last-name"
                   className="block text-sm font-medium leading-6 text-white"
                 >
                   Last name
@@ -164,7 +164,7 @@ export default function Register() {
 
               <div className="sm:col-span-4">
                 <label
-                  htmlFor="email"
+                  htmlhtmlFor="email"
                   className="block text-sm font-medium leading-6 text-white"
                 >
                   Email address
@@ -182,7 +182,7 @@ export default function Register() {
 
               <div className="sm:col-span-3">
                 <label
-                  htmlFor="country"
+                  htmlhtmlFor="country"
                   className="block text-sm font-medium leading-6 text-white"
                 >
                   State (Skip if not in India)
@@ -202,7 +202,7 @@ export default function Register() {
 
               <div className="col-span-full">
                 <label
-                  htmlFor="street-address"
+                  htmlhtmlFor="street-address"
                   className="block text-sm font-medium leading-6 text-white"
                 >
                   Street address
@@ -220,7 +220,7 @@ export default function Register() {
 
               <div className="sm:col-span-2 sm:col-start-1">
                 <label
-                  htmlFor="city"
+                  htmlhtmlFor="city"
                   className="block text-sm font-medium leading-6 text-white"
                 >
                   City
@@ -238,7 +238,7 @@ export default function Register() {
 
               <div className="sm:col-span-2">
                 <label
-                  htmlFor="postal-code"
+                  htmlhtmlFor="postal-code"
                   className="block text-sm font-medium leading-6 text-white"
                 >
                   ZIP / Postal code
@@ -282,7 +282,7 @@ export default function Register() {
                     </div>
                     <div className="text-sm leading-6">
                       <label
-                        htmlFor="comments"
+                        htmlhtmlFor="comments"
                         className="font-medium text-white"
                       >
                         Comments
@@ -303,7 +303,7 @@ export default function Register() {
                     </div>
                     <div className="text-sm leading-6">
                       <label
-                        htmlFor="candidates"
+                        htmlhtmlFor="candidates"
                         className="font-medium text-white"
                       >
                         Candidates
@@ -324,7 +324,7 @@ export default function Register() {
                     </div>
                     <div className="text-sm leading-6">
                       <label
-                        htmlFor="offers"
+                        htmlhtmlFor="offers"
                         className="font-medium text-white"
                       >
                         Offers
@@ -353,7 +353,7 @@ export default function Register() {
                       className="h-4 w-4 border-gray-300 text-indigo-600 focus:ring-indigo-600"
                     />
                     <label
-                      htmlFor="push-everything"
+                      htmlhtmlFor="push-everything"
                       className="block text-sm font-medium leading-6 text-white"
                     >
                       Everything
@@ -367,7 +367,7 @@ export default function Register() {
                       className="h-4 w-4 border-gray-300 text-indigo-600 focus:ring-indigo-600"
                     />
                     <label
-                      htmlFor="push-email"
+                      htmlhtmlFor="push-email"
                       className="block text-sm font-medium leading-6 text-white"
                     >
                       Same as email
@@ -381,7 +381,7 @@ export default function Register() {
                       className="h-4 w-4 border-gray-300 text-indigo-600 focus:ring-indigo-600"
                     />
                     <label
-                      htmlFor="push-nothing"
+                      htmlhtmlFor="push-nothing"
                       className="block text-sm font-medium leading-6 text-white"
                     >
                       No push notifications

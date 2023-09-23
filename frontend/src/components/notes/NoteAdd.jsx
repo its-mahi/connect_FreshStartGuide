@@ -30,7 +30,7 @@ export default function NoteAdd(props) {
         <form className="space-y-6" method="POST">
           <div>
             <label
-              for="title"
+              htmlFor="title"
               className=" text-md font-medium leading-6 text-white flex "
             >
               Title
@@ -50,7 +50,7 @@ export default function NoteAdd(props) {
 
           <div>
             <label
-              htmlFor="file"
+              htmlhtmlFor="file"
               className="text-md font-medium leading-6 text-white flex"
             >
               Upload File
@@ -69,7 +69,7 @@ export default function NoteAdd(props) {
 
           <div>
             <label
-              for="title"
+              htmlFor="title"
               className=" text-md font-medium leading-6 text-white flex "
             >
               Tags related to notes

@@ -42,7 +42,7 @@ const BlogAdd = (props) => {
       <form className="space-y-6" onSubmit={createBlog}>
         <div>
           <label
-            for="title"
+            htmlFor="title"
             className=" text-md font-medium leading-6 text-white flex "
           >
             Title
@@ -64,7 +64,7 @@ const BlogAdd = (props) => {
         <div>
           <div className="flex items-center justify-between">
             <label
-              for="blog"
+              htmlFor="blog"
               className="block text-md font-medium leading-6 text-white"
             >
               Blog
