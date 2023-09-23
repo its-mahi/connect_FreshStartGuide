@@ -141,7 +141,10 @@ exports.getProfile = async (req, res) => {
 
 exports.searchAblog = async (req, res) => {
     try{
-        const blog = await Blog.find({ title: { $regex: `.*${req.body.search}.*`, $options: 'i' } });
+        let blog = await Blog.find({ title: { $regex: `.*${req.body.search}.*`, $options: 'i' } });
+        const blog2 = await Blog.find({ tags: { $regex: `.*${req.body.search}.*`, $options: 'i' } });
+
+        blog = [...blog, ...blog2];
 
         res.status(200).json({
             success:true,
