@@ -45,14 +45,14 @@ export default function NotesPage() {
           Notes
         </div>
 
-        <button class="mr-2 text-sm w-12 h-12 font-bold flex items-center justify-center md:hidden text-center bg-green-500 hover:shadow-lg hover:bg-green-600 md:p-2 rounded-full">
+        <button className="mr-2 text-sm w-12 h-12 font-bold flex items-center justify-center md:hidden text-center bg-green-500 hover:shadow-lg hover:bg-green-600 md:p-2 rounded-full">
             <FaCloudUploadAlt/>
         </button>
 
-        <div class="relative">
-          <div class="absolute inset-y-0 left-0 flex items-center pl-5 pointer-events-none">
+        <div className="relative">
+          <div className="absolute inset-y-0 left-0 flex items-center pl-5 pointer-events-none">
             <svg
-              class="w-4 h-4 text-gray-500 dark:text-gray-400"
+              className="w-4 h-4 text-gray-500 dark:text-gray-400"
               aria-hidden="true"
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
@@ -70,7 +70,7 @@ export default function NotesPage() {
           <input
             type="search"
             id="default-search"
-            class="ml-2 block w-full p-4 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark    :text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+            className="ml-2 block w-full p-4 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark    :text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
             placeholder="Search Notes, Topics..."
             required
           />

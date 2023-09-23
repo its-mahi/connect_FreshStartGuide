@@ -38,7 +38,10 @@ const BlogAdd = (props) => {
     >
       <form className="space-y-6" onSubmit={createBlog}>
         <div>
-          <label className=" text-md font-medium leading-6 text-white flex ">
+          <label
+            for="title"
+            className=" text-md font-medium leading-6 text-white flex "
+          >
             Title
           </label>
           <div className="mt-2">
@@ -57,7 +60,10 @@ const BlogAdd = (props) => {
 
         <div>
           <div className="flex items-center justify-between">
-            <label className="block text-md font-medium leading-6 text-white">
+            <label
+              for="blog"
+              className="block text-md font-medium leading-6 text-white"
+            >
               Blog
             </label>
           </div>

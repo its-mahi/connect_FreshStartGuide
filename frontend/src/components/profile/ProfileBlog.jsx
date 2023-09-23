@@ -1,15 +1,17 @@
 import React, { useEffect, useState } from "react";
 import "/styles/Model.css";
-import { render } from "react-dom";
 import "react-responsive-modal/styles.css";
 import { Modal } from "react-responsive-modal";
 
-export default function BlogCard(props) {
+// import "react-crud-icons/dist/react-crud-icons.css";
+// import {  } from "react-icons/fa";
+
+export default function ProfileBlog(props) {
   const [modal, setModal] = useState(false);
   const [name, setName] = useState(props.user);
   const [blogdata, setBlogdata] = useState(props.description);
   const formattedString = blogdata.replace(/ /g, "\u00A0");
-  const [blogdate, setBlogdate] = useState(props.createdAt);
+  const [bloddate, setBlogdate] = useState(props.createdAt);
   const [blogtitle, setBlogtitle] = useState(props.title);
 
   const toggleModal = () => {
@@ -23,25 +25,19 @@ export default function BlogCard(props) {
 
   return (
     <div>
-      <button onClick={toggleModal} className="btn-modal w-full">
+      <button onClick={toggleModal} className="btn-modal">
         <div className="bg-white border border-gray-200 rounded-lg dark:bg-gray-800 dark:border-gray-700 p-5 shadow-[0_5px_40px_rgba(8,_112,_184,_0.7)]">
-          <div className="flex items-start">
-            <img
-              className="w-8 mr-4 mb-3 rounded-full shadow-lg"
-              src="/public/profile.png"
-              alt="Bonnie image"
-            />
-            <h5 className="text-xl font-medium text-gray-900 dark:text-white">
-              {name}
-            </h5>
-          </div>
+          <div>
           <h2 className="text-white text-3xl mb-3">{blogtitle}</h2>
+
+          </div>
+          
           <div className="mb-1"></div> {/* One-line blank space */}
           <div className="text-gray-300">
             {blogdata.slice(0, 150)} . . .{" "}
             <span className="underline">Read More</span>
           </div>
-          <span class="text-sm text-gray-500 dark:text-gray-400">
+          <span className="text-sm text-gray-500 dark:text-gray-400">
             {bloddate}
           </span>
         </div>
@@ -72,8 +68,8 @@ export default function BlogCard(props) {
 
           <div className="text-white font-googlers text-lg leading-relaxed tracking-wide">
             {/* Your long content here */}
-            {/* {blogdata} */}
-            {formattedString}
+            {blogdata}
+            {/* {AiFillDelete}  */}
           </div>
 
           {/* Add more content here */}
