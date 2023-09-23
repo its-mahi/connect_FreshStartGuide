@@ -1,3 +1,4 @@
+const Blog = require("../models/Blog");
 const User = require("../models/User");
 const bcrypt = require("bcrypt");
 const cloudinary = require("cloudinary").v2;
@@ -118,3 +119,42 @@ exports.logout = async (req, res) => {
     });
   }
 };
+
+exports.getProfile = async (req, res) => {
+    try{
+
+        const user = await User.findById(req.params.id).populate("blogs");
+
+        res.status(200).json({
+            success:true,
+            user
+        })
+
+    }catch(err)
+    {
+        res.status(500).json({
+            success:false,
+            error:err.message
+        })
+    }
+}
+
+exports.searchAblog = async (req, res) => {
+    try{
+        let blog = await Blog.find({ title: { $regex: `.*${req.body.search}.*`, $options: 'i' } });
+        const blog2 = await Blog.find({ tags: { $regex: `.*${req.body.search}.*`, $options: 'i' } });
+
+        blog = [...blog, ...blog2];
+
+        res.status(200).json({
+            success:true,
+            blog
+        })
+
+    }catch(err) {
+        res.status(500).json({
+            success:false,
+            error:err.message
+        })
+    }
+}

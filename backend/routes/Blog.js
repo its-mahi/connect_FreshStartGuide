@@ -1,5 +1,5 @@
 const express = require("express");
-const { registerUser, loginUser, logout } = require("../controller/User");
+const { registerUser, loginUser, logout, searchAblog } = require("../controller/User");
 const isAuthenticated = require("../middlewares/auth");
 const {
   createBlog,
@@ -14,5 +14,6 @@ router
   .get("/blog/:id", isAuthenticated, readBlog)
   .delete("/blog/:id", isAuthenticated, deleteBlog);
 router.get("/blogs", isAuthenticated, getAllBlogs);
+router.post("/blog/search",isAuthenticated,searchAblog)
 
 module.exports = router;
