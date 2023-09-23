@@ -1,11 +1,14 @@
 import React, { useState } from "react";
 import "/styles/Model.css";
+import { render } from "react-dom";
+import "react-responsive-modal/styles.css";
+import { Modal } from "react-responsive-modal";
 
 export default function BlogCard() {
   const [modal, setModal] = useState(false);
   const [name, setName] = useState("Kris Patel");
   const [blogdata, setBlogdata] = useState(
-    "Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident perferendis suscipit officia recusandae, eveniet quaerat assumenda id fugit, dignissimos maxime non natus placeat illo iusto! Sapiente dolorum id maiores dolores? Illum pariatur possimus quaerat ipsum quos molestiae rem aspernatur dicta tenetur. Sunt placeat tempora vitae enim incidunt porro fuga ea. Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident perferendis suscipit officia recusandae, eveniet quaerat assumenda id fugit, dignissimos maxime non natus placeat illo iusto! Sapiente dolorum id maiores dolores? Illum pariatur possimus quaerat ipsum quos molestiae rem aspernatur dicta tenetur. Sunt placeat tempora vitae enim incidunt porro fuga ea. "
+    "Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident perferendis suscipit officia recusandae, eveniet quaerat assumenda id fugit, dignissimos maxime non natus placeat illo iusto! Sapiente dolorum id maiores dolores? Illum pariatur possimus quaerat ipsum quos molestiae rem aspernatur dicta tenetur. Sunt placeat tempora vitae enim incidunt porro fuga ea. Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident perferendis suscipit officia recusandae, eveniet quaerat assumenda id fugit, dignissimos maxime non natus placeat illo iusto! Sapiente dolorum id maiores dolores? Illum pariatur possimus quaerat ipsum quos molestiae rem aspernatur dicta tenetur. Sunt placeat tempora vitae enim incidunt porro fuga ea. recusandae, eveniet quaerat assumenda id fugit, dignissimos maxime non natus placeat illo iusto! Sapiente dolorum id maiores dolores? Illum pariatur possimus quaerat ipsum quos molestiae rem aspernatur dicta tenetur. Sunt placeat tempora vitae enim incidunt porro fuga ea. "
   );
 
   const [bloddate, setBlogdate] = useState("69-69-69");
@@ -43,28 +46,31 @@ export default function BlogCard() {
         </div>
       </button>
 
-      {modal && (
-        <div className="modal">
-          <div onClick={toggleModal} className="overlay"></div>
-          <div className="modal-content border-2 radius-xl">
-            {/* <button className="close-modal text-red-600" onClick={toggleModal}>
-              CLOSE
-            </button> */}
-            <div className="flex justify-between p-20 items-center">
-              <div className="flex items-center">
-                <div className="border-2 h-6 w-6 m-2 p-5"></div>
-                <div>{name}</div>
-              </div>
 
-              <div className="flex items-center">{bloddate}</div>
-            </div>
-            <h2>Hello Modal</h2>
-            <div class="flex mt-4 space-x-3 md:mt-6 text-gray-300">
-              {blogdata}
-            </div>
-          </div>
+      <Modal open={modal} onClose={toggleModal}  center classNames={{
+          modal: "bg-gray-700 p-10 rounded-lg text-white shadow-[0_10px_50px_rgba(8,_112,_184,_0.7)]",
+          closeButton: "text-white",
+        }}   
+        styles={{
+          modal: { // Custom styles for the modal container
+            width: "80%", 
+            // height: "80%", 
+            maxWidth: "1500px", 
+            // maxHeight: "600px",
+          },
+        }}  
+        
+      >
+          <div className="h-[600px]  overflow-y-auto text-3xl scrollbar-thin scrollbar-thumb-blue-500 scrollbar-track-gray-200"> 
+          <h2 className="text-white">Custom Styled Modal</h2>
+          <p className="text-white">
+            {/* Your long content here */}
+            {blogdata}
+            {blogdata}
+          </p>
+          {/* Add more content here */}
         </div>
-      )}
+      </Modal>
     </>
   );
 }
