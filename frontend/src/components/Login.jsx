@@ -2,7 +2,10 @@ import React from "react";
 
 export default function Login() {
   return (
+<<<<<<< HEAD
     <>
+=======
+>>>>>>> 71eabb1682e0bc2be1c12cbfe21629f281456a16
     <div className="flex min-h-full flex-col justify-center px-6 py-12 lg:px-8">
       <div className="sm:mx-auto sm:w-full sm:max-w-sm">
         <img

@@ -1,17 +1,20 @@
 import React from "react";
+import axios from 'axios';
 
 export default function Register() {
+
+  
   return (
     <div className="m-5">
       <div className="my-2">
         <h1 className="font-semibold leading-7 text-white text-4xl ">
           Register
         </h1>
-        <p class="mt-5 text-center text-sm text-gray-300">
+        <p className="mt-5 text-center text-sm text-gray-300">
           Already Registered?
           <a
             href="/"
-            class="ml-1 font-semibold leading-6 text-indigo-600 hover:text-indigo-500"
+            className="ml-1 font-semibold leading-6 text-indigo-600 hover:text-indigo-500"
           >
             Click here to login
           </a>
