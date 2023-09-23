@@ -21,6 +21,10 @@ const userSchema = new mongoose.Schema({
     public_id: String,
     url: String,
   },
+  notes:{
+    public_id: String,
+    url: String,
+  },
   likedBlogs: [
     {
       type: mongoose.Schema.Types.ObjectId,
