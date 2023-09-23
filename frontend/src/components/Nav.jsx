@@ -27,6 +27,7 @@ const Nav = () => {
                 <a href="#cards">Blogs</a>
               </div>
               <div className="nav-titles nav-titles-ltr">Notes</div>
+              <div className="nav-titles nav-titles-ltr">Logout</div>
               {/* <div className="nav-titles nav-titles-ltr">Sponsors</div> */}
               {/* <div className="nav-titles nav-titles-ltr">FAQs</div> */}
             </div>
@@ -48,6 +49,9 @@ const Nav = () => {
                   </a>
                   <a href="#" className="nav-dropdown-titles">
                     Notes
+                  </a>
+                  <a href="#" className="nav-dropdown-titles">
+                    Logout
                   </a>
                 </div>
               )}

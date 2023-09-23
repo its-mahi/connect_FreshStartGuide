@@ -24,7 +24,10 @@ export default function BlogCard(props) {
   return (
     <div>
       <button onClick={toggleModal} className="btn-modal w-full">
-        <div className="bg-white border border-gray-200 rounded-lg dark:bg-gray-800 dark:border-gray-700 p-5 shadow-[0_5px_40px_rgba(8,_112,_184,_0.7)]">
+        <div
+          className="bg-gray-800 rounded-md bg-clip-padding backdrop-filter backdrop-blur-sm bg-opacity-20 border border-gray-100
+     p-10 text-white dark:border-gray-700 shadow-[0_5px_40px_rgba(8,_112,_184,_0.7)]"
+        >
           <div className="flex items-start">
             <img
               className="w-8 mr-4 mb-3 rounded-full shadow-lg"
@@ -42,7 +45,7 @@ export default function BlogCard(props) {
             <span className="underline">Read More</span>
           </div>
           <span class="text-sm text-gray-500 dark:text-gray-400">
-            {bloddate}
+            {blogdate}
           </span>
         </div>
       </button>
@@ -53,7 +56,7 @@ export default function BlogCard(props) {
         center
         classNames={{
           modal:
-            "bg-gray-700 p-10 rounded-lg text-white shadow-[0_10px_50px_rgba(8,_112,_184,_0.7)]",
+            "bg-gray-800 rounded-md bg-clip-padding backdrop-filter backdrop-blur-sm bg-opacity-90 border border-gray-100 p-10 text-white shadow-[0_10px_50px_rgba(8,_112,_184,_0.7)]",
           closeButton: "text-white",
         }}
         styles={{

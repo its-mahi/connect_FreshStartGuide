@@ -137,7 +137,7 @@ const BlogPage = () => {
         </div>
       </div>
 
-      <hr className="h-px bg-gray-200 border-1 dark:bg-gray-500" />
+      <hr className="h-px mt-5 bg-gray-200 border-1 dark:bg-gray-500" />
       <BlogAdd
         modal={myModal}
         updateData={updateData}

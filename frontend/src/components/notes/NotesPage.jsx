@@ -1,43 +1,44 @@
-import React , {useState} from "react";
+import React, { useState } from "react";
 import { FaCloudUploadAlt } from "react-icons/fa";
 import NoteAdd from "./NoteAdd";
 import NotesTable from "./NotesTable";
 
 export default function NotesPage() {
+  const notesData = [
+    {
+      id: "1",
+      notes_title: "Note 1",
+      notes_owner: "Kris Patel",
+      notes_location: "/source",
+    },
+    {
+      id: "2",
+      notes_title: "Note 2",
+      notes_owner: "Kris ki behen",
+      notes_location: "/source",
+    },
+    {
+      id: "3",
+      notes_title: "Note 3",
+      notes_owner: "Kris ka bhai",
+      notes_location: "/source",
+    },
+  ];
 
-    const notesData = [
-        {
-          id : "1" ,  
-          notes_title: "Note 1",
-          notes_owner: "Kris Patel",
-          notes_location: "/source"
-        },
-        {
-          id : "2" , 
-          notes_title: "Note 2",
-          notes_owner: "Kris ki behen",
-          notes_location: "/source"
-        },
-        {
-          id : "3" ,  
-          notes_title: "Note 3",
-          notes_owner: "Kris ka bhai",
-          notes_location: "/source"
-        },
-      ];
-    
-
-    const [myModal, setMyModal] = useState(false);
-    const toggleModal = () => {
-      setMyModal(!myModal);
-    };
+  const [myModal, setMyModal] = useState(false);
+  const toggleModal = () => {
+    setMyModal(!myModal);
+  };
   return (
     <div className="mt-24">
       <div className="text-md mb-6 text-2xl md:hidden font-extrabold text-white">
         Notes
       </div>
       <div className="flex justify-between mb-2">
-        <button className="hidden md:flex text-xl text-center text-black bg-green-500 hover:shadow-lg hover:shadow-green-500/50 md:px-3 rounded-md items-center justify-center" onClick={toggleModal}>
+        <button
+          className="hidden md:flex text-xl text-center text-black bg-green-500 hover:shadow-lg hover:shadow-green-500/50 md:px-3 rounded-md items-center justify-center"
+          onClick={toggleModal}
+        >
           <FaCloudUploadAlt className="mr-2" />
           Upload Notes
         </button>
@@ -46,7 +47,7 @@ export default function NotesPage() {
         </div>
 
         <button className="mr-2 text-sm w-12 h-12 font-bold flex items-center justify-center md:hidden text-center bg-green-500 hover:shadow-lg hover:bg-green-600 md:p-2 rounded-full">
-            <FaCloudUploadAlt/>
+          <FaCloudUploadAlt />
         </button>
 
         <div className="relative">
@@ -77,12 +78,8 @@ export default function NotesPage() {
         </div>
       </div>
       <hr className="h-px bg-gray-200 border-1 dark:bg-gray-500" />
-      <NoteAdd modal={myModal} toggleModal={toggleModal}/>
-      <NotesTable notesData={notesData}/>
-
-
-
-
+      <NoteAdd modal={myModal} toggleModal={toggleModal} />
+      <NotesTable notesData={notesData} />
     </div>
   );
 }
