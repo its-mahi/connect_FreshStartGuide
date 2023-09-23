@@ -1,13 +1,18 @@
 "use client";
 import React, { useState, useEffect } from "react";
 import "../../styles/nav.css";
+import { Link } from "react-router-dom";
 
-const Nav = () => {
+const Nav = (props) => {
   const [isOpen, setIsOpen] = useState(false);
 
   function toggleDropdown() {
     setIsOpen(!isOpen);
   }
+
+  const logout = () => {
+    props.toggleLogin();
+  };
 
   return (
     <>
@@ -21,15 +26,37 @@ const Nav = () => {
           <div>
             <div className="hidden md:flex flex-wrap gap-6">
               <div className="nav-titles nav-titles-ltr">
-                <a href="#body">QueryRoom</a>
+                <Link to="/profile">Profile</Link>
               </div>
               <div className="nav-titles nav-titles-ltr">
-                <a href="#cards">Blogs</a>
+                {/* <Link to="/"> */}
+                QueryRoom
+                {/* </Link> */}
               </div>
-              <div className="nav-titles nav-titles-ltr">Notes</div>
-              <div className="nav-titles nav-titles-ltr">Logout</div>
-              {/* <div className="nav-titles nav-titles-ltr">Sponsors</div> */}
-              {/* <div className="nav-titles nav-titles-ltr">FAQs</div> */}
+
+              <div className="nav-titles nav-titles-ltr">
+                <Link to="/blogs">Blogs</Link>
+              </div>
+              <div className="nav-titles nav-titles-ltr">
+                <Link to="/notes">Notes</Link>
+              </div>
+              {!props.isLoggedIn && (
+                <div className="nav-titles nav-titles-ltr">
+                  <Link to="/login">Login</Link>
+                </div>
+              )}
+
+              {!props.isLoggedIn && (
+                <div className="nav-titles nav-titles-ltr">
+                  <Link to="/register">Register</Link>
+                </div>
+              )}
+
+              {props.isLoggedIn && (
+                <div className="nav-titles nav-titles-ltr" onClick={logout}>
+                  Logout
+                </div>
+              )}
             </div>
 
             <div className="relative">
