@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "/styles/Model.css";
 import { render } from "react-dom";
 import "react-responsive-modal/styles.css";
@@ -8,16 +8,15 @@ export default function BlogCard() {
   const [modal, setModal] = useState(false);
   const [name, setName] = useState("Kris Patel");
   const [blogdata, setBlogdata] = useState(
-    "Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident perferendis suscipit officia recusandae, eveniet quaerat assumenda id fugit, dignissimos maxime non natus placeat illo iusto! Sapiente dolorum id maiores dolores? Illum pariatur possimus quaerat ipsum quos molestiae rem aspernatur dicta tenetur. Sunt placeat tempora vitae enim incidunt porro fuga ea. Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident perferendis suscipit officia recusandae, eveniet quaerat assumenda id fugit, dignissimos maxime non natus placeat illo iusto! Sapiente dolorum id maiores dolores? Illum pariatur possimus quaerat ipsum quos molestiae rem aspernatur dicta tenetur. Sunt placeat tempora vitae enim incidunt porro fuga ea. recusandae, eveniet quaerat assumenda id fugit, dignissimos maxime non natus placeat illo iusto! Sapiente dolorum id maiores dolores? Illum pariatur possimus quaerat ipsum quos molestiae rem aspernatur dicta tenetur. Sunt placeat tempora vitae enim incidunt porro fuga ea. "
+    "      WWWWLorem ipsum dolor sit amet consectetur adipisicing elit. Providentperferendis suscipit officia recusandae, eveniet quaerat assumenda id fugit, dignissimos maxime non natus placeat illo iusto! Sapiente dolorum id maiores dolores? Illum pariatur possimus quaerat ipsum quos molestiae rem aspernatur dicta tenetur. Sunt placeat tempora vitae enim incidunt porro fuga ea. Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident perferendis suscipit officia recusandae, eveniet quaerat assumenda id fugit, dignissimos maxime non natus placeat illo iusto! Sapiente dolorum id maiores dolores? Illum pariatur possimus quaerat ipsum quos molestiae rem aspernatur dicta tenetur. Sunt placeat tempora vitae enim incidunt porro fuga ea. recusandae, eveniet quaerat assumenda id fugit, dignissimos maxime non natus placeat illo iusto! Sapiente dolorum id maiores dolores? Illum pariatur possimus quaerat ipsum quos molestiae rem aspernatur dicta tenetur. Sunt placeat tempora vitae enim incidunt porro fuga ea. "
   );
 
   const [bloddate, setBlogdate] = useState("69-69-69");
-  const [blogtitle , setBlogtitle] = useState("This is my title");
+  const [blogtitle, setBlogtitle] = useState("This is my title");
 
   const toggleModal = () => {
     setModal(!modal);
   };
-
   if (modal) {
     document.body.classList.add("active-modal");
   } else {
@@ -25,7 +24,7 @@ export default function BlogCard() {
   }
 
   return (
-    <>
+    <div>
       <button onClick={toggleModal} className="btn-modal">
         <div class="bg-white border border-gray-200 rounded-lg dark:bg-gray-800 dark:border-gray-700 p-5 shadow-[0_5px_40px_rgba(8,_112,_184,_0.7)]">
           <div class="flex items-start">
@@ -40,7 +39,10 @@ export default function BlogCard() {
           </div>
           <h2 className="text-white text-3xl mb-3">{blogtitle}</h2>
           <div class="mb-1"></div> {/* One-line blank space */}
-          <div class="text-gray-300">{blogdata.slice(0, 600)} . . .</div>
+          <div class="text-gray-300">
+            {blogdata.slice(0, 150)} . . .{" "}
+            <span className="underline">Read More</span>
+          </div>
           <span class="text-sm text-gray-500 dark:text-gray-400">
             {bloddate}
           </span>
@@ -67,15 +69,18 @@ export default function BlogCard() {
         }}
       >
         <div className="h-[600px]  overflow-y-auto text-3xl scrollbar-thin scrollbar-thumb-blue-500 scrollbar-track-gray-200 pr-10">
-          <h2 className="text-white text-4xl mb-3">{blogtitle}</h2>
-          <p className="text-white">
+          <h2 className="text-white text-3xl mb-3 font-bold">{blogtitle}</h2>
+          <hr class="h-px m-2 bg-gray-200 border-1 dark:bg-gray-500" />
+
+          <p className="text-white text-lg leading-relaxed tracking-wide">
             {/* Your long content here */}
             {blogdata}
             {blogdata}
           </p>
+
           {/* Add more content here */}
         </div>
       </Modal>
-    </>
+    </div>
   );
 }

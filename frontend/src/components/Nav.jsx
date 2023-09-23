@@ -5,20 +5,6 @@ import "../../styles/nav.css";
 const Nav = () => {
   const [isOpen, setIsOpen] = useState(false);
 
-  useEffect(() => {
-    function handleClickOutside(event) {
-      if (isOpen && event.target.closest(".nav-dropdown") === null) {
-        setIsOpen(false);
-      }
-    }
-
-    document.addEventListener("click", handleClickOutside);
-
-    return () => {
-      document.removeEventListener("click", handleClickOutside);
-    };
-  }, [isOpen]);
-
   function toggleDropdown() {
     setIsOpen(!isOpen);
   }
@@ -47,7 +33,7 @@ const Nav = () => {
 
             <div className="relative">
               <button
-                className="dropdown-toggle text-3xl md:hidden cursor-pointer"
+                className="dropdown-toggle text-3xl md:hidden text-white cursor-pointer"
                 onClick={toggleDropdown}
               >
                 &#9776;
@@ -55,19 +41,13 @@ const Nav = () => {
               {isOpen && (
                 <div className="dropdown-menu nav-dropdown">
                   <a href="#" className="nav-dropdown-titles">
-                    About
+                    QueryRoom
                   </a>
                   <a href="#" className="nav-dropdown-titles">
-                    Schedule
+                    Blogs
                   </a>
                   <a href="#" className="nav-dropdown-titles">
-                    Prizes
-                  </a>
-                  <a href="#" className="nav-dropdown-titles">
-                    Sponsors
-                  </a>
-                  <a href="#" className="nav-dropdown-titles">
-                    FAQs
+                    Notes
                   </a>
                 </div>
               )}
