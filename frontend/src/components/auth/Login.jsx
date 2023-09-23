@@ -1,10 +1,10 @@
 import React, { useState } from "react";
-// import { useDispatch } from "react-redux";
 import axios from "axios";
 import { Navigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
 
 export default function Login(props) {
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
 
   const [data, setData] = useState({
     email: "",
@@ -12,7 +12,6 @@ export default function Login(props) {
   });
   const loginUser = (e) => {
     e.preventDefault();
-    console.log(data);
     const reqData = data;
     axios
       .post("http://localhost:8000/api/v1/login", reqData, {
@@ -22,19 +21,17 @@ export default function Login(props) {
         withCredentials: true,
       })
       .then((response) => {
-        // if (response.data.user) {
-        //   dispatch({
-        //     type: "SET_USER",
-        //     payload: response.data.user,
-        //   });
-        // }
-        console.log(response.data.success);
-        console.log(response);
+        if (response.data.user) {
+          dispatch({
+            type: "SET_USER",
+            payload: response.data.user,
+          });
+        }
+
         props.toggleLogin();
-        <Navigate to="/blogs" />;
       })
       .catch((err) => {
-        console.log("Error Aayvi bhai");
+        console.log("Error Aayvi bhai" + err.message);
       });
   };
 

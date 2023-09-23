@@ -1,32 +1,37 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import ProfileBlog from "./ProfileBlog";
 import { Navigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import axios from "axios";
 
 export default function Profile(props) {
-  const [user, setUser] = useState("Kris Patel");
-  const blogData = [
-    {
-      user: user,
-      createdAt: "10-10-2010",
-      description:
-        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Atque, nobis reiciendis, itaque asperiores inventore veritatis beatae autem eum, enim sit obcaecati reprehenderit blanditiis illo exercitationem adipisci velit accusamus. Provident, fugit? Voluptatum accusantium dolorem ipsa sunt obcaecati necessitatibus cum modi, temporibus perspiciatis eligendi iure repellendus, porro tempora quas vel labore rerum assumenda, odit autem iste cumque reprehenderit? Nisi provident sed vel delectus dolorem autem debitis soluta.",
-      title: "Blog 1",
-    },
-    {
-      user: user,
-      createdAt: "10-10-2010",
-      title: "Blog 2",
-      description:
-        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Atque, nobis reiciendis, itaque asperiores inventore veritatis beatae autem eum, enim sit obcaecati reprehenderit blanditiis illo exercitationem adipisci velit accusamus. Provident, fugit? Voluptatum accusantium dolorem ipsa sunt obcaecati necessitatibus cum modi, temporibus perspiciatis eligendi iure repellendus, porro tempora quas vel labore rerum assumenda, odit autem iste cumque reprehenderit? Nisi provident sed vel delectus dolorem autem debitis soluta.",
-    },
-    {
-      user: user,
-      createdAt: "10-10-2010",
-      title: "Blog 3",
-      description:
-        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Atque, nobis reiciendis, itaque asperiores inventore veritatis beatae autem eum, enim sit obcaecati reprehenderit blanditiis illo exercitationem adipisci velit accusamus. Provident, fugit? Voluptatum accusantium dolorem ipsa sunt obcaecati necessitatibus cum modi, temporibus perspiciatis eligendi iure repellendus, porro tempora quas vel labore rerum assumenda, odit autem iste cumque reprehenderit? Nisi provident sed vel delectus dolorem autem debitis soluta.",
-    },
-  ];
+  const { user } = useSelector((state) => state);
+  const [blogData, setBlogs] = useState([]);
+  useEffect(() => {
+    const getData = () => {
+      axios
+        .get("http://localhost:8000/api/v1/profile/" + user._id, {
+          headers: {
+            "Content-Type": "application/json",
+          },
+          withCredentials: true,
+        })
+        .then((response) => {
+          // console.log(response.data.success);
+          // console.log(response.data.user);
+          setBlogs(response.data.user.blogs);
+        })
+        .catch((err) => {
+          console.log("Error Aayvi bhai" + err.message);
+        });
+    };
+    getData();
+  }, []);
+
+  const [currUser, setCurrUser] = useState(user.name);
+  // const blogData = user.blogs;
+  console.log(blogData);
+
   return (
     <>
       {!props.isLoggedIn && <Navigate to="/login" />}
@@ -45,37 +50,23 @@ export default function Profile(props) {
               </div>
               <div className="relative ">
                 <div className="w-48 h-48 bg-indigo-100 mx-auto rounded-full shadow-2xl absolute inset-x-0 top-0 -mt-24 flex items-center justify-center text-indigo-500">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    className="h-24 w-24"
-                    viewBox="0 0 20 20"
-                    fill="currentColor"
-                  >
-                    <path
-                      fillRule="evenodd"
-                      d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z"
-                      clipRule="evenodd"
-                    />
-                  </svg>
-                </div>
-              </div>
-              
-            </div>
-            <div className="mt-8 md:mt-20 text-center md:text-left border-b pb-4 md:pb-12">
-              {/* <h1 className="text-4xl font-medium text-white">Kris Patel</h1>
-              <p className="font-light text-white mt-3">Ahmedabad, India</p> */}
-                <p className="font-bold text-white text-xl">
-                    {blogData.length}
-                  </p>
-                  
-                  <p className="text-gray-400">Blogs</p>
-                <button className="text-white py-2 px-4 uppercase rounded bg-blue-400 hover:bg-blue-500 shadow hover:shadow-lg font-medium transition transform hover:-translate-y-0.5 text-md mt-10">
+                  <img src={user.avtar.url} alt="" />
+                </div>{" "}
+              </div>{" "}
+              <div className="space-x-8 flex justify-between mt-32 md:mt-0 md:justify-center">
+                <button className="text-white py-2 px-4 uppercase rounded bg-blue-400 hover:bg-blue-500 shadow hover:shadow-lg font-medium transition transform hover:-translate-y-0.5 text-md">
+                  {" "}
                   Logout
-                </button> 
-              
-            </div>
-            
-            
+                </button>{" "}
+              </div>{" "}
+            </div>{" "}
+            <div className="mt-20 text-center border-b pb-12">
+              {" "}
+              <h1 className="text-4xl font-medium text-white">
+                {currUser}
+              </h1>{" "}
+              <p className="font-light text-white mt-3">{user.email}</p>{" "}
+            </div>{" "}
             <div className="relative mt-5">
               <div className="absolute inset-y-0 left-0 flex items-center pl-5 pointer-events-none">
                 <svg
@@ -105,7 +96,6 @@ export default function Profile(props) {
             {blogData.map((item, i) => {
               return (
                 <ProfileBlog
-                  user={item.user}
                   title={item.title}
                   description={item.description}
                   createdAt={item.createdAt}
