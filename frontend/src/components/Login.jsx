@@ -2,6 +2,10 @@ import React from "react";
 
 export default function Login() {
   return (
+<<<<<<< HEAD
+    <>
+=======
+>>>>>>> 71eabb1682e0bc2be1c12cbfe21629f281456a16
     <div className="flex min-h-full flex-col justify-center px-6 py-12 lg:px-8">
       <div className="sm:mx-auto sm:w-full sm:max-w-sm">
         <img
@@ -28,7 +32,7 @@ export default function Login() {
                 id="email"
                 name="email"
                 type="email"
-                autocomplete="email"
+                autoComplete="email"
                 required
                 style={{paddingLeft:"6px"}}
                 className="block w-full rounded-md border-0 py-1.5 text-black shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
@@ -58,7 +62,7 @@ export default function Login() {
                 id="password"
                 name="password"
                 type="password"
-                autocomplete="current-password"
+                autoComplete="current-password"
                 required
                 style={{paddingLeft:"6px"}}
                 className="block w-full rounded-md border-0 py-1.5 text-black shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
@@ -87,5 +91,6 @@ export default function Login() {
         </p>
       </div>
     </div>
+    </>
   );
 }

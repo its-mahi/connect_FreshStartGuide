@@ -15,7 +15,7 @@ const Nav = () => {
         <div className="nav">
           <div className="pl-7">
             <a href="#top">
-              <img src="../assets/react.svg" alt="" />
+              <img src="../../public/connect.png" className="w-36" alt="" />
             </a>
           </div>
           <div>

@@ -1,10 +1,28 @@
 const User = require("../models/User");
 const bcrypt = require("bcrypt");
+const cloudinary = require("cloudinary").v2;
+
+cloudinary.config({
+  cloud_name: process.env.CLOUD_NAME,
+  api_key: process.env.CLOUDINARY_API_KEY,
+  api_secret: process.env.CLOUDINARY_API_SECRET,
+});
 
 exports.registerUser = async (req, res) => {
   try {
-    const { name, email, password } = req.body;
+    const file = req.files.avtar;
+    console.log(file);
 
+    await cloudinary.uploader.upload(file.tempFilePath, (err, result) => {
+      if (err) {
+        console.log(err);
+      }
+      url = result.url;
+      public_id = result.public_id;
+    });
+
+    const { name, email, password } = req.body;
+    const { avatar } = req.files;
     const isEmail = await User.findOne({ email: email });
 
     if (isEmail) {
@@ -14,7 +32,12 @@ exports.registerUser = async (req, res) => {
       });
     }
 
-    const user = await User.create({ name, email, password });
+    const user = await User.create({
+      name,
+      email,
+      password,
+      avtar: { url, public_id },
+    });
 
     const token = user.generateToken();
 
@@ -30,6 +53,7 @@ exports.registerUser = async (req, res) => {
         user,
       });
   } catch (e) {
+    console.log("Hey error ayvi");
     res.status(500).json({
       success: false,
       error: e.message,

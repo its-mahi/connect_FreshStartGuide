@@ -17,12 +17,13 @@ import {Route, Switch, Redirect} from './components/Router';
 import AuthRoute from './auth/AuthRoute';
 import {IDPAuth} from './auth/IDPAuth';
 import {Text} from 'react-native';
+import Login from './components/Login';
 
 function AppRoutes() {
   return (
     <Switch>
       <Route exact path={'/'}>
-        <Redirect to={'/create'} />
+        <Login />
       </Route>
       <Route exact path={'/authorize/:token?'}>
         <IDPAuth />

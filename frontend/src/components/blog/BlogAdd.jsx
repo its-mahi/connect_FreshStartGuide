@@ -31,18 +31,15 @@ const BlogAdd = (props) => {
       }}
       styles={{
         modal: {
-          // Custom styles for the modal container
           width: "80%",
-          // height: "80%",
           maxWidth: "1500px",
-          // maxHeight: "600px",
         },
       }}
     >
       <form className="space-y-6" onSubmit={createBlog}>
         <div>
           <label
-            htmlFor="title"
+            for="title"
             className=" text-md font-medium leading-6 text-white flex "
           >
             Title
@@ -56,7 +53,7 @@ const BlogAdd = (props) => {
               required
               onChange={updateData}
               style={{ paddingLeft: "6px" }}
-              className="block w-full rounded-md border-0 py-1.5 text-black shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-md sm:leading-6 dark:bg-gray-800"
+              className="block w-full rounded-md border-0 py-1.5 text-gray-400 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-md sm:leading-6 dark:bg-gray-800"
             />
           </div>
         </div>
@@ -64,7 +61,7 @@ const BlogAdd = (props) => {
         <div>
           <div className="flex items-center justify-between">
             <label
-              htmlFor="blog"
+              for="blog"
               className="block text-md font-medium leading-6 text-white"
             >
               Blog
@@ -76,8 +73,27 @@ const BlogAdd = (props) => {
               name="blog"
               type="textarea"
               required
+              onChange={updateData}
               style={{ paddingLeft: "6px" }}
-              className="block w-full rounded-md border-0 py-1.5 text-black shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+              className="block w-full rounded-md border-0 py-1.5 text-gray-400 shadow-sm ring-1 ring-inset dark:bg-gray-800 ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+            />
+          </div>
+        </div>
+        <div>
+          <div className="flex items-center justify-between">
+            <label className="block text-md font-medium leading-6 text-white">
+              Tags
+            </label>
+          </div>
+          <div className="mt-2">
+            <input
+              id="tags"
+              name="tags"
+              type="text"
+              required
+              onChange={updateData}
+              style={{ paddingLeft: "6px" }}
+              className="block w-full rounded-md border-0 py-1.5 text-gray-400 shadow-sm ring-1 ring-inset dark:bg-gray-800 ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
             />
           </div>
         </div>

@@ -127,12 +127,13 @@ export default function Login() {
         </form>
 
         <p className="mt-10 text-center text-sm text-gray-500">
-          Not a member?
+          Not registered yet?
           <a
             href="#"
             className="font-semibold leading-6 text-indigo-600 hover:text-indigo-500"
           >
-            Start a free trial
+            {" "}
+            Register here
           </a>
         </p>
       </div>
