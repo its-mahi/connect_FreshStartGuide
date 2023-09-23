@@ -32,13 +32,13 @@ const Nav = (props) => {
     <>
       <section id="nav">
         <div className="nav">
-          <div className="pl-7">
+          <div className="pl-0">
             <a href="#top">
               <img src="../../public/connect.png" className="w-36" alt="" />
             </a>
           </div>
           <div>
-            <div className="hidden md:flex flex-wrap gap-6">
+            <div className="hidden md:flex flex-wrap gap-0">
               <div className="nav-titles nav-titles-ltr">
                 <Link to="/profile">Profile</Link>
               </div>

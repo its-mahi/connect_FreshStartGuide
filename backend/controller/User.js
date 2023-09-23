@@ -11,6 +11,7 @@ cloudinary.config({
 
 exports.registerUser = async (req, res) => {
   try {
+    console.log("EHwdwd")
     const file = req.files.avtar;
     console.log(file);
 

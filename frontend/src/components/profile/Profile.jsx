@@ -37,23 +37,18 @@ export default function Profile(props) {
       {!props.isLoggedIn && <Navigate to="/login" />}
 
       <div>
-        <div className="p-16 ">
-          <div className="p-8 bg-gray-700  mt-24 shadow-[0_0px_25px_rgba(8,_112,_184,_0.7)] ">
-            {" "}
+        <div className="p-4 md:p-8 lg:p-16">
+          <div className="bg-gray-700 mt-8 md:mt-24 shadow-[0_0px_25px_rgba(8,_112,_184,_0.7)] p-4 md:p-8">
             <div className="grid grid-cols-1 md:grid-cols-3">
-              {" "}
-              <div className="grid grid-cols-3 text-center order-last md:order-first mt-20 md:mt-0">
-                {" "}
+              <div className="order-2 md:order-1 text-center mt-4 ">
                 <div>
-                  {" "}
-                  <p className="font-bold text-white text-xl">
-                    {blogData.length}
-                  </p>{" "}
-                  <p className="text-gray-400">Blogs </p>{" "}
-                </div>{" "}
-              </div>{" "}
-              <div className="relative">
-                {" "}
+                
+                  <h1 className="text-4xl font-medium text-white md:mt-0 mt-[100px]">Kris Patel</h1>
+              <p className="font-light text-white mt-3">krishp759@gmail.com</p>
+                </div>
+                
+              </div>
+              <div className="relative ">
                 <div className="w-48 h-48 bg-indigo-100 mx-auto rounded-full shadow-2xl absolute inset-x-0 top-0 -mt-24 flex items-center justify-center text-indigo-500">
                   <img src={user.avtar.url} alt="" />
                 </div>{" "}
@@ -83,9 +78,9 @@ export default function Profile(props) {
                 >
                   <path
                     stroke="currentColor"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
                     d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"
                   />
                 </svg>
@@ -93,8 +88,8 @@ export default function Profile(props) {
               <input
                 type="search"
                 id="default-search"
-                className="ml-2 block w-full p-4 pl-10 text-md border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark    :text-white dark:focus:ring-blue-500 dark:focus:border-blue-500  text-white"
-                placeholder="Search Notes, Topics... "
+                className="ml-2 block w-full p-2 md:p-4 pl-10 text-md border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 text-white"
+                placeholder="Search Notes, Topics..."
                 required
               />
             </div>
