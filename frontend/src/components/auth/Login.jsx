@@ -1,6 +1,26 @@
 import React from "react";
+import axios from "axios";
 
 export default function Login() {
+  const loginUser = () => {
+    const reqData = {
+      email: "patelhitarth07@gmail.com",
+      password: "itsmahi",
+    };
+    axios
+      .post("http://localhost:8000/api/v1/login", reqData, {
+        headers: {
+          "Content-Type": "application/json",
+        },
+        withCredentials: true,
+      })
+      .then((response) => {
+        console.log(response.data.success);
+        console.log(response);
+      });
+  };
+  loginUser();
+
   return (
     <div className="flex min-h-full flex-col justify-center px-6 py-12 lg:px-8">
       <div className="sm:mx-auto sm:w-full sm:max-w-sm">
@@ -18,7 +38,7 @@ export default function Login() {
         <form className="space-y-6" action="#" method="POST">
           <div>
             <label
-              for="email"
+              // for="email"
               className=" text-sm font-medium leading-6 text-white flex "
             >
               Email address
@@ -28,9 +48,8 @@ export default function Login() {
                 id="email"
                 name="email"
                 type="email"
-                autocomplete="email"
                 required
-                style={{paddingLeft:"6px"}}
+                style={{ paddingLeft: "6px" }}
                 className="block w-full rounded-md border-0 py-1.5 text-black shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
               />
             </div>
@@ -39,7 +58,7 @@ export default function Login() {
           <div>
             <div className="flex items-center justify-between">
               <label
-                for="password"
+                // for="password"
                 className="block text-sm font-medium leading-6 text-white"
               >
                 Password
@@ -58,9 +77,8 @@ export default function Login() {
                 id="password"
                 name="password"
                 type="password"
-                autocomplete="current-password"
                 required
-                style={{paddingLeft:"6px"}}
+                style={{ paddingLeft: "6px" }}
                 className="block w-full rounded-md border-0 py-1.5 text-black shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
               />
             </div>
@@ -82,7 +100,7 @@ export default function Login() {
             href="#"
             className="font-semibold leading-6 text-indigo-600 hover:text-indigo-500"
           >
-            Start a  free trial
+            Start a free trial
           </a>
         </p>
       </div>

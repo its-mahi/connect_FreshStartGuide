@@ -1,34 +1,47 @@
-import React from "react";
+import React, { useState } from "react";
 import BlogCard from "./BlogCard";
+import BlogAdd from "./BlogAdd";
+import axios from "axios";
 import { Ripple, initTE } from "tw-elements";
+import { tabScrollButtonClasses } from "@mui/material";
 
 initTE({ Ripple });
 
 const BlogPage = () => {
-  const showSearch = () => {
-    const searchBar = document.querySelector("#searchBar");
-    searchBar.style = "display:block;";
-
-    //     searchIcon
-    const searchIcon = document.querySelector("#searchIcon");
-    //     searchIcon.style = "display:none;";
+  const [myModal, setMyModal] = useState(false);
+  const toggleModal = () => {
+    setMyModal(!myModal);
   };
 
-  const hideSearch = () => {
-    const searchBar = document.querySelector("#searchBar");
-    searchBar.style = "display:none;";
-
-    //     searchIcon
-    const searchIcon = document.querySelector("#searchIcon");
-    searchIcon.style = "display:block;";
+  const createBlog = () => {
+    const reqData = {
+      title: "Hitarth Patel",
+      description: "Hey there I am hitarth Patel guys!!!",
+      tags: ["name", "hp"],
+    };
+    axios
+      .post("http://localhost:8000/api/v1/createblog", reqData, {
+        headers: {
+          "Content-Type": "application/json",
+        },
+        withCredentials: true,
+      })
+      .then((response) => {
+        console.log(response.data.succes);
+      });
   };
+  createBlog();
+
   return (
     <div className="mt-24">
       <div className="text-md mb-6 text-2xl md:hidden font-extrabold text-white">
         Blogs
       </div>
       <div className="flex justify-between mb-2">
-        <button className="hidden md:block text-xl text-center text-black bg-green-500 hover:shadow-lg hover:shadow-green-500/50 md:p-1 rounded-md">
+        <button
+          className="hidden md:block text-xl text-center text-black bg-green-500 hover:shadow-lg hover:shadow-green-500/50 md:px-3 rounded-md"
+          onClick={toggleModal}
+        >
           + Create Blog
         </button>
         <div className="text-md md:text-3xl hidden md:block font-bold text-white">
@@ -53,7 +66,7 @@ const BlogPage = () => {
         </button>
 
         <div class="relative">
-          <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+          <div class="absolute inset-y-0 left-0 flex items-center pl-5 pointer-events-none">
             <svg
               class="w-4 h-4 text-gray-500 dark:text-gray-400"
               aria-hidden="true"
@@ -81,7 +94,7 @@ const BlogPage = () => {
       </div>
 
       <hr className="h-px bg-gray-200 border-1 dark:bg-gray-500" />
-
+      <BlogAdd modal={myModal} toggleModal={toggleModal} />
       <BlogCard />
       <BlogCard />
       <BlogCard />
