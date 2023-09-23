@@ -1,4 +1,5 @@
 import React from "react";
+import BlogCard from '../BlogCard';
 
 const BlogPage = () => {
   return (
@@ -10,7 +11,7 @@ const BlogPage = () => {
         <div className="text-3xl font-bold text-white">Blogs</div>
         <input
           type="text"
-          className="text-2xl text-left px-3 focus:border-2 focus:border-solid focus:border-blue-500 focus:shadow-lg rounded-md"
+          className="text-xl text-left px-3 focus:shadow-[0_5px_15px_rgba(8,_112,_184,_0.7)] border border-slate-600 rounded-xl focus:outline-0"
           placeholder="Search here..."
         />
         {/* <h1 className="text-3xl text-black bg-white">+ Create Blog</h1> */}
@@ -19,14 +20,18 @@ const BlogPage = () => {
 
       <hr class="h-px bg-gray-200 border-1 dark:bg-gray-500" />
 
-      <div className="grid grid-cols-1 gap-10 mt-10">
+      <BlogCard/>
+      <BlogCard/>
+      <BlogCard/>
+
+      {/* <div className="grid grid-cols-1 gap-10 mt-10">
         <div className="h-48 w-full bg-white"></div>
         <div className="h-48 w-full bg-white"></div>
         <div className="h-48 w-full bg-white"></div>
         <div className="h-48 w-full bg-white"></div>
         <div className="h-48 w-full bg-white"></div>
         <div className="h-48 w-full bg-white"></div>
-      </div>
+      </div> */}
     </div>
   );
 };

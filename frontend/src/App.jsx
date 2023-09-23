@@ -5,19 +5,19 @@ import Register from "./components/auth/Register";
 import BlogPage from "./components/blog/BlogPage";
 import Nav from "./components/Nav";
 import Footer from "./components/Footer";
-import BlogCard from "./components/BlogCard";
 // import Blog from "./components/Blog";
 // import Modal from "./components/Modal"
 
 function App() {
   return (
-    <>
+    <div className="flex flex-col min-h-screen">
       <PaticlesBackground />
       <Nav />
+      <main className="flex-grow">
+        <BlogPage/>
+      </main>
       <Footer />
-      {/* <Login /> */}
-      {/* <Register /> */}
-    </>
+    </div>
   );
 }
 

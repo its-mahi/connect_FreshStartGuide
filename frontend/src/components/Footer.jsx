@@ -78,7 +78,7 @@ const Footer = () => {
           </a>
         </div>
         <p class="mt-8 text-base leading-6 text-center text-white">
-          © 2023 DUHacks 3.0 All rights reserved.
+          © Connect .  All rights reserved.
         </p>
       </div>
     </section>
