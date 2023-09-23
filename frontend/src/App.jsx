@@ -5,6 +5,7 @@ import Register from "./components/auth/Register";
 import BlogPage from "./components/blog/BlogPage";
 import Nav from "./components/Nav";
 import Footer from "./components/Footer";
+import NotesPage from "./components/notes/NotesPage";
 
 // import Blog from "./components/Blog";
 // import Modal from "./components/Modal"
@@ -16,7 +17,9 @@ function App() {
       {/* <Login /> */}
       <Nav />
       <main className="flex-grow">
-      <BlogPage />
+      {/* <BlogPage /> */}
+      {/* <NotesPage/> */}
+
       </main>
       <Footer />
     </div>
