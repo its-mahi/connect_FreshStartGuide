@@ -6,9 +6,11 @@ export default function Register() {
     name: "",
     email: "",
     password: "",
-    avatar: null,
+    avtar: "",
   });
-  const registerUser = () => {
+  const registerUser = (e) => {
+    e.preventDefault();
+    console.log(data);
     const reqData = data;
     axios
       .post("http://localhost:8000/api/v1/register", reqData, {
@@ -22,16 +24,24 @@ export default function Register() {
         // console.log(response);
       })
       .catch((err) => {
-        console.log("Error Aayvi bhai");
+        console.log("Error Aayvi bhai", err);
       });
   };
 
   const updateData = (e) => {
-    const { name, value } = e.target;
-    setData((prevData) => ({
-      ...prevData,
-      [name]: value,
-    }));
+    const { name, value, files } = e.target;
+    if (name == "avtar" && files && files[0]) {
+      const imageFile = files[0];
+      setData((prevData) => ({
+        ...prevData,
+        [name]: imageFile,
+      }));
+    } else {
+      setData((prevData) => ({
+        ...prevData,
+        [name]: value,
+      }));
+    }
   };
 
   return (
@@ -48,7 +58,7 @@ export default function Register() {
       </div>
 
       <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
-        <form className="space-y-6">
+        <form className="space-y-6" onSubmit={registerUser}>
           <div>
             <label className=" text-sm font-medium leading-6 text-white flex ">
               Name
@@ -108,8 +118,8 @@ export default function Register() {
             </div>
             <div className="mt-2">
               <input
-                id="avatar"
-                name="avatar"
+                id="avtar"
+                name="avtar"
                 type="file"
                 accept=".jpg,.jpeg,.png"
                 onChange={updateData}
