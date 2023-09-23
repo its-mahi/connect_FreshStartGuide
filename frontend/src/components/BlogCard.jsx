@@ -12,6 +12,7 @@ export default function BlogCard() {
   );
 
   const [bloddate, setBlogdate] = useState("69-69-69");
+  const [blogtitle , setBlogtitle] = useState("This is my title");
 
   const toggleModal = () => {
     setModal(!modal);
@@ -26,43 +27,47 @@ export default function BlogCard() {
   return (
     <>
       <button onClick={toggleModal} className="btn-modal">
-        <div class="bg-white border border-gray-200 rounded-lg  dark:bg-gray-800 dark:border-gray-700 w-[42rem] p-5 shadow-[0_5px_40px_rgba(8,_112,_184,_0.7)]">
-          <div class="flex flex-col items-center pb-10">
+        <div class="bg-white border border-gray-200 rounded-lg dark:bg-gray-800 dark:border-gray-700 p-5 shadow-[0_5px_40px_rgba(8,_112,_184,_0.7)]">
+          <div class="flex items-start">
             <img
-              class="w-24 h-24 mb-3 rounded-full shadow-lg"
+              class="w-8 h-8 mr-4 mb-3 rounded-full shadow-lg"
               src="/public/vite.svg"
               alt="Bonnie image"
             />
-            <h5 class="mb-1 text-xl font-medium text-gray-900 dark:text-white">
+            <h5 class="text-xl font-medium text-gray-900 dark:text-white">
               Kris Patel
             </h5>
-            <div class="flex mt-4 space-x-3 md:mt-6 text-gray-300">
-              {blogdata.slice(0, 100)} . . .
-            </div>
           </div>
+          <h2 className="text-white text-3xl mb-3">{blogtitle}</h2>
+          <div class="mb-1"></div> {/* One-line blank space */}
+          <div class="text-gray-300">{blogdata.slice(0, 600)} . . .</div>
           <span class="text-sm text-gray-500 dark:text-gray-400">
             {bloddate}
           </span>
         </div>
       </button>
 
-
-      <Modal open={modal} onClose={toggleModal}  center classNames={{
-          modal: "bg-gray-700 p-10 rounded-lg text-white shadow-[0_10px_50px_rgba(8,_112,_184,_0.7)]",
+      <Modal
+        open={modal}
+        onClose={toggleModal}
+        center
+        classNames={{
+          modal:
+            "bg-gray-700 p-10 rounded-lg text-white shadow-[0_10px_50px_rgba(8,_112,_184,_0.7)]",
           closeButton: "text-white",
-        }}   
+        }}
         styles={{
-          modal: { // Custom styles for the modal container
-            width: "80%", 
-            // height: "80%", 
-            maxWidth: "1500px", 
+          modal: {
+            // Custom styles for the modal container
+            width: "80%",
+            // height: "80%",
+            maxWidth: "1500px",
             // maxHeight: "600px",
           },
-        }}  
-        
+        }}
       >
-          <div className="h-[600px]  overflow-y-auto text-3xl scrollbar-thin scrollbar-thumb-blue-500 scrollbar-track-gray-200"> 
-          <h2 className="text-white">Custom Styled Modal</h2>
+        <div className="h-[600px]  overflow-y-auto text-3xl scrollbar-thin scrollbar-thumb-blue-500 scrollbar-track-gray-200 pr-10">
+          <h2 className="text-white text-4xl mb-3">{blogtitle}</h2>
           <p className="text-white">
             {/* Your long content here */}
             {blogdata}
