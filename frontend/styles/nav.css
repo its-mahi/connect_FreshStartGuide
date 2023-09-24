@@ -4,7 +4,7 @@
 
 @layer base {
   .nav-titles {
-    @apply text-center text-transparent text-lg md:text-xl bg-clip-text text-white uppercase no-underline py-5 px-0 mx-5 inline-block relative opacity-75 hover:opacity-100 before:duration-300 before:h-1 before:absolute before:bg-white;
+    @apply text-center text-transparent text-sm lg:text-lg bg-clip-text text-white uppercase no-underline py-4 px-0 mx-3 inline-block relative opacity-75 hover:opacity-100 before:duration-300 before:h-1 before:absolute before:bg-white;
   }
 
   .nav-titles-ltr {

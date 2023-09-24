@@ -11,6 +11,7 @@ cloudinary.config({
 
 exports.registerUser = async (req, res) => {
   try {
+    console.log("EHwdwd")
     const file = req.files.avtar;
     console.log(file);
 
@@ -74,9 +75,9 @@ exports.loginUser = async (req, res) => {
         message: "Invalid Credentials",
       });
     }
-    console.log("Hey");
     const isMatch = await bcrypt.compare(password, user.password);
-
+    
+    console.log(isMatch);
     if (!isMatch) {
       return res.status(401).json({
         success: false,
@@ -84,7 +85,7 @@ exports.loginUser = async (req, res) => {
       });
     }
     const token = user.generateToken();
-    // console.log(token);
+
     res
       .status(200)
       .cookie("token", token, {
@@ -107,11 +108,12 @@ exports.loginUser = async (req, res) => {
 
 exports.logout = async (req, res) => {
   try {
-    res.clearCookie("token");
-    res.status(200).json({
+    
+    res.status(200).cookie("token", null, { expires: new Date(0), httpOnly: true }).json({
       success: true,
-      message: "logged out",
-    });
+      message: "Logged Out"
+    })
+
   } catch (e) {
     res.status(500).json({
       success: false,
@@ -121,40 +123,57 @@ exports.logout = async (req, res) => {
 };
 
 exports.getProfile = async (req, res) => {
-    try{
+  try {
+    console.log("in profile");
+    const user = await User.findById(req.params.id).populate("blogs");
 
-        const user = await User.findById(req.params.id).populate("blogs");
-
-        res.status(200).json({
-            success:true,
-            user
-        })
-
-    }catch(err)
-    {
-        res.status(500).json({
-            success:false,
-            error:err.message
-        })
-    }
-}
+    res.status(200).json({
+      success: true,
+      user,
+    });
+  } catch (err) {
+    res.status(500).json({
+      success: false,
+      error: err.message,
+    });
+  }
+};
 
 exports.searchAblog = async (req, res) => {
-    try{
-        let blog = await Blog.find({ title: { $regex: `.*${req.body.search}.*`, $options: 'i' } });
-        const blog2 = await Blog.find({ tags: { $regex: `.*${req.body.search}.*`, $options: 'i' } });
+  try {
+    let blog = await Blog.find({
+      title: { $regex: `.*${req.body.search}.*`, $options: "i" },
+    });
+    const blog2 = await Blog.find({
+      tags: { $regex: `.*${req.body.search}.*`, $options: "i" },
+    });
 
-        blog = [...blog, ...blog2];
+    blog = [...blog, ...blog2];
 
-        res.status(200).json({
-            success:true,
-            blog
-        })
+    res.status(200).json({
+      success: true,
+      blog,
+    });
+  } catch (err) {
+    res.status(500).json({
+      success: false,
+      error: err.message,
+    });
+  }
+};
 
-    }catch(err) {
-        res.status(500).json({
-            success:false,
-            error:err.message
-        })
-    }
+exports.getMyProfile = async (req, res) => {
+  try{
+
+    res.status(200).json({
+      success: true,
+      user: req.user,
+    })
+
+  }catch(err){
+    res.status(500).json({
+      success: false,
+      error: err.message,
+    });
+  }
 }

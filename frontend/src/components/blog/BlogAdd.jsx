@@ -26,7 +26,7 @@ const BlogAdd = (props) => {
       center
       classNames={{
         modal:
-          "bg-gray-700 p-10 rounded-lg text-white shadow-[0_0px_15px_rgba(8,_140,_150,_0.7)] ",
+          "bg-gray-800 rounded-md bg-clip-padding backdrop-filter backdrop-blur-sm bg-opacity-80 border border-gray-100 p-10 text-white shadow-[0_0px_15px_rgba(8,_140,_150,_0.7)] ",
         closeButton: "text-white",
       }}
       styles={{
