@@ -6,12 +6,12 @@ import { Modal } from "react-responsive-modal";
 
 export default function BlogCard(props) {
   const [modal, setModal] = useState(false);
-  const [name, setName] = useState(props.user);
-  const [blogdata, setBlogdata] = useState(props.description);
+  const name = props.user;
+  const blogdata = props.description;
   const formattedString = blogdata.replace(/ /g, "\u00A0");
-  const [blogdate, setBlogdate] = useState(props.createdAt);
-  const [blogtitle, setBlogtitle] = useState(props.title);
-
+  const blogdate = props.createdAt;
+  const blogtitle = props.title;
+  console.log("in BlogCard" + props.title);
   const toggleModal = () => {
     setModal(!modal);
   };

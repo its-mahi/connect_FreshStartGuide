@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import "/styles/Model.css";
 import "react-responsive-modal/styles.css";
 import { Modal } from "react-responsive-modal";
+import axios from "axios";
 
 // import "react-crud-icons/dist/react-crud-icons.css";
 // import {  } from "react-icons/fa";
@@ -12,6 +13,7 @@ export default function ProfileBlog(props) {
   // const formattedString = blogdata.replace(/ /g, "\u00A0");
   const [bloddate, setBlogdate] = useState(props.createdAt);
   const [blogtitle, setBlogtitle] = useState(props.title);
+  const id = props.id;
 
   const toggleModal = () => {
     setModal(!modal);
@@ -21,6 +23,23 @@ export default function ProfileBlog(props) {
   } else {
     document.body.classList.remove("active-modal");
   }
+
+  const deleteBlog = () => {
+    axios
+      .delete("http://localhost:8000/api/v1/blog/" + id, {
+        headers: {
+          "Content-Type": "application/json",
+        },
+        withCredentials: true,
+      })
+      .then((response) => {
+        console.log(response.data.message);
+        props.toggleToggler();
+      })
+      .catch((err) => {
+        console.log("Error Aayvi bhai" + err.message);
+      });
+  };
 
   return (
     <div>
@@ -59,8 +78,16 @@ export default function ProfileBlog(props) {
           },
         }}
       >
-        <div className="h-[600px]  overflow-y-auto text-3xl scrollbar-thin scrollbar-thumb-blue-500 scrollbar-track-gray-200 pr-10">
-          <h2 className=" bg-gray-800 rounded-md bg-clip-padding backdrop-filter backdrop-blur-sm bg-opacity-80 border border-gray-100  dark:border-gray-700 text-white text-3xl mb-3 font-bold">{blogtitle}</h2>
+        <div className="h-[600px]  overflow-y-auto scrollbar-thin scrollbar-thumb-blue-500 scrollbar-track-gray-200 pr-10">
+          <div className="flex px-5 justify-between items-center bg-gray-800 rounded-md bg-clip-padding backdrop-filter backdrop-blur-sm bg-opacity-80 border border-gray-100  dark:border-gray-700 text-white text-2xl mb-3 font-bold">
+            <h2 className=" ">{blogtitle}</h2>
+            <button
+              onClick={deleteBlog}
+              className="text-xl text-center text-black bg-red-500 hover:shadow-lg hover:shadow-red-500/50 md:p-2 m-2 rounded-md"
+            >
+              Delete
+            </button>
+          </div>
           <hr className="h-px m-2 bg-gray-200 border-1 dark:bg-gray-500" />
 
           <div className="text-white font-googlers text-lg leading-relaxed tracking-wide">

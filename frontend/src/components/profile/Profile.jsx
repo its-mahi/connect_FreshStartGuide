@@ -7,6 +7,7 @@ import axios from "axios";
 export default function Profile(props) {
   const { user } = useSelector((state) => state);
   const [blogData, setBlogs] = useState([]);
+  const [toggler, setToggler] = useState(true);
   useEffect(() => {
     const getData = () => {
       axios
@@ -17,8 +18,6 @@ export default function Profile(props) {
           withCredentials: true,
         })
         .then((response) => {
-          // console.log(response.data.success);
-          // console.log(response.data.user);
           setBlogs(response.data.user.blogs);
         })
         .catch((err) => {
@@ -26,7 +25,11 @@ export default function Profile(props) {
         });
     };
     getData();
-  }, []);
+  }, [toggler]);
+
+  const toggleToggler = () => {
+    setToggler(!toggler);
+  };
 
   const [currUser, setCurrUser] = useState(user.name);
   // const blogData = user.blogs;
@@ -42,11 +45,13 @@ export default function Profile(props) {
             <div className="grid grid-cols-1 md:grid-cols-3">
               <div className="order-2 md:order-1 text-center mt-4 ">
                 <div>
-                
-                  <h1 className="text-4xl font-medium text-white md:mt-0 mt-[100px]">Kris Patel</h1>
-              <p className="font-light text-white mt-3">krishp759@gmail.com</p>
+                  <h1 className="text-4xl font-medium text-white md:mt-0 mt-[100px]">
+                    Kris Patel
+                  </h1>
+                  <p className="font-light text-white mt-3">
+                    krishp759@gmail.com
+                  </p>
                 </div>
-                
               </div>
               <div className="relative ">
                 <div className="w-48 h-48 bg-indigo-100 mx-auto rounded-full shadow-2xl absolute inset-x-0 top-0 -mt-24 flex items-center justify-center text-indigo-500">
@@ -99,6 +104,8 @@ export default function Profile(props) {
                   title={item.title}
                   description={item.description}
                   createdAt={item.createdAt}
+                  id={item._id}
+                  toggleToggler={toggleToggler}
                   key={i}
                 />
               );
