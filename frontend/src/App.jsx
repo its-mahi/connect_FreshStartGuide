@@ -8,6 +8,7 @@ import Nav from "./components/Nav";
 import Footer from "./components/Footer";
 import NotesPage from "./components/notes/NotesPage";
 import Profile from "./components/profile/Profile";
+import Home from "./components/home/Home";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import axios from "axios";
 import { useDispatch } from "react-redux";

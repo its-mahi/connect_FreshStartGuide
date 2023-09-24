@@ -24,7 +24,7 @@ export default function Cards() {
     <div class="flex flex-col items-center pb-10">
         <img class="w-14 h-14 mb-3 rounded-full shadow-lg" src={explore} alt="Bonnie image"/>
         <h5 class="mb-1 text-xl font-medium text-gray-900 dark:text-white">Explore Blogs</h5>
-        <span class="text-sm text-gray-500 dark:text-gray-400">Explore our diverse collection of blogs created by students for students. Dive into a world of insights, knowledge, and experiences that cover a wide range of topics, from academic tips and career advice to lifestyle hacks and personal growth stories. Whether you're seeking inspiration, guidance, or simply a break from your studies, our blog section is a hub of valuable content crafted to enrich your student journey.</span>
+        <span class="text-sm text-gray-500 dark:text-gray-400 text-justify">Explore our diverse collection of blogs created by students for students. Dive into a world of insights, knowledge, and experiences that cover a wide range of topics, from academic tips and career advice to lifestyle hacks and personal growth stories. Whether you're seeking inspiration, guidance, or simply a break from your studies, our blog section is a hub of valuable content crafted to enrich your student journey.</span>
        
     </div>
 </div>
