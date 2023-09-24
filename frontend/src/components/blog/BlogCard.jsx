@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import "/styles/Model.css";
 import { render } from "react-dom";
 import "react-responsive-modal/styles.css";
 import { Modal } from "react-responsive-modal";
@@ -23,7 +22,7 @@ export default function BlogCard(props) {
 
   return (
     <div>
-      <button onClick={toggleModal} className="btn-modal w-full">
+      <button onClick={toggleModal} className="btn-modal w-full mt-10">
         <div
           className="bg-gray-800 rounded-md bg-clip-padding backdrop-filter backdrop-blur-sm bg-opacity-20 border border-gray-100
      p-10 text-white dark:border-gray-700 shadow-[0_5px_40px_rgba(8,_112,_184,_0.7)]"
@@ -40,13 +39,15 @@ export default function BlogCard(props) {
           </div>
           <h2 className="text-white text-3xl mb-3">{blogtitle}</h2>
           <div className="mb-1"></div> {/* One-line blank space */}
-          <div className="text-gray-300">
+          <div className="text-gray-300 mb-5">
             {blogdata.slice(0, 150)} . . .{" "}
-            <span className="underline">Read More</span>
           </div>
-          <span class="text-sm text-gray-500 dark:text-gray-400">
-            {blogdate}
-          </span>
+          <div className="flex-col flex space-y-2">
+            <span className="text-sm text-gray-500 dark:text-gray-400 ">
+              {blogdate.slice(0, 10)}
+            </span>
+            <span className="text-sm text-gray-400 ">{`(click to view)`}</span>
+          </div>
         </div>
       </button>
 
@@ -75,8 +76,8 @@ export default function BlogCard(props) {
 
           <div className="text-white font-googlers text-lg leading-relaxed tracking-wide">
             {/* Your long content here */}
-            {/* {blogdata} */}
-            {formattedString}
+            {blogdata}
+            {/* {formattedString} */}
           </div>
 
           {/* Add more content here */}

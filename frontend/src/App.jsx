@@ -9,7 +9,7 @@ import Footer from "./components/Footer";
 import NotesPage from "./components/notes/NotesPage";
 import Profile from "./components/profile/Profile";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-
+import Home from "./components/home/Home";
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -25,6 +25,10 @@ function App() {
         <Nav toggleLogin={toggleLogin} isLoggedIn={isLoggedIn} />
         <main className="flex-grow">
           <Routes>
+            <Route
+              path="/"
+              element={<Home isLoggedIn={isLoggedIn} />}
+            />
             <Route
               path="/register"
               element={<Register isLoggedIn={isLoggedIn} />}
