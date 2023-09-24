@@ -1,5 +1,5 @@
 import "../styles/App.css";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import PaticlesBackground from "./components/PaticlesBackground";
 import Login from "./components/auth/Login";
 import Register from "./components/auth/Register";
@@ -9,14 +9,38 @@ import Footer from "./components/Footer";
 import NotesPage from "./components/notes/NotesPage";
 import Profile from "./components/profile/Profile";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import Home from "./components/home/Home";
+import axios from "axios";
+import { useDispatch } from "react-redux";
+
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [user, setUser] = useState(null);
+  const dispatch = useDispatch();
+
   const toggleLogin = () => {
-    console.log("Hey");
     setIsLoggedIn(!isLoggedIn);
   };
+
+  const loadUser =  () => {
+    axios
+    .get("http://localhost:8000/api/v1/profilee/me", {
+      headers: {
+        "Content-Type": "application/json",
+      },
+      withCredentials: true,
+    })
+    .then((response) => {
+        dispatch({ type: "SET_USER" ,payload:response.data.user});
+        if(response.data.user)
+        setIsLoggedIn(true);
+      });
+  }
+
+  useEffect(()=>{
+     loadUser()
+    
+  },[])
 
   return (
     <div className="flex flex-col min-h-screen">

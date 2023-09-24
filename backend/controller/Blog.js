@@ -104,3 +104,30 @@ exports.getAllBlogs = async (req, res) => {
     });
   }
 };
+
+exports.searchAblog = async (req, res) => {
+  try {
+    console.log("search Me");
+    let blog = await Blog.find({
+      title: { $regex: `.*${req.body.search}.*`, $options: "i" },
+    });
+    const blog2 = await Blog.find({
+      tags: { $regex: `.*${req.body.search}.*`, $options: "i" },
+    });
+
+    const combinedResults = [...blog, ...blog2];
+
+    // Remove duplicates from the combined array
+    const uniqueCombinedResults = Array.from(new Set(combinedResults));
+
+    res.status(200).json({
+      success: true,
+      blog: uniqueCombinedResults,
+    });
+  } catch (err) {
+    res.status(500).json({
+      success: false,
+      error: err.message,
+    });
+  }
+};

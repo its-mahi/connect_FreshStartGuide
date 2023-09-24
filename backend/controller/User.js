@@ -11,7 +11,7 @@ cloudinary.config({
 
 exports.registerUser = async (req, res) => {
   try {
-    console.log("EHwdwd")
+    console.log("EHwdwd");
     const file = req.files.avtar;
     console.log(file);
 
@@ -75,9 +75,9 @@ exports.loginUser = async (req, res) => {
         message: "Invalid Credentials",
       });
     }
-    console.log("Hey");
     const isMatch = await bcrypt.compare(password, user.password);
 
+    console.log(isMatch);
     if (!isMatch) {
       return res.status(401).json({
         success: false,
@@ -85,7 +85,7 @@ exports.loginUser = async (req, res) => {
       });
     }
     const token = user.generateToken();
-    // console.log(token);
+
     res
       .status(200)
       .cookie("token", token, {
@@ -108,11 +108,13 @@ exports.loginUser = async (req, res) => {
 
 exports.logout = async (req, res) => {
   try {
-    res.clearCookie("token");
-    res.status(200).json({
-      success: true,
-      message: "logged out",
-    });
+    res
+      .status(200)
+      .cookie("token", null, { expires: new Date(0), httpOnly: true })
+      .json({
+        success: true,
+        message: "Logged Out",
+      });
   } catch (e) {
     res.status(500).json({
       success: false,
@@ -138,20 +140,11 @@ exports.getProfile = async (req, res) => {
   }
 };
 
-exports.searchAblog = async (req, res) => {
+exports.getMyProfile = async (req, res) => {
   try {
-    let blog = await Blog.find({
-      title: { $regex: `.*${req.body.search}.*`, $options: "i" },
-    });
-    const blog2 = await Blog.find({
-      tags: { $regex: `.*${req.body.search}.*`, $options: "i" },
-    });
-
-    blog = [...blog, ...blog2];
-
     res.status(200).json({
       success: true,
-      blog,
+      user: req.user,
     });
   } catch (err) {
     res.status(500).json({

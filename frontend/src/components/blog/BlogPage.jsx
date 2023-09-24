@@ -9,6 +9,7 @@ import { useDispatch, useSelector } from "react-redux";
 initTE({ Ripple });
 
 const BlogPage = (props) => {
+  console.log("called Blog Page");
   const [blogs, setBlogs] = useState([]);
   const [data, setData] = useState({
     title: "",
@@ -61,19 +62,34 @@ const BlogPage = (props) => {
           withCredentials: true,
         })
         .then((response) => {
+          console.log(response.data.blogs);
           setBlogs(response.data.blogs);
         });
     };
     fetchBlog();
+    document.querySelector("#default-search").value = "";
   }, [isSubmitted]);
 
   const toggleSetIsSubmitted = () => {
-    console.log("isSubmitted");
-    console.log(isSubmitted);
     let myBool = isSubmitted;
     setIsSubmitted(!myBool);
-    console.log("isSubmitted");
-    console.log(isSubmitted);
+  };
+
+  const searchBlog = (e) => {
+    const reqData = { search: e.target.value };
+    console.log(reqData);
+    axios
+      .post("http://localhost:8000/api/v1/blog/search", reqData, {
+        headers: {
+          "Content-Type": "application/json",
+        },
+        withCredentials: true,
+      })
+      .then((response) => {
+        console.log(response.data.blog);
+        setBlogs(response.data.blog);
+        console.log(blogs);
+      });
   };
 
   return (
@@ -135,6 +151,7 @@ const BlogPage = (props) => {
               id="default-search"
               className="ml-2 block w-full p-4 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
               placeholder="Search Mockups, Logos..."
+              onChange={searchBlog}
               required
             />
           </div>
@@ -150,14 +167,15 @@ const BlogPage = (props) => {
           toggleSetIsSubmitted={toggleSetIsSubmitted}
         />
         <div>
-          {blogs.map((blog) => {
+          {blogs.map((blog, i) => {
+            console.log(blog.title);
             return (
               <BlogCard
-                key={blog._id}
+                key={i}
                 title={blog.title}
                 description={blog.description}
                 tags={blog.tags}
-                user={blog.author.name}
+                user={blog.author ? blog.author.name : "No-Name"}
                 createdAt={blog.createdAt}
               />
             );

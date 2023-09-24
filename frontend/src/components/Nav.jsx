@@ -13,17 +13,17 @@ const Nav = (props) => {
     setIsOpen(!isOpen);
   }
 
-  const logout = () => {
-    axios
+  const logout = async () => {
+    const response = await axios
       .post("http://localhost:8000/api/v1/logout", {
         headers: {
           "Content-Type": "application/json",
         },
         withCredentials: true,
       })
-      .then((response) => {
-        console.log(response.data.success);
-        dispatch({ type: "CLEAR_USER" });
+      console.log("logout res "+response.success)
+      dispatch({
+        type: "CLEAR_USER",
       });
     props.toggleLogin();
   };
