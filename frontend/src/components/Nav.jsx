@@ -45,10 +45,9 @@ const Nav = (props) => {
                 <Link to="/profile">Profile</Link>
               </div>
               <div className="nav-titles nav-titles-ltr">
-                {/* <Link to="/"> */}
-                {/* <a href="/query">QueryRoom</a> */}
-                <Link to="/query">QueryRoom</Link>
-                {/* </Link> */}
+                <Link to="/query">
+                QueryRoom
+                </Link>
               </div>
 
               <div className="nav-titles nav-titles-ltr">

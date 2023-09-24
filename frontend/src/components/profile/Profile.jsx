@@ -60,7 +60,7 @@ export default function Profile(props) {
               
               <div className="relative ">
                 <div className="w-48 h-48 bg-indigo-100 mx-auto rounded-full shadow-2xl absolute inset-x-0 top-0 -mt-24 flex items-center justify-center text-indigo-500">
-                  <img src={user.avtar.url} alt="" />
+                  <img src={user.avtar.url} className="rounded-3xl shadow-2xl" alt="" />
                 </div>{" "}
               </div>{" "}
               
