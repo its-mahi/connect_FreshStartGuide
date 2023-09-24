@@ -76,7 +76,7 @@ exports.loginUser = async (req, res) => {
       });
     }
     const isMatch = await bcrypt.compare(password, user.password);
-    
+
     console.log(isMatch);
     if (!isMatch) {
       return res.status(401).json({
@@ -108,12 +108,13 @@ exports.loginUser = async (req, res) => {
 
 exports.logout = async (req, res) => {
   try {
-    
-    res.status(200).cookie("token", null, { expires: new Date(0), httpOnly: true }).json({
-      success: true,
-      message: "Logged Out"
-    })
-
+    res
+      .status(200)
+      .cookie("token", null, { expires: new Date(0), httpOnly: true })
+      .json({
+        success: true,
+        message: "Logged Out",
+      });
   } catch (e) {
     res.status(500).json({
       success: false,
@@ -138,23 +139,12 @@ exports.getProfile = async (req, res) => {
     });
   }
 };
-<<<<<<< HEAD
-=======
 
-exports.searchAblog = async (req, res) => {
+exports.getMyProfile = async (req, res) => {
   try {
-    let blog = await Blog.find({
-      title: { $regex: `.*${req.body.search}.*`, $options: "i" },
-    });
-    const blog2 = await Blog.find({
-      tags: { $regex: `.*${req.body.search}.*`, $options: "i" },
-    });
-
-    blog = [...blog, ...blog2];
-
     res.status(200).json({
       success: true,
-      blog,
+      user: req.user,
     });
   } catch (err) {
     res.status(500).json({
@@ -163,20 +153,3 @@ exports.searchAblog = async (req, res) => {
     });
   }
 };
-
-exports.getMyProfile = async (req, res) => {
-  try{
-
-    res.status(200).json({
-      success: true,
-      user: req.user,
-    })
-
-  }catch(err){
-    res.status(500).json({
-      success: false,
-      error: err.message,
-    });
-  }
-}
->>>>>>> b38e9553bcbcf084ce2550979074b10ebe7b6db3
