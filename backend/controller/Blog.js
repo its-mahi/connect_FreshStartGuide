@@ -114,15 +114,14 @@ exports.searchAblog = async (req, res) => {
     const blog2 = await Blog.find({
       tags: { $regex: `.*${req.body.search}.*`, $options: "i" },
     });
+    console.log(blog);
+    console.log(blog2);
 
-    const combinedResults = [...blog, ...blog2];
-
-    // Remove duplicates from the combined array
-    const uniqueCombinedResults = Array.from(new Set(combinedResults));
+    const combinedResults = [...new Set([...blog, ...blog2])];
 
     res.status(200).json({
       success: true,
-      blog: uniqueCombinedResults,
+      blog: combinedResults,
     });
   } catch (err) {
     res.status(500).json({
