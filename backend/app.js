@@ -43,17 +43,9 @@ app.use(
 const user = require("./routes/User");
 const blog = require("./routes/Blog");
 const notes = require("./routes/Notes");
-<<<<<<< HEAD
-//using routes
+
 app.use("/api/v1", user);
 app.use("/api/v1", blog);
 app.use("/api/v1", notes);
-=======
-
-//using routes
-app.use("/api/v1", user);
-app.use("/api/v1", blog);
-// app.use("/api/v1", notes);
->>>>>>> aa1a7096ba92dfe3f51f37c2cfb27e9c8c3cab69
 
 module.exports = app;
