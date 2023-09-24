@@ -8,9 +8,11 @@ import Nav from "./components/Nav";
 import Footer from "./components/Footer";
 import NotesPage from "./components/notes/NotesPage";
 import Profile from "./components/profile/Profile";
+import Home from "./components/home/Home";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import axios from "axios";
 import { useDispatch } from "react-redux";
+import QueryPage from "./components/queryroom/QueryPage";
 import Home from "./components/home/Home";
 
 function App() {
@@ -48,6 +50,10 @@ function App() {
         <main className="flex-grow">
           <Routes>
             <Route path="/" element={<Home isLoggedIn={isLoggedIn} />} />
+            <Route
+              path="/query"
+              element={<QueryPage isLoggedIn={isLoggedIn} />}
+            />
             <Route
               path="/register"
               element={<Register isLoggedIn={isLoggedIn} />}
