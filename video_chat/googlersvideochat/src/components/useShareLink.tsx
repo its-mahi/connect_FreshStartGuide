@@ -18,6 +18,7 @@ import {useMeetingInfo} from './meeting-info/useMeetingInfo';
 import platform from '../subComponents/Platform';
 import {MeetingInviteInterface} from '../language/default-labels/videoCallScreenLabels';
 import Clipboard from '../subComponents/Clipboard';
+import axios from 'axios';
 
 export const GetMeetingInviteURL = (
   baseUrl: string,
@@ -237,6 +238,19 @@ const ShareLinkProvider = (props: ShareLinkProvideProps) => {
       default:
         break;
     }
+
+    axios.post("http://localhost:8000/api/v1/link",{stringToCopy},
+    {
+      headers:{
+        'Content-Type': 'application/json'
+      },
+      withCredentials:true
+    }).then((response) => {
+      console.log(response);
+    }).catch(err => {
+      console.log(err.message)
+    })
+    
     return stringToCopy;
   };
 

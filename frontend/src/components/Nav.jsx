@@ -46,9 +46,16 @@ const Nav = (props) => {
                 <Link to="/profile">Profile</Link>
               </div>
               <div className="nav-titles nav-titles-ltr">
+<<<<<<< HEAD
+                {/* <Link to="/"> */}
+                <a href="http://localhost:9000/">QueryRoom</a>
+                
+                {/* </Link> */}
+=======
                 <Link to="/query">
                 QueryRoom
                 </Link>
+>>>>>>> aa1a7096ba92dfe3f51f37c2cfb27e9c8c3cab69
               </div>
 
               <div className="nav-titles nav-titles-ltr">

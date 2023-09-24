@@ -9,6 +9,17 @@ const noteSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+<<<<<<< HEAD
+  notes: {
+    public_id: String,
+    url: String,
+  },
+});
+
+const Note = mongoose.model("Notes", noteSchema);
+
+module.exports = Note;
+=======
   notes: [
     {
       type: mongoose.Schema.Types.ObjectId,
@@ -17,3 +28,4 @@ const noteSchema = new mongoose.Schema({
     },
   ],
 });
+>>>>>>> aa1a7096ba92dfe3f51f37c2cfb27e9c8c3cab69

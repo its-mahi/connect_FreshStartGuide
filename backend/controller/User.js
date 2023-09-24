@@ -1,4 +1,5 @@
 const Blog = require("../models/Blog");
+const Links = require("../models/Links");
 const User = require("../models/User");
 const bcrypt = require("bcrypt");
 const cloudinary = require("cloudinary").v2;
@@ -153,3 +154,59 @@ exports.getMyProfile = async (req, res) => {
     });
   }
 };
+
+exports.getLinks = async (req, res) => {
+  try{
+    const {stringToCopy} = req.body
+    console.log("i am from backend here is " + stringToCopy)
+
+    res.status(200).json({
+      success:true,
+      stringToCopy
+    })
+
+  }catch(err){
+    res.status(500).json({
+      success: false,
+      error: err.message,
+    });
+  }
+}
+
+exports.submitLink = async (req, res) => {
+  try{
+
+    const {url,topic} = req.body
+
+    const link  = await Links.create({url,topic})
+
+    res.status(200).json({
+      success:true,
+      link
+    })
+
+  }catch(err){
+    res.status(500).json({
+      success: false,
+      error: err.message,
+    });
+  }
+}
+
+exports.getAllLinks = async (req, res) => {
+  try{
+
+    const links = await Links.find();
+
+    res.status(200).json({
+      success:true,
+      links
+    })
+
+  }catch(err){
+    res.status(500).json({
+      success: false,
+      error: err.message,
+    });
+  }
+}
