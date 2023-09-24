@@ -40,6 +40,6 @@ const notes = require("./routes/Notes");
 //using routes
 app.use("/api/v1", user);
 app.use("/api/v1", blog);
-app.use("/api/v1", notes);
+// app.use("/api/v1", notes);
 
 module.exports = app;

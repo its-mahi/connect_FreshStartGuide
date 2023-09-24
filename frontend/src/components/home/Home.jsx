@@ -47,7 +47,7 @@ export default function Home() {
       imageSrc: Mandar,
     },
     {
-      name: "Raj (Mangal)",
+      name: "Raj Pansara",
       imageSrc: "https://m.media-amazon.com/images/I/41jLBhDISxL.jpg",
     },
   ];
@@ -55,7 +55,7 @@ export default function Home() {
   return (
     <>
       <div className="mt-24 mb-10">
-        <div className="text-white  mb-6">
+        <div className="text-white text-sm mb-6">
           <TypeAnimation
             preRenderFirstString={true}
             sequence={[
@@ -68,7 +68,7 @@ export default function Home() {
               1000,
             ]}
             speed={1}
-            style={{ fontSize: "0.2rem" }}
+            style={{ fontSize: "2em" }}
             repeat={Infinity}
           />
         </div>
