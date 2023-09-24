@@ -175,7 +175,7 @@ const BlogPage = (props) => {
                 title={blog.title}
                 description={blog.description}
                 tags={blog.tags}
-                user={blog.author.name}
+                user={blog.author ? blog.author.name : "No-Name"}
                 createdAt={blog.createdAt}
               />
             );
