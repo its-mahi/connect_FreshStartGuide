@@ -21,18 +21,18 @@ app.use(express.urlencoded({ extended: true }));
 const corsOptions = {
   origin: "http://localhost:5173", // Replace with the actual origin of your frontend application
   credentials: true, // Allow cookies and other credentials to be sent
-  //   exposedHeaders: ["set-cookie"],
 };
 
-
 app.use(cors(corsOptions));
-app.use(cors({
-  origin: 'http://localhost:9000',
-  methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
-  credentials: true,
-  optionsSuccessStatus: 204, // Some legacy browsers (IE11, various SmartTVs) choke on 204
-}));
-app.use(bodyParser.json());
+// app.use(
+//   cors({
+//     origin: "http://localhost:9000",
+//     methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
+//     credentials: true,
+//     optionsSuccessStatus: 204, // Some legacy browsers (IE11, various SmartTVs) choke on 204
+//   })
+// );
+app.use(bodyParser.json());``
 app.use(
   fileUpload({
     useTempFiles: true,

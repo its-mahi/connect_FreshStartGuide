@@ -14,17 +14,16 @@ const Nav = (props) => {
   }
 
   const logout = async () => {
-    const response = await axios
-      .post("http://localhost:8000/api/v1/logout", {
-        headers: {
-          "Content-Type": "application/json",
-        },
-        withCredentials: true,
-      })
-      console.log("logout res "+response.success)
-      dispatch({
-        type: "CLEAR_USER",
-      });
+    const response = await axios.post("http://localhost:8000/api/v1/logout", {
+      headers: {
+        "Content-Type": "application/json",
+      },
+      withCredentials: true,
+    });
+    console.log("logout res " + response.success);
+    dispatch({
+      type: "CLEAR_USER",
+    });
     props.toggleLogin();
   };
 
@@ -39,23 +38,17 @@ const Nav = (props) => {
           </div>
           <div>
             <div className="hidden md:flex flex-wrap gap-0">
-            <div className="nav-titles nav-titles-ltr">
+              <div className="nav-titles nav-titles-ltr">
                 <Link to="/">Home</Link>
               </div>
               <div className="nav-titles nav-titles-ltr">
                 <Link to="/profile">Profile</Link>
               </div>
               <div className="nav-titles nav-titles-ltr">
-<<<<<<< HEAD
                 {/* <Link to="/"> */}
-                <a href="http://localhost:9000/">QueryRoom</a>
-                
+                {/* <a href="/query">QueryRoom</a> */}
+                <Link to="/query">QueryRoom</Link>
                 {/* </Link> */}
-=======
-                <Link to="/query">
-                QueryRoom
-                </Link>
->>>>>>> aa1a7096ba92dfe3f51f37c2cfb27e9c8c3cab69
               </div>
 
               <div className="nav-titles nav-titles-ltr">

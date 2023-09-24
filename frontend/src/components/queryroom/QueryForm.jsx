@@ -1,15 +1,44 @@
-import React from "react";
+import React, { useState } from "react";
 import "react-responsive-modal/styles.css";
 import { Modal } from "react-responsive-modal";
+import axios from "axios";
 
 export default function QueryForm(props) {
-    const toggleModal = () => {
-        props.toggleModal(!props.modal);
-      };
+  const [data, setData] = useState({
+    topic: "",
+    url: "",
+  });
 
-      return (
+  const toggleModal = () => {
+    props.toggleModal(!props.modal);
+  };
 
-      <Modal
+  const updateData = (e) => {
+    const { name, value } = e.target;
+    setData((prevData) => ({
+      ...prevData,
+      [name]: value,
+    }));
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const reqData = data;
+    console.log(reqData);
+    axios
+      .post("http://localhost:8000/api/v1/submitlink", reqData, {
+        headers: {
+          "Content-Type": "application/json",
+        },
+        withCredentials: true,
+      })
+      .then((response) => {
+        console.log(response.data);
+      });
+  };
+
+  return (
+    <Modal
       open={props.modal}
       onClose={toggleModal}
       center
@@ -25,7 +54,7 @@ export default function QueryForm(props) {
         },
       }}
     >
-      <form className="space-y-6" method="POST">
+      <form className="space-y-6" onSubmit={handleSubmit}>
         <div>
           <label
             htmlFor="title"
@@ -36,9 +65,29 @@ export default function QueryForm(props) {
           <div className="mt-2">
             <input
               id="title"
-              name="title"
+              name="topic"
               type="text"
               placeholder="Enter title here"
+              required
+              onChange={updateData}
+              style={{ paddingLeft: "6px" }}
+              className="block w-full rounded-md border-0 py-3 text-black shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-md sm:leading-6 dark:bg-gray-800"
+            />
+          </div>
+
+          <label
+            htmlFor="url"
+            className=" text-md font-medium leading-6 pt-6 text-white flex "
+          >
+            URL
+          </label>
+          <div className="mt-2">
+            <input
+              id="url"
+              name="url"
+              type="text"
+              onChange={updateData}
+              placeholder="Enter url here"
               required
               style={{ paddingLeft: "6px" }}
               className="block w-full rounded-md border-0 py-3 text-black shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-md sm:leading-6 dark:bg-gray-800"
@@ -53,6 +102,5 @@ export default function QueryForm(props) {
         </div>
       </form>
     </Modal>
-      );
- 
+  );
 }

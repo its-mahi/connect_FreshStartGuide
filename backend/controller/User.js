@@ -78,7 +78,7 @@ exports.loginUser = async (req, res) => {
     }
     const isMatch = await bcrypt.compare(password, user.password);
 
-    console.log(isMatch);
+    // console.log(isMatch);
     if (!isMatch) {
       return res.status(401).json({
         success: false,
@@ -156,57 +156,52 @@ exports.getMyProfile = async (req, res) => {
 };
 
 exports.getLinks = async (req, res) => {
-  try{
-    const {stringToCopy} = req.body
-    console.log("i am from backend here is " + stringToCopy)
+  try {
+    const { stringToCopy } = req.body;
+    console.log("i am from backend here is " + stringToCopy);
 
     res.status(200).json({
-      success:true,
-      stringToCopy
-    })
-
-  }catch(err){
+      success: true,
+      stringToCopy,
+    });
+  } catch (err) {
     res.status(500).json({
       success: false,
       error: err.message,
     });
   }
-}
+};
 
 exports.submitLink = async (req, res) => {
-  try{
-
-    const {url,topic} = req.body
-
-    const link  = await Links.create({url,topic})
+  try {
+    const { url, topic } = req.body;
+    const link = await Links.create({ url, topic, user: req.user._id });
+    console.log("links");
 
     res.status(200).json({
-      success:true,
-      link
-    })
-
-  }catch(err){
+      success: true,
+      link,
+    });
+  } catch (err) {
     res.status(500).json({
       success: false,
       error: err.message,
     });
   }
-}
+};
 
 exports.getAllLinks = async (req, res) => {
-  try{
-
-    const links = await Links.find();
+  try {
+    const links = await Links.find().populate("user");
 
     res.status(200).json({
-      success:true,
-      links
-    })
-
-  }catch(err){
+      success: true,
+      links,
+    });
+  } catch (err) {
     res.status(500).json({
       success: false,
       error: err.message,
     });
   }
-}
+};
