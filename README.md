@@ -20,6 +20,32 @@
 - Users can write and publish blogs for inspiration and guidance, helping newcomers.
 
 
+## Available Scripts 
+Make sure to run `npm install` before running any script.
+
+In the /frontend directory, you can run:
+
+### `npm run dev`
+
+Runs the app in the development mode.\
+Open [http://localhost:5173](http://localhost:5173) to view it in your browser.
+
+The page will reload when you make changes.\
+You may also see any lint errors in the console.
+
+
+In the /backend directory, you can run:
+
+### `npm start`
+
+Check all the PORTs given and make little configuration according to it .\
+Use MongoDB localhost or Atlas for the database connection .
+
+To configure Video Chatting system in the /video_chat/googlersvideochat directory to build the app run :
+
+### `npm run web`
+
+
 
 
 
