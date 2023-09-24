@@ -47,7 +47,8 @@ const Nav = (props) => {
               </div>
               <div className="nav-titles nav-titles-ltr">
                 {/* <Link to="/"> */}
-                QueryRoom
+                <a href="http://localhost:9000/">QueryRoom</a>
+                
                 {/* </Link> */}
               </div>
 

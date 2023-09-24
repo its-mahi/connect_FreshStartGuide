@@ -24,7 +24,14 @@ const corsOptions = {
   //   exposedHeaders: ["set-cookie"],
 };
 
+
 app.use(cors(corsOptions));
+app.use(cors({
+  origin: 'http://localhost:9000',
+  methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+  credentials: true,
+  optionsSuccessStatus: 204, // Some legacy browsers (IE11, various SmartTVs) choke on 204
+}));
 app.use(bodyParser.json());
 app.use(
   fileUpload({
@@ -35,11 +42,11 @@ app.use(
 //routes
 const user = require("./routes/User");
 const blog = require("./routes/Blog");
-const notes = require("./routes/Notes");
+// const notes = require("./routes/Notes");
 
 //using routes
 app.use("/api/v1", user);
 app.use("/api/v1", blog);
-app.use("/api/v1", notes);
+// app.use("/api/v1", notes);
 
 module.exports = app;
