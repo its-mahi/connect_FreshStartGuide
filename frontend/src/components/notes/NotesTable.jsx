@@ -1,14 +1,20 @@
 import React from "react";
 
 export default function NotesTable(props) {
-  let { notesData } = props;
-  const DisplayData = notesData.map((info) => {
+  let { notes } = props;
+  const DisplayData = notes.map((info, i) => {
     return (
-      <tr key={info.id} className="bg-gray-700 border-b border-gray-200">
-        <td className="px-6 py-3 sm:px-2 whitespace-nowrap">{info.id}</td>
-        <td className="px-6 py-4 sm:px-2 whitespace-nowrap">{info.notes_title}</td>
-        <td className="px-6 py-4 sm:px-2 whitespace-nowrap">{info.notes_owner}</td>
-        <td className="px-6 py-4 sm:px-2 whitespace-nowrap">{info.notes_location}</td>
+      <tr key={i} className="bg-gray-700 border-b border-gray-200">
+        <td className="px-6 py-3 sm:px-2 whitespace-nowrap">{i}</td>
+        <td className="px-6 py-4 sm:px-2 whitespace-nowrap">{info.title}</td>
+        <td className="px-6 py-4 sm:px-2 whitespace-nowrap">
+          {info.author.name}
+        </td>
+        <td className="px-6 py-4 sm:px-2 whitespace-nowrap">
+          <a href={info.notes.url} target="_blank">
+            Open Note
+          </a>
+        </td>
       </tr>
     );
   });

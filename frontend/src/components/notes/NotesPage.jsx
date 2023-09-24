@@ -1,34 +1,91 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { FaCloudUploadAlt } from "react-icons/fa";
 import NoteAdd from "./NoteAdd";
 import NotesTable from "./NotesTable";
 import { Navigate } from "react-router-dom";
+import axios from "axios";
 
 export default function NotesPage(props) {
-  const notesData = [
-    {
-      id: "1",
-      notes_title: "Note 1",
-      notes_owner: "Kris Patel",
-      notes_location: "/source",
-    },
-    {
-      id: "2",
-      notes_title: "Note 2",
-      notes_owner: "Kris ki behen",
-      notes_location: "/source",
-    },
-    {
-      id: "3",
-      notes_title: "Note 3",
-      notes_owner: "Kris ka bhai",
-      notes_location: "/source",
-    },
-  ];
+  const [notes, setNotes] = useState([]);
+
+  const [data, setData] = useState({
+    title: "",
+    file: "",
+  });
+  const [fileURL, setFileURL] = useState("#");
+  const [isSubmitted, setIsSubmitted] = useState(false);
 
   const [myModal, setMyModal] = useState(false);
+
+  const createNote = () => {
+    const reqData = data;
+    axios
+      .post("http://localhost:8000/api/v1/uploadNote", reqData, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+        withCredentials: true,
+      })
+      .then((response) => {
+        console.log(response.data.success);
+      });
+  };
+  const updateData = (newData) => {
+    const { name, value, files } = newData;
+    if (name == "file" && files && files[0]) {
+      const noteFile = files[0];
+      console.log(noteFile);
+      setData((prevData) => ({
+        ...prevData,
+        [name]: noteFile,
+      }));
+      const url = URL.createObjectURL(noteFile);
+      setFileURL(url);
+    } else {
+      setData((prevData) => ({
+        ...prevData,
+        [name]: value,
+      }));
+    }
+  };
+  useEffect(() => {
+    const fetchNote = () => {
+      axios
+        .get("http://localhost:8000/api/v1/getAllNotes", {
+          headers: {
+            "Content-Type": "application/json",
+          },
+          withCredentials: true,
+        })
+        .then((response) => {
+          console.log(response.data.notes);
+          setNotes(response.data.notes);
+        });
+    };
+    fetchNote();
+    document.querySelector("#default-search").value = "";
+  }, [isSubmitted]);
+
+  const toggleSetIsSubmitted = () => {
+    let myBool = isSubmitted;
+    setIsSubmitted(!myBool);
+  };
   const toggleModal = () => {
     setMyModal(!myModal);
+  };
+  const searchNote = (e) => {
+    const reqData = { search: e.target.value };
+    console.log(reqData);
+    axios
+      .post("http://localhost:8000/api/v1/blog/search", reqData, {
+        headers: {
+          "Content-Type": "application/json",
+        },
+        withCredentials: true,
+      })
+      .then((response) => {
+        setNotes(response.data.note);
+      });
   };
   return (
     <>
@@ -77,13 +134,21 @@ export default function NotesPage(props) {
               id="default-search"
               className="ml-2 block w-full p-4 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark    :text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
               placeholder="Search Notes, Topics..."
+              // onChange={searchNote}
               required
             />
           </div>
         </div>
         <hr className="h-px bg-gray-200 border-1 dark:bg-gray-500" />
-        <NoteAdd modal={myModal} toggleModal={toggleModal} />
-        <NotesTable notesData={notesData} />
+        <NoteAdd
+          modal={myModal}
+          toggleModal={toggleModal}
+          updateData={updateData}
+          createNote={createNote}
+          isSubmitted={isSubmitted}
+          toggleSetIsSubmitted={toggleSetIsSubmitted}
+        />
+        <NotesTable notes={notes} />
       </div>
     </>
   );

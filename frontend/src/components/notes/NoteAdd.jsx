@@ -6,6 +6,23 @@ export default function NoteAdd(props) {
   const toggleModal = () => {
     props.toggleModal(!props.modal);
   };
+  const updateData = (e) => {
+    // console.log(e.target.value);
+    const myData = {
+      name: e.target.name,
+      value: e.target.value,
+      files: e.target.files,
+    };
+    props.updateData(myData);
+  };
+
+  const createNote = (e) => {
+    e.preventDefault();
+    props.createNote();
+    props.toggleSetIsSubmitted();
+    toggleModal();
+  };
+
   return (
     <div>
       <Modal
@@ -27,7 +44,7 @@ export default function NoteAdd(props) {
           },
         }}
       >
-        <form className="space-y-6" method="POST">
+        <form className="space-y-6" onSubmit={createNote}>
           <div>
             <label
               htmlFor="title"
@@ -42,6 +59,7 @@ export default function NoteAdd(props) {
                 type="text"
                 placeholder="Enter title here"
                 required
+                onChange={updateData}
                 style={{ paddingLeft: "6px" }}
                 className="block w-full rounded-md border-0 py-3 text-black shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-md sm:leading-6 dark:bg-gray-800"
               />
@@ -49,10 +67,7 @@ export default function NoteAdd(props) {
           </div>
 
           <div>
-            <label
-              htmlhtmlFor="file"
-              className="text-md font-medium leading-6 text-white flex"
-            >
+            <label className="text-md font-medium leading-6 text-white flex">
               Upload File
             </label>
             <div className="mt-2">
@@ -62,27 +77,8 @@ export default function NoteAdd(props) {
                 type="file"
                 accept=".pdf, .doc, .docx, .jpg, .jpeg, .png"
                 required
+                onChange={updateData}
                 className=""
-              />
-            </div>
-          </div>
-
-          <div>
-            <label
-              htmlFor="title"
-              className=" text-md font-medium leading-6 text-white flex "
-            >
-              Tags related to notes
-            </label>
-            <div className="mt-2">
-              <input
-                id="tags"
-                name="tags"
-                type="text"
-                placeholder="Enter tags here"
-                required
-                style={{ paddingLeft: "6px" }}
-                className="block w-full rounded-md border-0 py-3 text-black shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-md sm:leading-6 dark:bg-gray-800"
               />
             </div>
           </div>

@@ -11,7 +11,7 @@ import Profile from "./components/profile/Profile";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import axios from "axios";
 import { useDispatch } from "react-redux";
-
+import Home from "./components/home/Home";
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -22,25 +22,23 @@ function App() {
     setIsLoggedIn(!isLoggedIn);
   };
 
-  const loadUser =  () => {
+  const loadUser = () => {
     axios
-    .get("http://localhost:8000/api/v1/profilee/me", {
-      headers: {
-        "Content-Type": "application/json",
-      },
-      withCredentials: true,
-    })
-    .then((response) => {
-        dispatch({ type: "SET_USER" ,payload:response.data.user});
-        if(response.data.user)
-        setIsLoggedIn(true);
+      .get("http://localhost:8000/api/v1/profilee/me", {
+        headers: {
+          "Content-Type": "application/json",
+        },
+        withCredentials: true,
+      })
+      .then((response) => {
+        dispatch({ type: "SET_USER", payload: response.data.user });
+        if (response.data.user) setIsLoggedIn(true);
       });
-  }
+  };
 
-  useEffect(()=>{
-     loadUser()
-    
-  },[])
+  useEffect(() => {
+    loadUser();
+  }, []);
 
   return (
     <div className="flex flex-col min-h-screen">
@@ -49,10 +47,7 @@ function App() {
         <Nav toggleLogin={toggleLogin} isLoggedIn={isLoggedIn} />
         <main className="flex-grow">
           <Routes>
-            <Route
-              path="/"
-              element={<Home isLoggedIn={isLoggedIn} />}
-            />
+            <Route path="/" element={<Home isLoggedIn={isLoggedIn} />} />
             <Route
               path="/register"
               element={<Register isLoggedIn={isLoggedIn} />}
