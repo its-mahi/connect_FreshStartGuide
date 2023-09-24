@@ -39,6 +39,9 @@ const Nav = (props) => {
           </div>
           <div>
             <div className="hidden md:flex flex-wrap gap-0">
+            <div className="nav-titles nav-titles-ltr">
+                <Link to="/">Home</Link>
+              </div>
               <div className="nav-titles nav-titles-ltr">
                 <Link to="/profile">Profile</Link>
               </div>

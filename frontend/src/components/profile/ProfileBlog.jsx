@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import "/styles/Model.css";
 import "react-responsive-modal/styles.css";
 import { Modal } from "react-responsive-modal";
 import axios from "axios";

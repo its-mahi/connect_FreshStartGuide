@@ -50,6 +50,10 @@ function App() {
         <main className="flex-grow">
           <Routes>
             <Route
+              path="/"
+              element={<Home isLoggedIn={isLoggedIn} />}
+            />
+            <Route
               path="/register"
               element={<Register isLoggedIn={isLoggedIn} />}
             />
