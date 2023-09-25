@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { Navigate } from "react-router-dom";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 export default function Register() {
   const [data, setData] = useState({
@@ -28,7 +30,16 @@ export default function Register() {
         setIsRegistered(!isRegistered);
       })
       .catch((err) => {
-        console.log("Error Aayvi bhai", err);
+        toast.error("Error While Register", {
+          position: "top-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+        });
       });
   };
 
@@ -153,6 +164,19 @@ export default function Register() {
               >
                 Register
               </button>
+              <ToastContainer
+                position="top-right"
+                autoClose={5000}
+                hideProgressBar={false}
+                newestOnTop={false}
+                closeOnClick
+                rtl={false}
+                pauseOnFocusLoss
+                draggable
+                pauseOnHover
+                theme="light"
+              />
+              <ToastContainer />
             </div>
           </form>
 

@@ -3,9 +3,10 @@ import React, { useState, useEffect } from "react";
 import "../../styles/nav.css";
 import { Link } from "react-router-dom";
 import axios from "axios";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 const Nav = (props) => {
+
   const [isOpen, setIsOpen] = useState(false);
   const dispatch = useDispatch();
 
@@ -42,7 +43,7 @@ const Nav = (props) => {
                 <Link to="/">Home</Link>
               </div>
               <div className="nav-titles nav-titles-ltr">
-                <Link to="/profile">Profile</Link>
+                {true && <Link to="/profile">Profile</Link>}
               </div>
               <div className="nav-titles nav-titles-ltr">
                 <Link to="/query">

@@ -52,6 +52,7 @@ export default function QueryPage(props) {
             <a
               className="md:flex text-xl text-center text-black bg-blue-500 hover:shadow-lg hover:shadow-green-500/50 md:px-3 rounded-md items-center justify-center"
               href="http://localhost:9000"
+              target="_blank"
             >
               Add to list
             </a>
@@ -71,7 +72,7 @@ export default function QueryPage(props) {
               <div className="w-full md:w-1/2 lg:w-1/3 p-4">
                 <QueryRooms
                   title={item.topic}
-                  profile={item.user.avtar.url}
+                  profile={item.user.avtar?.url}
                   name={item.user.name}
                   roomLink={item.url}
                 />
