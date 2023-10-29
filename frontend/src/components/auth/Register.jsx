@@ -12,7 +12,7 @@ export default function Register() {
     avtar: "",
   });
   const [isRegistered, setIsRegistered] = useState(false);
-  const [photoURL, setPhotoURL] = useState("/public/profile.png");
+  const [photoURL, setPhotoURL] = useState("/profile.png");
   const registerUser = (e) => {
     e.preventDefault();
     console.log(data);
@@ -68,7 +68,7 @@ export default function Register() {
         <div className="sm:mx-auto sm:w-full sm:max-w-sm">
           <img
             className="mx-auto pl-5 h-16 w-auto"
-            src="/public/connect.png"
+            src="/connect.png"
             alt="Your Company"
           />
           <div className="mt-5">

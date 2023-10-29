@@ -30,7 +30,7 @@ export default function BlogCard(props) {
           <div className="flex items-start">
             <img
               className="w-8 mr-4 mb-3 rounded-full shadow-lg"
-              src="/public/profile.png"
+              src="/profile.png"
               alt="Bonnie image"
             />
             <h5 className="text-xl font-medium text-gray-900 dark:text-white">

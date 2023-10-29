@@ -34,7 +34,7 @@ const Nav = (props) => {
         <div className="nav">
           <div className="pl-0">
             <a href="#top">
-              <img src="../../public/connect.png" className="w-36" alt="" />
+              <img src="/connect.png" className="w-36" alt="" />
             </a>
           </div>
           <div>

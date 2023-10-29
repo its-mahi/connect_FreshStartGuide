@@ -58,7 +58,7 @@ export default function Login(props) {
         <div className="sm:mx-auto sm:w-full sm:max-w-sm">
           <img
             className="mx-auto pl-5 h-16 w-auto"
-            src="/public/connect.png"
+            src="/connect.png"
             alt="Your Company"
           />
           <div className="mt-5">
