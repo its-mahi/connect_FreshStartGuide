@@ -9,6 +9,7 @@ import Hitarth from "../../assets/hitarth.jpeg"
 import Kris from "../../assets/Kris.jpeg"
 import Mahipal from "../../assets/mahipal.jpeg"
 import Mandar from "../../assets/mandar.jpeg"
+import Raj from "../../assets/raj.jpeg"
 
 export default function Home() {
   const cardData = [
@@ -48,7 +49,7 @@ export default function Home() {
     },
     {
       name: "Raj Pansara",
-      imageSrc: "https://m.media-amazon.com/images/I/41jLBhDISxL.jpg",
+      imageSrc: Raj,
     },
   ];
 
