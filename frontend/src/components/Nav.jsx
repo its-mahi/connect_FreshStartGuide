@@ -43,7 +43,7 @@ const Nav = (props) => {
                 <Link to="/">Home</Link>
               </div>
               <div className="nav-titles nav-titles-ltr">
-                {true && <Link to="/profile">Profile</Link>}
+                {props.isLoggedIn && <Link to="/profile">Profile</Link>}
               </div>
               <div className="nav-titles nav-titles-ltr">
                 <Link to="/query">
