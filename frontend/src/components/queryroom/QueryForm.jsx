@@ -26,7 +26,7 @@ export default function QueryForm(props) {
     const reqData = data;
     console.log(reqData);
     axios
-      .post("http://localhost:8000/api/v1/submitlink", reqData, {
+      .post("https://connect-qbpn.onrender.com/api/v1/submitlink", reqData, {
         headers: {
           "Content-Type": "application/json",
         },

@@ -14,7 +14,7 @@ export default function QueryPage(props) {
   useEffect(() => {
     const fetchUrls = () => {
       axios
-        .get("http://localhost:8000/api/v1/allLink", {
+        .get("https://connect-qbpn.onrender.com/api/v1/allLink", {
           headers: {
             "Content-Type": "application/json",
           },

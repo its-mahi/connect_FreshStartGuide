@@ -20,7 +20,7 @@ export default function Register() {
     console.log(data);
     const reqData = data;
     axios
-      .post("http://localhost:8000/api/v1/register", reqData, {
+      .post("https://connect-qbpn.onrender.com/api/v1/register", reqData, {
         headers: {
           "Content-Type": "multipart/form-data",
         },

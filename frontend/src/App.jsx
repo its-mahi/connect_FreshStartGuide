@@ -25,7 +25,7 @@ function App() {
 
   const loadUser = () => {
     axios
-      .get("http://localhost:8000/api/v1/profilee/me", {
+      .get("https://connect-qbpn.onrender.com/api/v1/profilee/me", {
         headers: {
           "Content-Type": "application/json",
         },

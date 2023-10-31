@@ -16,7 +16,7 @@ export default function Login(props) {
     e.preventDefault();
     const reqData = data;
     axios
-      .post("http://localhost:8000/api/v1/login", reqData, {
+      .post("https://connect-qbpn.onrender.com/api/v1/login", reqData, {
         headers: {
           "Content-Type": "application/json",
         },

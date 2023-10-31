@@ -41,7 +41,7 @@ const BlogPage = (props) => {
     console.log(data);
     const reqData = data;
     axios
-      .post("http://localhost:8000/api/v1/createblog", reqData, {
+      .post("https://connect-qbpn.onrender.com/api/v1/createblog", reqData, {
         headers: {
           "Content-Type": "application/json",
         },
@@ -55,7 +55,7 @@ const BlogPage = (props) => {
   useEffect(() => {
     const fetchBlog = () => {
       axios
-        .get("http://localhost:8000/api/v1/blogs", {
+        .get("https://connect-qbpn.onrender.com/api/v1/blogs", {
           headers: {
             "Content-Type": "application/json",
           },
@@ -79,7 +79,7 @@ const BlogPage = (props) => {
     const reqData = { search: e.target.value };
     console.log(reqData);
     axios
-      .post("http://localhost:8000/api/v1/blog/search", reqData, {
+      .post("https://connect-qbpn.onrender.com/api/v1/blog/search", reqData, {
         headers: {
           "Content-Type": "application/json",
         },

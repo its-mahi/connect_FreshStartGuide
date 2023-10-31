@@ -20,7 +20,7 @@ export default function NotesPage(props) {
   const createNote = () => {
     const reqData = data;
     axios
-      .post("http://localhost:8000/api/v1/uploadNote", reqData, {
+      .post("https://connect-qbpn.onrender.com/api/v1/uploadNote", reqData, {
         headers: {
           "Content-Type": "multipart/form-data",
         },
@@ -51,7 +51,7 @@ export default function NotesPage(props) {
   useEffect(() => {
     const fetchNote = () => {
       axios
-        .get("http://localhost:8000/api/v1/getAllNotes", {
+        .get("https://connect-qbpn.onrender.com/api/v1/getAllNotes", {
           headers: {
             "Content-Type": "application/json",
           },
@@ -77,7 +77,7 @@ export default function NotesPage(props) {
     const reqData = { search: e.target.value };
     console.log(reqData);
     axios
-      .post("http://localhost:8000/api/v1/blog/search", reqData, {
+      .post("https://connect-qbpn.onrender.com/api/v1/blog/search", reqData, {
         headers: {
           "Content-Type": "application/json",
         },

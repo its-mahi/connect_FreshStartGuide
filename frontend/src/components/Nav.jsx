@@ -15,7 +15,7 @@ const Nav = (props) => {
   }
 
   const logout = async () => {
-    const response = await axios.post("http://localhost:8000/api/v1/logout", {
+    const response = await axios.post("https://connect-qbpn.onrender.com/api/v1/logout", {
       headers: {
         "Content-Type": "application/json",
       },

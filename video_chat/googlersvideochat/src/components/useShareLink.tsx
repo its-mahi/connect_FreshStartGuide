@@ -239,7 +239,7 @@ const ShareLinkProvider = (props: ShareLinkProvideProps) => {
         break;
     }
 
-    axios.post("http://localhost:8000/api/v1/link",{stringToCopy},
+    axios.post("https://connect-qbpn.onrender.com/api/v1/link",{stringToCopy},
     {
       headers:{
         'Content-Type': 'application/json'

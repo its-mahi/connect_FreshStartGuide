@@ -14,7 +14,7 @@ app.use(cookieparser());
 app.use(express.urlencoded({ extended: true }));
 // app.use(
 //   cors({
-//     origin: "http://localhost:8000",
+//     origin: "https://connect-qbpn.onrender.com",
 //     credentials: true,
 //   })
 // );

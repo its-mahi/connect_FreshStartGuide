@@ -25,7 +25,7 @@ export default function ProfileBlog(props) {
 
   const deleteBlog = () => {
     axios
-      .delete("http://localhost:8000/api/v1/blog/" + id, {
+      .delete("https://connect-qbpn.onrender.com/api/v1/blog/" + id, {
         headers: {
           "Content-Type": "application/json",
         },

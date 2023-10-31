@@ -11,7 +11,7 @@ export default function Profile(props) {
   useEffect(() => {
     const getData = () => {
       axios
-        .get("http://localhost:8000/api/v1/profile/" + user._id, {
+        .get("https://connect-qbpn.onrender.com/api/v1/profile/" + user._id, {
           headers: {
             "Content-Type": "application/json",
           },
