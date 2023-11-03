@@ -4,9 +4,12 @@ import NoteAdd from "./NoteAdd";
 import NotesTable from "./NotesTable";
 import { Navigate } from "react-router-dom";
 import axios from "axios";
+import { ThreeDots } from "react-loader-spinner";
+
 
 export default function NotesPage(props) {
   const [notes, setNotes] = useState([]);
+  const [loader, setLoader] = useState(false);
 
   const [data, setData] = useState({
     title: "",
@@ -27,14 +30,14 @@ export default function NotesPage(props) {
         withCredentials: true,
       })
       .then((response) => {
-        console.log(response.data.success);
+        // console.log(response.data.success);
       });
   };
   const updateData = (newData) => {
     const { name, value, files } = newData;
     if (name == "file" && files && files[0]) {
       const noteFile = files[0];
-      console.log(noteFile);
+      // console.log(noteFile);
       setData((prevData) => ({
         ...prevData,
         [name]: noteFile,
@@ -50,6 +53,8 @@ export default function NotesPage(props) {
   };
   useEffect(() => {
     const fetchNote = () => {
+      setLoader(true);
+
       axios
         .get("https://connect-qbpn.onrender.com/api/v1/getAllNotes", {
           headers: {
@@ -58,7 +63,9 @@ export default function NotesPage(props) {
           withCredentials: true,
         })
         .then((response) => {
-          console.log(response.data.notes);
+          // console.log(response.data.notes);
+          setLoader(false);
+
           setNotes(response.data.notes);
         });
     };
@@ -75,7 +82,7 @@ export default function NotesPage(props) {
   };
   const searchNote = (e) => {
     const reqData = { search: e.target.value };
-    console.log(reqData);
+    // console.log(reqData);
     axios
       .post("https://connect-qbpn.onrender.com/api/v1/blog/search", reqData, {
         headers: {
@@ -140,6 +147,23 @@ export default function NotesPage(props) {
           </div>
         </div>
         <hr className="h-px bg-gray-200 border-1 dark:bg-gray-500" />
+        <div style={{
+          position: 'fixed',
+          top: '50%',
+          left: '50%',
+          transform: 'translate(-50%, -50%)',
+        }}>
+          <ThreeDots
+            height="100"
+            width="100"
+            radius="7"
+            color="#4fa94d"
+            ariaLabel="three-dots-loading"
+            wrapperStyle={{}}
+            wrapperClassName=""
+            visible={loader}
+          />
+        </div>
         <NoteAdd
           modal={myModal}
           toggleModal={toggleModal}

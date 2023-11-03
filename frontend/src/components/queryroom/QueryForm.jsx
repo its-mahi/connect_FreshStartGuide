@@ -24,7 +24,7 @@ export default function QueryForm(props) {
   const handleSubmit = (e) => {
     e.preventDefault();
     const reqData = data;
-    console.log(reqData);
+    // console.log(reqData);
     axios
       .post("https://connect-qbpn.onrender.com/api/v1/submitlink", reqData, {
         headers: {
@@ -33,7 +33,7 @@ export default function QueryForm(props) {
         withCredentials: true,
       })
       .then((response) => {
-        console.log(response.data);
+        // console.log(response.data);
       });
   };
 

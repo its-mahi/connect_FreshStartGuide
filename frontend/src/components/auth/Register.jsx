@@ -17,7 +17,7 @@ export default function Register() {
   const [photoURL, setPhotoURL] = useState("/profile.png");
   const registerUser = (e) => {
     e.preventDefault();
-    console.log(data);
+    // console.log(data);
     const reqData = data;
     axios
       .post("https://connect-qbpn.onrender.com/api/v1/register", reqData, {
@@ -27,7 +27,7 @@ export default function Register() {
         withCredentials: true,
       })
       .then((response) => {
-        console.log(response.data.success);
+        // console.log(response.data.success);
         // console.log(response);
         setIsRegistered(!isRegistered);
       })

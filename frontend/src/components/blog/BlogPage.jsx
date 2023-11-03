@@ -7,10 +7,12 @@ import { tabScrollButtonClasses } from "@mui/material";
 import { Navigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 initTE({ Ripple });
+import { ThreeDots, TailSpin } from "react-loader-spinner";
 
 const BlogPage = (props) => {
-  console.log("called Blog Page");
+  // console.log("called Blog Page");
   const [blogs, setBlogs] = useState([]);
+  const [loader, setLoader] = useState(false);
   const [data, setData] = useState({
     title: "",
     blog: "",
@@ -38,7 +40,7 @@ const BlogPage = (props) => {
   };
 
   const createBlog = () => {
-    console.log(data);
+    // console.log(data);
     const reqData = data;
     axios
       .post("https://connect-qbpn.onrender.com/api/v1/createblog", reqData, {
@@ -48,12 +50,13 @@ const BlogPage = (props) => {
         withCredentials: true,
       })
       .then((response) => {
-        console.log(response.data.success);
+        // console.log(response.data.success);
       });
   };
 
   useEffect(() => {
     const fetchBlog = () => {
+      setLoader(true);
       axios
         .get("https://connect-qbpn.onrender.com/api/v1/blogs", {
           headers: {
@@ -62,7 +65,8 @@ const BlogPage = (props) => {
           withCredentials: true,
         })
         .then((response) => {
-          console.log(response.data.blogs);
+          // console.log(response.data.blogs);
+          setLoader(false);
           setBlogs(response.data.blogs);
         });
     };
@@ -77,7 +81,7 @@ const BlogPage = (props) => {
 
   const searchBlog = (e) => {
     const reqData = { search: e.target.value };
-    console.log(reqData);
+    // console.log(reqData);
     axios
       .post("https://connect-qbpn.onrender.com/api/v1/blog/search", reqData, {
         headers: {
@@ -86,9 +90,9 @@ const BlogPage = (props) => {
         withCredentials: true,
       })
       .then((response) => {
-        console.log(response.data.blog);
+        // console.log(response.data.blog);
         setBlogs(response.data.blog);
-        console.log(blogs);
+        // console.log(blogs);
       });
   };
 
@@ -157,6 +161,7 @@ const BlogPage = (props) => {
           </div>
         </div>
 
+
         <hr className="h-px mt-5 bg-gray-200 border-1 dark:bg-gray-500" />
         <BlogAdd
           modal={myModal}
@@ -166,9 +171,29 @@ const BlogPage = (props) => {
           isSubmitted={isSubmitted}
           toggleSetIsSubmitted={toggleSetIsSubmitted}
         />
+
+        <div style={{
+          position: 'fixed',
+          top: '50%',
+          left: '50%',
+          transform: 'translate(-50%, -50%)',
+        }}>
+          <ThreeDots
+            height="100"
+            width="100"
+            radius="7"
+            color="#4fa94d"
+            ariaLabel="three-dots-loading"
+            wrapperStyle={{}}
+            wrapperClassName=""
+            visible={loader}
+          />
+        </div>
+
+
         <div>
           {blogs.map((blog, i) => {
-            console.log(blog.title);
+            {/* console.log(blog.title); */}
             return (
               <BlogCard
                 key={i}

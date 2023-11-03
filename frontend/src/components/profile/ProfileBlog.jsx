@@ -32,11 +32,11 @@ export default function ProfileBlog(props) {
         withCredentials: true,
       })
       .then((response) => {
-        console.log(response.data.message);
+        // console.log(response.data.message);
         props.toggleToggler();
       })
       .catch((err) => {
-        console.log("Error Aayvi bhai" + err.message);
+        console.log("Error" + err.message);
       });
   };
 

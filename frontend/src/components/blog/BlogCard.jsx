@@ -10,7 +10,7 @@ export default function BlogCard(props) {
   const formattedString = blogdata.replace(/ /g, "\u00A0");
   const blogdate = props.createdAt;
   const blogtitle = props.title;
-  console.log("in BlogCard" + props.title);
+  // console.log("in BlogCard" + props.title);
   const toggleModal = () => {
     setModal(!modal);
   };

@@ -21,7 +21,7 @@ export default function QueryPage(props) {
           withCredentials: true,
         })
         .then((response) => {
-          console.log(response.data.links);
+          // console.log(response.data.links);
           setUrls(response.data.links);
         });
     };
@@ -66,6 +66,11 @@ export default function QueryPage(props) {
         <h2 className="text-white text-xl m-3">
           Ongoing Rooms , click to join it.
         </h2>
+
+        <div className="text-center text-white font-bold text-4xl mt-20">
+          This page is under maintenance. Please check back later.
+        </div>
+
         <div className="flex flex-wrap ">
           {urls.map((item, i) => {
             return (

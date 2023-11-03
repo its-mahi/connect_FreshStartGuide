@@ -21,7 +21,7 @@ const Nav = (props) => {
       },
       withCredentials: true,
     });
-    console.log("logout res " + response.success);
+    // console.log("logout res " + response.success);
     dispatch({
       type: "CLEAR_USER",
     });
@@ -47,7 +47,7 @@ const Nav = (props) => {
               </div>
               <div className="nav-titles nav-titles-ltr">
                 <Link to="/query">
-                QueryRoom
+                  QueryRoom
                 </Link>
               </div>
 
@@ -85,18 +85,26 @@ const Nav = (props) => {
               </button>
               {isOpen && (
                 <div className="dropdown-menu nav-dropdown">
-                  <a href="#" className="nav-dropdown-titles">
+                  <Link to="/" className="nav-dropdown-titles">Home</Link>
+                  <Link to="/query" className="nav-dropdown-titles">
                     QueryRoom
-                  </a>
-                  <a href="#" className="nav-dropdown-titles">
+                  </Link>
+                  <Link to="/blogs" className="nav-dropdown-titles">
                     Blogs
-                  </a>
-                  <a href="#" className="nav-dropdown-titles">
+                  </Link>
+                  <Link to="/notes" className="nav-dropdown-titles">
                     Notes
-                  </a>
-                  <a href="#" className="nav-dropdown-titles">
+                  </Link>
+                  {!props.isLoggedIn && (
+                    <Link to="/login" className="nav-dropdown-titles">Login</Link>
+                  )}
+                  {!props.isLoggedIn && (
+                    <Link to="/register" className="nav-dropdown-titles">Register</Link>
+                  )}
+                  {props.isLoggedIn && <Link to="/profile" className="nav-dropdown-titles">Profile</Link>}
+                  {props.isLoggedIn && (<div className="nav-dropdown-titles" onClick={logout}>
                     Logout
-                  </a>
+                  </div>)}
                 </div>
               )}
             </div>

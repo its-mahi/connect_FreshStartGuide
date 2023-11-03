@@ -29,7 +29,7 @@ const particlesConfig =
     },
     detectRetina: true,
     duration: 0,
-    fpsLimit: 120,
+    fpsLimit: 200,
     interactivity: {
         detectsOn: "window",
         events: {
@@ -61,7 +61,7 @@ const particlesConfig =
             trail: {
                 delay: 1,
                 pauseOnStop: false,
-                quantity: 1
+                quantity: 0.5
             },
             attract: {
                 distance: 200,
@@ -541,7 +541,8 @@ const particlesConfig =
     pauseOnBlur: true,
     pauseOnOutsideViewport: true,
     responsive: [],
-    smooth: false,
+    smooth: true,
+    // smooth: false,
     style: {},
     themes: [],
     zLayers: 100,
