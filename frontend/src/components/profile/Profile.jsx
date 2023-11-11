@@ -17,13 +17,14 @@ export default function Profile(props) {
     const getData = () => {
       setLoader(true);
       axios
-        .get("https://connect-qbpn.onrender.com/api/v1/profile/" + user._id, {
-          headers: {
-            "Content-Type": "application/json",
-          },
-          withCredentials: true,
-        })
-        .then((response) => {
+      .get("https://connect-qbpn.onrender.com/api/v1/profile/" + user._id, {
+        headers: {
+          "Content-Type": "application/json",
+        },
+        withCredentials: true,
+      })
+      .then((response) => {
+          // console.log(user._id);
           setLoader(false);
           setBlogs(response.data.user.blogs);
         })
@@ -48,7 +49,7 @@ export default function Profile(props) {
 
       <div>
         <div className="p-4 md:p-8 lg:p-16 ">
-          <div className=" mt-8 md:mt-24 bg-gray-800 rounded-md bg-clip-padding backdrop-filter backdrop-blur-sm bg-opacity-80 border border-gray-100 p-10 shadow-[0_0px_25px_rgba(8,_112,_184,_0.7)] md:p-8">
+          <div className=" mt-8 md:mt-24 bg-gray-800 rounded-md bg-clip-padding backdrop-filter backdrop-blur-sm bg-opacity-80 border border-gray-100 p-10 shadow-[0_0px_5px_rgba(8,_140,_150,_0.7)] md:p-8">
             <div className="grid grid-cols-1 md:grid-cols-3">
 
               <div className="order-2 md:order-1 text-center md:mt-4 mt-10 ">

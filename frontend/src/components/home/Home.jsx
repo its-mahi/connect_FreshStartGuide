@@ -5,11 +5,11 @@ import videoChat from "../../assets/video_chat.jpg";
 import noteShare from "../../assets/notes.jpeg";
 import { TypeAnimation } from "react-type-animation";
 import DeveloperInfo from "./DeveloperInfo";
-import Hitarth from "../../assets/hitarth.jpeg"
-import Kris from "../../assets/Kris.jpeg"
-import Mahipal from "../../assets/mahipal.jpeg"
-import Mandar from "../../assets/mandar.jpeg"
-import Raj from "../../assets/raj.jpeg"
+import Hitarth from "../../assets/hitarth.jpeg";
+import Kris from "../../assets/Kris.jpeg";
+import Mahipal from "../../assets/mahipal.jpeg";
+import Mandar from "../../assets/mandar.jpeg";
+import Raj from "../../assets/raj.jpeg";
 
 export default function Home() {
   const cardData = [
@@ -92,6 +92,7 @@ export default function Home() {
       <hr className="h-px bg-gray-200 border-1 dark:bg-gray-500 mt-24 mb-10" />
 
       {/* Developer info */}
+
       <div>
         <h2 className="text-white text-3xl mb-14">
           Meet the <span className="text-blue-600">Developers</span>

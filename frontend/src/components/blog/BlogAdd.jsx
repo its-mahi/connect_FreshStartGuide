@@ -1,6 +1,8 @@
 import React from "react";
 import "react-responsive-modal/styles.css";
 import { Modal } from "react-responsive-modal";
+import { Navigate } from "react-router-dom";
+
 
 const BlogAdd = (props) => {
   const toggleModal = () => {
@@ -20,6 +22,9 @@ const BlogAdd = (props) => {
   };
 
   return (
+    <>
+      {/* {!props.isLoggedIn && <Navigate to="/login" />} */}
+
     <Modal
       open={props.modal}
       onClose={toggleModal}
@@ -107,6 +112,7 @@ const BlogAdd = (props) => {
         </div>
       </form>
     </Modal>
+    </>
   );
 };
 

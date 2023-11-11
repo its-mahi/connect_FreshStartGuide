@@ -8,6 +8,8 @@ import { Navigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 initTE({ Ripple });
 import { ThreeDots, TailSpin } from "react-loader-spinner";
+import LoginAlert from "../auth/LoginAlert"
+// import BlogEditor from "./BlogEditor";
 
 const BlogPage = (props) => {
   // console.log("called Blog Page");
@@ -20,8 +22,13 @@ const BlogPage = (props) => {
   });
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [myModal, setMyModal] = useState(false);
+  const [loginModal, setLoginModal] = useState(false);
   const toggleModal = () => {
-    setMyModal(!myModal);
+    if (!props.isLoggedIn) {
+      setLoginModal(!loginModal);
+    } else {
+      setMyModal(!myModal);
+    }
   };
   const updateData = (newData) => {
     const { name, value } = newData;
@@ -98,7 +105,7 @@ const BlogPage = (props) => {
 
   return (
     <>
-      {!props.isLoggedIn && <Navigate to="/login" />}
+      {/* {!props.isLoggedIn && <Navigate to="/login" />} */}
 
       <div className="mt-24">
         <div className="text-md mb-6 text-2xl md:hidden font-extrabold text-white">
@@ -124,9 +131,9 @@ const BlogPage = (props) => {
               stroke="currentColor"
             >
               <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
                 d="M12 6v6m0 0v6m0-6h6m-6 0H6"
               ></path>
             </svg>
@@ -143,9 +150,9 @@ const BlogPage = (props) => {
               >
                 <path
                   stroke="currentColor"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
                   d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"
                 />
               </svg>
@@ -161,7 +168,6 @@ const BlogPage = (props) => {
           </div>
         </div>
 
-
         <hr className="h-px mt-5 bg-gray-200 border-1 dark:bg-gray-500" />
         <BlogAdd
           modal={myModal}
@@ -172,12 +178,20 @@ const BlogPage = (props) => {
           toggleSetIsSubmitted={toggleSetIsSubmitted}
         />
 
-        <div style={{
-          position: 'fixed',
-          top: '50%',
-          left: '50%',
-          transform: 'translate(-50%, -50%)',
-        }}>
+        <LoginAlert
+          modal={loginModal}
+          toggleModal={toggleModal}
+
+        />
+
+        <div
+          style={{
+            position: "fixed",
+            top: "50%",
+            left: "50%",
+            transform: "translate(-50%, -50%)",
+          }}
+        >
           <ThreeDots
             height="100"
             width="100"
@@ -190,10 +204,11 @@ const BlogPage = (props) => {
           />
         </div>
 
-
         <div>
           {blogs.map((blog, i) => {
-            {/* console.log(blog.title); */}
+            {
+              /* console.log(blog.title); */
+            }
             return (
               <BlogCard
                 key={i}
@@ -201,6 +216,7 @@ const BlogPage = (props) => {
                 description={blog.description}
                 tags={blog.tags}
                 user={blog.author ? blog.author.name : "No-Name"}
+                userAvtar={blog.author ? blog.author.avtar : ""}
                 createdAt={blog.createdAt}
               />
             );
@@ -218,6 +234,8 @@ const BlogPage = (props) => {
         <div className="h-48 w-full bg-white"></div>
       </div> */}
       </div>
+
+      {/* <BlogEditor/> */}
     </>
   );
 };

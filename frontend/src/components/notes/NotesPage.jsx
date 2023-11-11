@@ -5,6 +5,7 @@ import NotesTable from "./NotesTable";
 import { Navigate } from "react-router-dom";
 import axios from "axios";
 import { ThreeDots } from "react-loader-spinner";
+import LoginAlert from "../auth/LoginAlert"
 
 
 export default function NotesPage(props) {
@@ -77,8 +78,13 @@ export default function NotesPage(props) {
     let myBool = isSubmitted;
     setIsSubmitted(!myBool);
   };
+  const [loginModal, setLoginModal] = useState(false);
   const toggleModal = () => {
-    setMyModal(!myModal);
+    if (!props.isLoggedIn) {
+      setLoginModal(!loginModal);
+    } else {
+      setMyModal(!myModal);
+    }
   };
   const searchNote = (e) => {
     const reqData = { search: e.target.value };
@@ -96,7 +102,7 @@ export default function NotesPage(props) {
   };
   return (
     <>
-      {!props.isLoggedIn && <Navigate to="/login" />}
+      {/* {!props.isLoggedIn && <Navigate to="/login" />} */}
 
       <div className="mt-24">
         <div className="text-md mb-6 text-2xl md:hidden font-extrabold text-white">
@@ -129,9 +135,9 @@ export default function NotesPage(props) {
               >
                 <path
                   stroke="currentColor"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
                   d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"
                 />
               </svg>
@@ -171,6 +177,11 @@ export default function NotesPage(props) {
           createNote={createNote}
           isSubmitted={isSubmitted}
           toggleSetIsSubmitted={toggleSetIsSubmitted}
+        />
+        <LoginAlert
+          modal={loginModal}
+          toggleModal={toggleModal}
+
         />
         <NotesTable notes={notes} />
       </div>

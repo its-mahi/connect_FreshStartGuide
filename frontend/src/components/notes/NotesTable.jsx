@@ -8,7 +8,17 @@ export default function NotesTable(props) {
         <td className="px-6 py-3 sm:px-2 whitespace-nowrap">{i}</td>
         <td className="px-6 py-4 sm:px-2 whitespace-nowrap">{info.title}</td>
         <td className="px-6 py-4 sm:px-2 whitespace-nowrap">
-          {info.author.name}
+         
+          <div className="flex items-start justify-center">
+            <img
+              className="w-10 mr-4  rounded-full shadow-lg"
+              src={info.author.avtar.url}
+              alt="Bonnie image"
+            />
+            <h5 className=" font-medium text-gray-900 dark:text-white">
+              {info.author.name}
+            </h5>
+          </div>
         </td>
         <td className="px-6 py-4 sm:px-2 whitespace-nowrap">
           <a href={info.notes.url} target="_blank">
