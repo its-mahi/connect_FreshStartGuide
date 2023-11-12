@@ -91,7 +91,8 @@ export default function ProfileBlog(props) {
 
           <div className="text-white font-googlers text-lg leading-relaxed tracking-wide">
             {/* Your long content here */}
-            {blogdata}
+            <pre style={{ whiteSpace: 'pre-wrap' }}>{blogdata}</pre>
+
             {/* {AiFillDelete}  */}
           </div>
 

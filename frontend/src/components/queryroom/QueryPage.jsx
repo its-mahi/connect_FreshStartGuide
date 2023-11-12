@@ -47,14 +47,14 @@ export default function QueryPage(props) {
               className="md:flex mx-5 text-xl text-center text-black bg-green-500 hover:shadow-lg hover:shadow-green-500/50 md:px-3 rounded-md items-center justify-center"
               onClick={toggleModal}
             >
-              Create room
+              Add Room
             </button>
             <a
               className="md:flex text-xl text-center text-black bg-blue-500 hover:shadow-lg hover:shadow-green-500/50 md:px-3 rounded-md items-center justify-center"
-              href="http://localhost:9000"
+              href="https://meetbygooglers.vercel.app/"
               target="_blank"
             >
-              Add to list
+              Create Room 
             </a>
           </div>
           <div className="text-md md:text-3xl hidden md:block font-bold text-white t">
@@ -67,9 +67,9 @@ export default function QueryPage(props) {
           Ongoing Rooms , click to join it.
         </h2>
 
-        <div className="text-center text-white font-bold text-4xl mt-20">
+        {/* <div className="text-center text-white font-bold text-4xl mt-20">
           This page is under maintenance. Please check back later.
-        </div>
+        </div> */}
 
         <div className="flex flex-wrap ">
           {urls.map((item, i) => {

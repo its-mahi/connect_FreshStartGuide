@@ -10,6 +10,7 @@ export default function BlogCard(props) {
   const blogdate = props.createdAt;
   const blogtitle = props.title;
   const avtar = props.userAvtar.url;
+  const [showFullText, setShowFullText] = useState(false);
   // console.log("in BlogCard" + props.title);
   const toggleModal = () => {
     setModal(!modal);
@@ -86,7 +87,7 @@ export default function BlogCard(props) {
 
           <div className="text-white font-googlers text-lg leading-relaxed tracking-wide">
             {/* Your long content here */}
-            {blogdata}
+            <pre style={{ whiteSpace: 'pre-wrap' }}>{blogdata}</pre>
             {/* {formattedString} */}
           </div>
 
