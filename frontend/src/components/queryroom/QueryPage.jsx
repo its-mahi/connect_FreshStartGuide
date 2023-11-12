@@ -3,9 +3,13 @@ import { Navigate } from "react-router-dom";
 import QueryForm from "./QueryForm";
 import QueryRooms from "./QueryRooms";
 import axios from "axios";
+import { ThreeDots } from "react-loader-spinner";
+
 
 export default function QueryPage(props) {
   const [myModal, setMyModal] = useState(false);
+  const [loader, setLoader] = useState(false);
+
   const toggleModal = () => {
     setMyModal(!myModal);
   };
@@ -13,6 +17,8 @@ export default function QueryPage(props) {
   const [isSubmitted, setIsSubmitted] = useState(false);
   useEffect(() => {
     const fetchUrls = () => {
+      setLoader(true);
+
       axios
         .get("https://connect-qbpn.onrender.com/api/v1/allLink", {
           headers: {
@@ -22,6 +28,7 @@ export default function QueryPage(props) {
         })
         .then((response) => {
           // console.log(response.data.links);
+          setLoader(false);
           setUrls(response.data.links);
         });
     };
@@ -70,6 +77,27 @@ export default function QueryPage(props) {
         {/* <div className="text-center text-white font-bold text-4xl mt-20">
           This page is under maintenance. Please check back later.
         </div> */}
+
+        <div
+          style={{
+            position: "fixed",
+            top: "50%",
+            left: "50%",
+            transform: "translate(-50%, -50%)",
+          }}
+        >
+          <ThreeDots
+            height="100"
+            width="100"
+            radius="7"
+            color="#4fa94d"
+            ariaLabel="three-dots-loading"
+            wrapperStyle={{}}
+            wrapperClassName=""
+            visible={loader}
+          />
+        </div>
+
 
         <div className="flex flex-wrap ">
           {urls.map((item, i) => {
