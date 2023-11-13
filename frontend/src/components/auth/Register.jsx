@@ -3,6 +3,8 @@ import axios from "axios";
 import { Navigate } from "react-router-dom";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { Link } from "react-router-dom";
+
 
 export default function Register() {
   const [data, setData] = useState({
@@ -12,20 +14,20 @@ export default function Register() {
     avtar: "",
   });
   const [isRegistered, setIsRegistered] = useState(false);
-  const [photoURL, setPhotoURL] = useState("/public/profile.png");
+  const [photoURL, setPhotoURL] = useState("/profile.png");
   const registerUser = (e) => {
     e.preventDefault();
-    console.log(data);
+    // console.log(data);
     const reqData = data;
     axios
-      .post("http://localhost:8000/api/v1/register", reqData, {
+      .post("https://connect-qbpn.onrender.com/api/v1/register", reqData, {
         headers: {
           "Content-Type": "multipart/form-data",
         },
         withCredentials: true,
       })
       .then((response) => {
-        console.log(response.data.success);
+        // console.log(response.data.success);
         // console.log(response);
         setIsRegistered(!isRegistered);
       })
@@ -68,7 +70,7 @@ export default function Register() {
         <div className="sm:mx-auto sm:w-full sm:max-w-sm">
           <img
             className="mx-auto pl-5 h-16 w-auto"
-            src="/public/connect.png"
+            src="/connect.png"
             alt="Your Company"
           />
           <div className="mt-5">
@@ -182,13 +184,13 @@ export default function Register() {
 
           <p className="mt-10 text-center text-sm text-gray-500">
             Already member?
-            <a
-              href="#"
+            <Link
+              to="/login"
               className="font-semibold leading-6 text-indigo-600 hover:text-indigo-500"
             >
               {" "}
               Login here
-            </a>
+            </Link>
           </p>
         </div>
       </div>

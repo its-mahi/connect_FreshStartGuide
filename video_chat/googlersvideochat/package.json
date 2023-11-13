@@ -165,5 +165,5 @@
   "engines": {
     "node": ">=16"
   },
-  "proxy":"http://localhost:8000"
+  "proxy":"https://connect-qbpn.onrender.com"
 }

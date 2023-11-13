@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import axios from "axios";
 import { Navigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
+import { Link } from "react-router-dom";
+
 
 export default function Login(props) {
   const dispatch = useDispatch();
@@ -14,7 +16,7 @@ export default function Login(props) {
     e.preventDefault();
     const reqData = data;
     axios
-      .post("http://localhost:8000/api/v1/login", reqData, {
+      .post("https://connect-qbpn.onrender.com/api/v1/login", reqData, {
         headers: {
           "Content-Type": "application/json",
         },
@@ -58,7 +60,7 @@ export default function Login(props) {
         <div className="sm:mx-auto sm:w-full sm:max-w-sm">
           <img
             className="mx-auto pl-5 h-16 w-auto"
-            src="/public/connect.png"
+            src="/connect.png"
             alt="Your Company"
           />
           <div className="mt-5">
@@ -134,13 +136,13 @@ export default function Login(props) {
 
           <p className="mt-10 text-center text-sm text-gray-500">
             Not registered yet?
-            <a
-              href="#"
+            <Link
+              to="/register"
               className="font-semibold leading-6 text-indigo-600 hover:text-indigo-500"
             >
               {" "}
               Register here
-            </a>
+            </Link>
           </p>
         </div>
       </div>

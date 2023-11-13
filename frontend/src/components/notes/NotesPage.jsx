@@ -4,9 +4,13 @@ import NoteAdd from "./NoteAdd";
 import NotesTable from "./NotesTable";
 import { Navigate } from "react-router-dom";
 import axios from "axios";
+import { ThreeDots } from "react-loader-spinner";
+import LoginAlert from "../auth/LoginAlert"
+
 
 export default function NotesPage(props) {
   const [notes, setNotes] = useState([]);
+  const [loader, setLoader] = useState(false);
 
   const [data, setData] = useState({
     title: "",
@@ -20,21 +24,21 @@ export default function NotesPage(props) {
   const createNote = () => {
     const reqData = data;
     axios
-      .post("http://localhost:8000/api/v1/uploadNote", reqData, {
+      .post("https://connect-qbpn.onrender.com/api/v1/uploadNote", reqData, {
         headers: {
           "Content-Type": "multipart/form-data",
         },
         withCredentials: true,
       })
       .then((response) => {
-        console.log(response.data.success);
+        // console.log(response.data.success);
       });
   };
   const updateData = (newData) => {
     const { name, value, files } = newData;
     if (name == "file" && files && files[0]) {
       const noteFile = files[0];
-      console.log(noteFile);
+      // console.log(noteFile);
       setData((prevData) => ({
         ...prevData,
         [name]: noteFile,
@@ -50,15 +54,19 @@ export default function NotesPage(props) {
   };
   useEffect(() => {
     const fetchNote = () => {
+      setLoader(true);
+
       axios
-        .get("http://localhost:8000/api/v1/getAllNotes", {
+        .get("https://connect-qbpn.onrender.com/api/v1/getAllNotes", {
           headers: {
             "Content-Type": "application/json",
           },
           withCredentials: true,
         })
         .then((response) => {
-          console.log(response.data.notes);
+          // console.log(response.data.notes);
+          setLoader(false);
+
           setNotes(response.data.notes);
         });
     };
@@ -70,14 +78,19 @@ export default function NotesPage(props) {
     let myBool = isSubmitted;
     setIsSubmitted(!myBool);
   };
+  const [loginModal, setLoginModal] = useState(false);
   const toggleModal = () => {
-    setMyModal(!myModal);
+    if (!props.isLoggedIn) {
+      setLoginModal(!loginModal);
+    } else {
+      setMyModal(!myModal);
+    }
   };
   const searchNote = (e) => {
     const reqData = { search: e.target.value };
-    console.log(reqData);
+    // console.log(reqData);
     axios
-      .post("http://localhost:8000/api/v1/blog/search", reqData, {
+      .post("https://connect-qbpn.onrender.com/api/v1/blog/search", reqData, {
         headers: {
           "Content-Type": "application/json",
         },
@@ -89,7 +102,7 @@ export default function NotesPage(props) {
   };
   return (
     <>
-      {!props.isLoggedIn && <Navigate to="/login" />}
+      {/* {!props.isLoggedIn && <Navigate to="/login" />} */}
 
       <div className="mt-24">
         <div className="text-md mb-6 text-2xl md:hidden font-extrabold text-white">
@@ -122,9 +135,9 @@ export default function NotesPage(props) {
               >
                 <path
                   stroke="currentColor"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
                   d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"
                 />
               </svg>
@@ -140,6 +153,23 @@ export default function NotesPage(props) {
           </div>
         </div>
         <hr className="h-px bg-gray-200 border-1 dark:bg-gray-500" />
+        <div style={{
+          position: 'fixed',
+          top: '50%',
+          left: '50%',
+          transform: 'translate(-50%, -50%)',
+        }}>
+          <ThreeDots
+            height="100"
+            width="100"
+            radius="7"
+            color="#4fa94d"
+            ariaLabel="three-dots-loading"
+            wrapperStyle={{}}
+            wrapperClassName=""
+            visible={loader}
+          />
+        </div>
         <NoteAdd
           modal={myModal}
           toggleModal={toggleModal}
@@ -147,6 +177,11 @@ export default function NotesPage(props) {
           createNote={createNote}
           isSubmitted={isSubmitted}
           toggleSetIsSubmitted={toggleSetIsSubmitted}
+        />
+        <LoginAlert
+          modal={loginModal}
+          toggleModal={toggleModal}
+
         />
         <NotesTable notes={notes} />
       </div>

@@ -29,12 +29,12 @@ const particlesConfig =
     },
     detectRetina: true,
     duration: 0,
-    fpsLimit: 120,
+    fpsLimit: 200,
     interactivity: {
         detectsOn: "window",
         events: {
             onClick: {
-                enable: true,
+                enable: false,
                 mode: "push"
             },
             onDiv: {
@@ -47,9 +47,9 @@ const particlesConfig =
                 enable: true,
                 mode: "repulse",
                 parallax: {
-                    enable: false,
-                    force: 2,
-                    smooth: 10
+                    enable: true,
+                    force: 1,
+                    smooth: 100
                 }
             },
             resize: {
@@ -61,7 +61,7 @@ const particlesConfig =
             trail: {
                 delay: 1,
                 pauseOnStop: false,
-                quantity: 1
+                quantity: 0.5
             },
             attract: {
                 distance: 200,
@@ -541,7 +541,8 @@ const particlesConfig =
     pauseOnBlur: true,
     pauseOnOutsideViewport: true,
     responsive: [],
-    smooth: false,
+    smooth: true,
+    // smooth: false,
     style: {},
     themes: [],
     zLayers: 100,

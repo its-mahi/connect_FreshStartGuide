@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import { render } from "react-dom";
 import "react-responsive-modal/styles.css";
 import { Modal } from "react-responsive-modal";
 
@@ -10,7 +9,9 @@ export default function BlogCard(props) {
   const formattedString = blogdata.replace(/ /g, "\u00A0");
   const blogdate = props.createdAt;
   const blogtitle = props.title;
-  console.log("in BlogCard" + props.title);
+  const avtar = props.userAvtar.url;
+  const [showFullText, setShowFullText] = useState(false);
+  // console.log("in BlogCard" + props.title);
   const toggleModal = () => {
     setModal(!modal);
   };
@@ -25,12 +26,12 @@ export default function BlogCard(props) {
       <button onClick={toggleModal} className="btn-modal w-full mt-10">
         <div
           className="bg-gray-800 rounded-md bg-clip-padding backdrop-filter backdrop-blur-sm bg-opacity-20 border border-gray-100
-     p-10 text-white dark:border-gray-700 shadow-[0_5px_40px_rgba(8,_112,_184,_0.7)]"
+     p-10 text-white dark:border-gray-700 shadow-[0_0px_5px_rgba(8,_140,_150,_0.7)]"
         >
           <div className="flex items-start">
             <img
-              className="w-8 mr-4 mb-3 rounded-full shadow-lg"
-              src="/public/profile.png"
+              className="w-10 mr-4  rounded-full shadow-lg"
+              src={avtar}
               alt="Bonnie image"
             />
             <h5 className="text-xl font-medium text-gray-900 dark:text-white">
@@ -57,7 +58,7 @@ export default function BlogCard(props) {
         center
         classNames={{
           modal:
-            "bg-gray-800 rounded-md bg-clip-padding backdrop-filter backdrop-blur-sm bg-opacity-90 border border-gray-100 p-10 text-white shadow-[0_10px_50px_rgba(8,_112,_184,_0.7)]",
+            "bg-gray-800 rounded-md bg-clip-padding backdrop-filter backdrop-blur-sm bg-opacity-90 border border-gray-100 p-10 text-white shadow-[0_0px_5px_rgba(8,_140,_150,_0.7)]",
           closeButton: "text-white",
         }}
         styles={{
@@ -71,12 +72,22 @@ export default function BlogCard(props) {
         }}
       >
         <div className="h-[600px]  overflow-y-auto text-3xl scrollbar-thin scrollbar-thumb-blue-500 scrollbar-track-gray-200 pr-10">
+        <div className="flex items-start mb-3">
+            <img
+              className="w-8 mr-4 mt-1 rounded-full shadow-lg"
+              src={avtar}
+              alt="Bonnie image"
+            />
+            <h5 className="text-2xl font-medium text-gray-900 dark:text-white">
+              {name}
+            </h5>
+          </div>
           <h2 className="text-white text-3xl mb-3 font-bold">{blogtitle}</h2>
           <hr className="h-px m-2 bg-gray-200 border-1 dark:bg-gray-500" />
 
           <div className="text-white font-googlers text-lg leading-relaxed tracking-wide">
             {/* Your long content here */}
-            {blogdata}
+            <pre style={{ whiteSpace: 'pre-wrap' }}>{blogdata}</pre>
             {/* {formattedString} */}
           </div>
 

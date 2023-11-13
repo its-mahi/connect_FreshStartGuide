@@ -25,25 +25,25 @@ export default function ProfileBlog(props) {
 
   const deleteBlog = () => {
     axios
-      .delete("http://localhost:8000/api/v1/blog/" + id, {
+      .delete("https://connect-qbpn.onrender.com/api/v1/blog/" + id, {
         headers: {
           "Content-Type": "application/json",
         },
         withCredentials: true,
       })
       .then((response) => {
-        console.log(response.data.message);
+        // console.log(response.data.message);
         props.toggleToggler();
       })
       .catch((err) => {
-        console.log("Error Aayvi bhai" + err.message);
+        console.log("Error" + err.message);
       });
   };
 
   return (
     <div>
       <button onClick={toggleModal} className="btn-modal w-full">
-        <div className="bg-white border border-gray-200 rounded-lg dark:bg-gray-800 dark:border-gray-700 p-5 shadow-[0_5px_40px_rgba(8,_112,_184,_0.7)]">
+        <div className="bg-white border border-gray-200 rounded-lg dark:bg-gray-800 dark:border-gray-700 p-5 shadow-[0_0px_5px_rgba(8,_140,_150,_0.7)]">
           <div>
             <h2 className="text-white text-3xl mb-3">{blogtitle}</h2>
           </div>
@@ -53,7 +53,7 @@ export default function ProfileBlog(props) {
             <span className="underline">Read More</span>
           </div>
           <span className="text-sm text-gray-500 dark:text-gray-400">
-            {bloddate}
+            {bloddate.slice(0, 10)}
           </span>
         </div>
       </button>
@@ -64,7 +64,7 @@ export default function ProfileBlog(props) {
         center
         classNames={{
           modal:
-            "bg-gray-700 p-10 rounded-lg text-white shadow-[0_10px_50px_rgba(8,_112,_184,_0.7)]",
+            "bg-gray-700 p-10 rounded-lg text-white shadow-[0_0px_5px_rgba(8,_140,_150,_0.7)]",
           closeButton: "text-white",
         }}
         styles={{
@@ -91,7 +91,8 @@ export default function ProfileBlog(props) {
 
           <div className="text-white font-googlers text-lg leading-relaxed tracking-wide">
             {/* Your long content here */}
-            {blogdata}
+            <pre style={{ whiteSpace: 'pre-wrap' }}>{blogdata}</pre>
+
             {/* {AiFillDelete}  */}
           </div>
 

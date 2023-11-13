@@ -4,7 +4,7 @@ const Footer = () => {
   return (
     <section className="footer-glass">
       <div className="max-w-screen-xl px-4 py-12 mx-auto space-y-8 overflow-hidden sm:px-6 lg:px-8">
-        <div className="flex justify-center mt-8 space-x-6">
+        {/* <div className="flex justify-center mt-8 space-x-6">
           <a href="#" className="text-gray-400 hover:text-gray-500">
             <span className="sr-only">Facebook</span>
             <svg
@@ -76,7 +76,7 @@ const Footer = () => {
               ></path>
             </svg>
           </a>
-        </div>
+        </div> */}
         <p className="mt-8 text-base leading-6 text-center text-white">
           © Connect .  All rights reserved.
         </p>

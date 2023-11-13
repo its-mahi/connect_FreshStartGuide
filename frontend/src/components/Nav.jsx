@@ -15,13 +15,13 @@ const Nav = (props) => {
   }
 
   const logout = async () => {
-    const response = await axios.post("http://localhost:8000/api/v1/logout", {
+    const response = await axios.post("https://connect-qbpn.onrender.com/api/v1/logout", {
       headers: {
         "Content-Type": "application/json",
       },
       withCredentials: true,
     });
-    console.log("logout res " + response.success);
+    // console.log("logout res " + response.success);
     dispatch({
       type: "CLEAR_USER",
     });
@@ -34,7 +34,7 @@ const Nav = (props) => {
         <div className="nav">
           <div className="pl-0">
             <a href="#top">
-              <img src="../../public/connect.png" className="w-36" alt="" />
+              <img src="/connect.png" className="w-36" alt="" />
             </a>
           </div>
           <div>
@@ -43,11 +43,11 @@ const Nav = (props) => {
                 <Link to="/">Home</Link>
               </div>
               <div className="nav-titles nav-titles-ltr">
-                {true && <Link to="/profile">Profile</Link>}
+                {props.isLoggedIn && <Link to="/profile">Profile</Link>}
               </div>
               <div className="nav-titles nav-titles-ltr">
                 <Link to="/query">
-                QueryRoom
+                  QueryRoom
                 </Link>
               </div>
 
@@ -85,18 +85,26 @@ const Nav = (props) => {
               </button>
               {isOpen && (
                 <div className="dropdown-menu nav-dropdown">
-                  <a href="#" className="nav-dropdown-titles">
+                  <Link to="/" className="nav-dropdown-titles">Home</Link>
+                  <Link to="/query" className="nav-dropdown-titles">
                     QueryRoom
-                  </a>
-                  <a href="#" className="nav-dropdown-titles">
+                  </Link>
+                  <Link to="/blogs" className="nav-dropdown-titles">
                     Blogs
-                  </a>
-                  <a href="#" className="nav-dropdown-titles">
+                  </Link>
+                  <Link to="/notes" className="nav-dropdown-titles">
                     Notes
-                  </a>
-                  <a href="#" className="nav-dropdown-titles">
+                  </Link>
+                  {!props.isLoggedIn && (
+                    <Link to="/login" className="nav-dropdown-titles">Login</Link>
+                  )}
+                  {!props.isLoggedIn && (
+                    <Link to="/register" className="nav-dropdown-titles">Register</Link>
+                  )}
+                  {props.isLoggedIn && <Link to="/profile" className="nav-dropdown-titles">Profile</Link>}
+                  {props.isLoggedIn && (<div className="nav-dropdown-titles" onClick={logout}>
                     Logout
-                  </a>
+                  </div>)}
                 </div>
               )}
             </div>

@@ -13,6 +13,7 @@ export default function NoteAdd(props) {
       value: e.target.value,
       files: e.target.files,
     };
+    console.log(myData);
     props.updateData(myData);
   };
 

@@ -2,14 +2,15 @@
 import Particles from "react-tsparticles";
 import { loadFull } from "tsparticles";
 import particlesConfig from "./config/particle-config";
+// import bubbles from "./config/bubbles";
 
 export default function PaticlesBackground() {
   const particlesInit = async (main) => {
-    console.log(main);
+    // console.log(main);
     await loadFull(main);
   };
   const particlesLoaded = (container) => {
-    console.log(container);
+    // console.log(container);
   };
   return (
     <Particles
